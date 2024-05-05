@@ -1,12 +1,12 @@
-resource "proxmox_virtual_environment_vm" "vault" {
-  vm_id     = 100
-  name      = "vault"
-  tags      = ["controller", "vault"]
+resource "proxmox_virtual_environment_vm" "terraform" {
+  vm_id     = 101
+  name      = "terraform"
+  tags      = ["controller", "terraform"]
   node_name = "pve"
   initialization {
     ip_config {
       ipv4 {
-        address = "192.168.0.100/24"
+        address = "192.168.0.101/24"
         gateway = "192.168.0.1"
       }
     }

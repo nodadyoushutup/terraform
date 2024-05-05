@@ -34,9 +34,9 @@ variable "datastore_id" {
   }
 }
 
-variable "vault_password" {
+variable "init_password" {
   type = string
-  description = "Password for the vault user"
+  description = "Password"
 }
 
 variable "ssh_keys" {
@@ -45,6 +45,7 @@ variable "ssh_keys" {
     github  = string
     desktop  = string
     terraform  = string
+    init = string
   })
   description = "SSH key locations"
 
@@ -53,5 +54,6 @@ variable "ssh_keys" {
     github  = ".ssh/github.pub"
     desktop  = ".ssh/desktop.pub"
     terraform  = ".ssh/terraform.pub"
+    init  = ".ssh/init.pub"
   }
 }

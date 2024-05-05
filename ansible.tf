@@ -1,12 +1,12 @@
-resource "proxmox_virtual_environment_vm" "vault" {
-  vm_id     = 100
-  name      = "vault"
-  tags      = ["controller", "vault"]
+resource "proxmox_virtual_environment_vm" "ansible" {
+  vm_id     = 102
+  name      = "ansible"
+  tags      = ["controller", "ansible"]
   node_name = "pve"
   initialization {
     ip_config {
       ipv4 {
-        address = "192.168.0.100/24"
+        address = "192.168.0.102/24"
         gateway = "192.168.0.1"
       }
     }

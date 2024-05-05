@@ -1,12 +1,12 @@
-resource "proxmox_virtual_environment_vm" "vault" {
-  vm_id     = 100
-  name      = "vault"
-  tags      = ["controller", "vault"]
+resource "proxmox_virtual_environment_vm" "spacelift" {
+  vm_id     = 103
+  name      = "spacelift"
+  tags      = ["controller", "spacelift"]
   node_name = "pve"
   initialization {
     ip_config {
       ipv4 {
-        address = "192.168.0.100/24"
+        address = "192.168.0.103/24"
         gateway = "192.168.0.1"
       }
     }
