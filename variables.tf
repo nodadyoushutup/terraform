@@ -41,19 +41,13 @@ variable "init_password" {
 
 variable "ssh_keys" {
   type = object({
-    ansible  = string
-    github  = string
     desktop  = string
-    terraform  = string
     init = string
   })
   description = "SSH key locations"
 
   default = {
-    ansible  = ".ssh/ansible.pub"
-    github  = ".ssh/github.pub"
     desktop  = ".ssh/desktop.pub"
-    terraform  = ".ssh/terraform.pub"
     init  = ".ssh/init.pub"
   }
 }
