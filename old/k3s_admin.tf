@@ -2,7 +2,7 @@ resource "proxmox_virtual_environment_vm" "k3s_admin" {
   vm_id     = 102
   name      = "k3s-admin"
   tags      = ["terraform"]
-  node_name = "pve"
+  node_name = var.node_name
   bios = "seabios"
   on_boot = true
   initialization {

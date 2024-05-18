@@ -2,7 +2,7 @@ resource "proxmox_virtual_environment_vm" "k3s_worker_1" {
   vm_id     = 204
   name      = "k3s-worker-1"
   tags      = ["terraform"]
-  node_name = "pve"
+  node_name = var.node_name
   bios = "seabios"
   on_boot = true
   initialization {
@@ -49,7 +49,7 @@ resource "proxmox_virtual_environment_vm" "k3s_worker_2" {
   vm_id     = 205
   name      = "k3s-worker-2"
   tags      = ["terraform"]
-  node_name = "pve"
+  node_name = var.node_name
   bios = "seabios"
   on_boot = true
   initialization {
@@ -96,7 +96,7 @@ resource "proxmox_virtual_environment_vm" "k3s_worker_3" {
   vm_id     = 206
   name      = "k3s-worker-3"
   tags      = ["terraform"]
-  node_name = "pve"
+  node_name = var.node_name
   bios = "seabios"
   on_boot = true
   initialization {
@@ -143,7 +143,7 @@ resource "proxmox_virtual_environment_vm" "k3s_worker_4" {
   vm_id     = 207
   name      = "k3s-worker-4"
   tags      = ["terraform"]
-  node_name = "pve"
+  node_name = var.node_name
   bios = "seabios"
   on_boot = true
   initialization {

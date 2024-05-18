@@ -2,7 +2,7 @@ resource "proxmox_virtual_environment_vm" "k3s_master_1" {
   vm_id     = 201
   name      = "k3s-master-1"
   tags      = ["terraform"]
-  node_name = "pve"
+  node_name = var.node_name
   bios = "seabios"
   on_boot = true
   initialization {
@@ -49,7 +49,7 @@ resource "proxmox_virtual_environment_vm" "k3s_master_2" {
   vm_id     = 202
   name      = "k3s-master-2"
   tags      = ["terraform"]
-  node_name = "pve"
+  node_name = var.node_name
   bios = "seabios"
   on_boot = true
   initialization {
@@ -96,7 +96,7 @@ resource "proxmox_virtual_environment_vm" "k3s_master_3" {
   vm_id     = 203
   name      = "k3s-master-3"
   tags      = ["terraform"]
-  node_name = "pve"
+  node_name = var.node_name
   bios = "seabios"
   on_boot = true
   initialization {
