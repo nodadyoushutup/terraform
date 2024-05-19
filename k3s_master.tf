@@ -1,7 +1,7 @@
 resource "proxmox_virtual_environment_vm" "k3s_master_1" {
   vm_id     = 201
   name      = "k3s-master-1"
-  tags      = ["terraform"]
+  tags      = ["terraform", "k3s", "k3s_master"]
   node_name = var.node_name
   bios = "seabios"
   on_boot = true
@@ -22,10 +22,9 @@ resource "proxmox_virtual_environment_vm" "k3s_master_1" {
     }
   }
   disk {
-    datastore_id = var.datastore_id.lvm
+    datastore_id = var.datastore_id.k3s
     file_id      = proxmox_virtual_environment_download_file.ubuntu_jammy_22_04_cloud_image.id
     interface    = "scsi0"
-    iothread     = true
     discard      = "on"
     size         = 20
     ssd = true
@@ -48,7 +47,7 @@ resource "proxmox_virtual_environment_vm" "k3s_master_1" {
 resource "proxmox_virtual_environment_vm" "k3s_master_2" {
   vm_id     = 202
   name      = "k3s-master-2"
-  tags      = ["terraform"]
+  tags      = ["terraform", "k3s", "k3s_master"]
   node_name = var.node_name
   bios = "seabios"
   on_boot = true
@@ -69,10 +68,9 @@ resource "proxmox_virtual_environment_vm" "k3s_master_2" {
     }
   }
   disk {
-    datastore_id = var.datastore_id.lvm
+    datastore_id = var.datastore_id.k3s
     file_id      = proxmox_virtual_environment_download_file.ubuntu_jammy_22_04_cloud_image.id
     interface    = "scsi0"
-    iothread     = true
     discard      = "on"
     size         = 20
     ssd = true
@@ -95,7 +93,7 @@ resource "proxmox_virtual_environment_vm" "k3s_master_2" {
 resource "proxmox_virtual_environment_vm" "k3s_master_3" {
   vm_id     = 203
   name      = "k3s-master-3"
-  tags      = ["terraform"]
+  tags      = ["terraform", "k3s", "k3s_master"]
   node_name = var.node_name
   bios = "seabios"
   on_boot = true
@@ -116,10 +114,9 @@ resource "proxmox_virtual_environment_vm" "k3s_master_3" {
     }
   }
   disk {
-    datastore_id = var.datastore_id.lvm
+    datastore_id = var.datastore_id.k3s
     file_id      = proxmox_virtual_environment_download_file.ubuntu_jammy_22_04_cloud_image.id
     interface    = "scsi0"
-    iothread     = true
     discard      = "on"
     size         = 20
     ssd = true

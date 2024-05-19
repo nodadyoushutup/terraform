@@ -1,7 +1,7 @@
 resource "proxmox_virtual_environment_vm" "k3s_worker_1" {
   vm_id     = 204
   name      = "k3s-worker-1"
-  tags      = ["terraform"]
+  tags      = ["terraform", "k3s", "k3s_worker"]
   node_name = var.node_name
   bios = "seabios"
   on_boot = true
@@ -22,12 +22,11 @@ resource "proxmox_virtual_environment_vm" "k3s_worker_1" {
     }
   }
   disk {
-    datastore_id = var.datastore_id.lvm
+    datastore_id = var.datastore_id.k3s
     file_id      = proxmox_virtual_environment_download_file.ubuntu_jammy_22_04_cloud_image.id
     interface    = "scsi0"
-    iothread     = true
     discard      = "on"
-    size         = 20
+    size         = 200
     ssd = true
   }
   network_device {
@@ -35,7 +34,7 @@ resource "proxmox_virtual_environment_vm" "k3s_worker_1" {
     model = "e1000e"
   }
   memory {
-    dedicated = 4096
+    dedicated = 16384
   }
   cpu {
     cores = 2
@@ -48,7 +47,7 @@ resource "proxmox_virtual_environment_vm" "k3s_worker_1" {
 resource "proxmox_virtual_environment_vm" "k3s_worker_2" {
   vm_id     = 205
   name      = "k3s-worker-2"
-  tags      = ["terraform"]
+  tags      = ["terraform", "k3s", "k3s_worker"]
   node_name = var.node_name
   bios = "seabios"
   on_boot = true
@@ -69,12 +68,11 @@ resource "proxmox_virtual_environment_vm" "k3s_worker_2" {
     }
   }
   disk {
-    datastore_id = var.datastore_id.lvm
+    datastore_id = var.datastore_id.k3s
     file_id      = proxmox_virtual_environment_download_file.ubuntu_jammy_22_04_cloud_image.id
     interface    = "scsi0"
-    iothread     = true
     discard      = "on"
-    size         = 20
+    size         = 200
     ssd = true
   }
   network_device {
@@ -82,7 +80,7 @@ resource "proxmox_virtual_environment_vm" "k3s_worker_2" {
     model = "e1000e"
   }
   memory {
-    dedicated = 4096
+    dedicated = 16384
   }
   cpu {
     cores = 2
@@ -95,7 +93,7 @@ resource "proxmox_virtual_environment_vm" "k3s_worker_2" {
 resource "proxmox_virtual_environment_vm" "k3s_worker_3" {
   vm_id     = 206
   name      = "k3s-worker-3"
-  tags      = ["terraform"]
+  tags      = ["terraform", "k3s", "k3s_worker"]
   node_name = var.node_name
   bios = "seabios"
   on_boot = true
@@ -116,12 +114,11 @@ resource "proxmox_virtual_environment_vm" "k3s_worker_3" {
     }
   }
   disk {
-    datastore_id = var.datastore_id.lvm
+    datastore_id = var.datastore_id.k3s
     file_id      = proxmox_virtual_environment_download_file.ubuntu_jammy_22_04_cloud_image.id
     interface    = "scsi0"
-    iothread     = true
     discard      = "on"
-    size         = 20
+    size         = 200
     ssd = true
   }
   network_device {
@@ -129,7 +126,7 @@ resource "proxmox_virtual_environment_vm" "k3s_worker_3" {
     model = "e1000e"
   }
   memory {
-    dedicated = 4096
+    dedicated = 16384
   }
   cpu {
     cores = 2
@@ -142,7 +139,7 @@ resource "proxmox_virtual_environment_vm" "k3s_worker_3" {
 resource "proxmox_virtual_environment_vm" "k3s_worker_4" {
   vm_id     = 207
   name      = "k3s-worker-4"
-  tags      = ["terraform"]
+  tags      = ["terraform", "k3s", "k3s_worker"]
   node_name = var.node_name
   bios = "seabios"
   on_boot = true
@@ -163,12 +160,11 @@ resource "proxmox_virtual_environment_vm" "k3s_worker_4" {
     }
   }
   disk {
-    datastore_id = var.datastore_id.lvm
+    datastore_id = var.datastore_id.k3s
     file_id      = proxmox_virtual_environment_download_file.ubuntu_jammy_22_04_cloud_image.id
     interface    = "scsi0"
-    iothread     = true
     discard      = "on"
-    size         = 20
+    size         = 200
     ssd = true
   }
   network_device {
@@ -176,7 +172,7 @@ resource "proxmox_virtual_environment_vm" "k3s_worker_4" {
     model = "e1000e"
   }
   memory {
-    dedicated = 4096
+    dedicated = 16384
   }
   cpu {
     cores = 2

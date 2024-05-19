@@ -23,14 +23,16 @@ variable "node_name" {
 
 variable "datastore_id" {
   type = object({
-    local  = string
-    lvm  = string
+    local = string
+    lvm   = string
+    k3s   = string
   })
   description = "Proxmox datastore IDs"
 
   default = {
-    local  = "local"
-    lvm  = "local-lvm"
+    local = "local"
+    lvm   = "local-lvm"
+    k3s   = "k3s"
   }
 }
 
