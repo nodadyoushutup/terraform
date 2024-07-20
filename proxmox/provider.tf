@@ -1,3 +1,5 @@
+# proxmox/provider./tf
+
 terraform {
   required_providers {
     proxmox = {
@@ -8,7 +10,7 @@ terraform {
 
 provider "proxmox" {
   endpoint  = var.endpoint
-  username  = var.USERNAME
-  password  = var.PASSWORD
-  insecure  = var.INSECURE
+  username  = var.username
+  password  = var.password
+  insecure  = var.insecure
 }

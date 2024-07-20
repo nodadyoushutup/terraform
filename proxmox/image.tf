@@ -1,3 +1,5 @@
+# proxmox/image/tf
+
 resource "proxmox_virtual_environment_download_file" "ubuntu_bionic_18_04_cloud_image" {
   content_type = "iso"
   datastore_id = "local"
