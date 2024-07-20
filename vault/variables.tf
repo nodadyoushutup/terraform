@@ -27,3 +27,9 @@ variable "api_token" {
   type        = string
   default     = false
 }
+
+variable "private_key" {
+  description = "Private SSH Key"
+  type        = string
+  default     = false
+}
