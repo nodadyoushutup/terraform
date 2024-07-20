@@ -29,7 +29,7 @@ resource "proxmox_virtual_environment_vm" "vault" {
   }
   disk {
     datastore_id = var.datastore_id.k3s
-    file_id      = proxmox_virtual_environment_download_file.ubuntu_jammy_22_04_cloud_image.id
+    file_id      = "local:iso/ubuntu-jammy-22.04-cloudimg-amd64.img"
     interface    = "scsi0"
     discard      = "on"
     size         = 10
