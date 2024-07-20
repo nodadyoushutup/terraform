@@ -15,7 +15,7 @@ provider "proxmox" {
   ssh {
     node {
       name = "pve"
-      address = "146.115.179.178"
+      address = var.address
     }
     agent = true
     agent_socket = 22

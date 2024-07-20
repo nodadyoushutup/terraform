@@ -28,8 +28,8 @@ resource "proxmox_virtual_environment_vm" "vault" {
     }
   }
   disk {
-    datastore_id = "k3s"
-    file_id      = "local:iso/ubuntu-jammy-22.04-cloudimg-amd64.img"
+    datastore_id = "local-lvm"
+    file_id      = "local:iso/jammy-server-cloudimg-amd64.img"
     interface    = "scsi0"
     discard      = "on"
     size         = 10
