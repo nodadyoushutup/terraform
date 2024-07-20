@@ -1,5 +1,6 @@
 # proxmox/variables.tf
 
+# Provider Config
 variable "endpoint" {
   description = "Proxmox API endpoint"
   type        = string
@@ -32,4 +33,12 @@ variable "address" {
   description = "PVE Node IP Address"
   type        = string
   default     = false
+}
+
+# VM Config
+
+variable "name" {
+  description = "Virtual machine name"
+  type        = string
+  default     = "ubuntu"
 }
