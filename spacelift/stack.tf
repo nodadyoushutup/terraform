@@ -11,6 +11,18 @@ resource "spacelift_stack" "proxmox" {
   terraform_version = "1.5.7"
 }
 
+resource "spacelift_stack" "vault" {
+  administrative    = true
+  autodeploy        = true
+  branch            = "main"
+  description       = "Provisions HashiCorp Vault resources"
+  name              = "vault"
+  project_root      = "vault"
+  repository        = "terraform"
+  terraform_version = "1.5.7"
+}
+
+
 # resource "spacelift_stack" "k8s-cluster" {
 #   administrative    = true
 #   autodeploy        = true
