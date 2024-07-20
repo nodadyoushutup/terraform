@@ -13,12 +13,12 @@ provider "proxmox" {
   api_token = var.api_token
   insecure  = var.insecure
   ssh {
+    agent = true
     node {
       name = "pve"
       address = var.address
+      port = 22
     }
-    agent = true
-    agent_socket = 22
     username = var.username
     # password = var.password
     private_key = var.private_key
