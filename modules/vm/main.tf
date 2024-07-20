@@ -1,6 +1,6 @@
 # vault/vm.tf
 
-resource "proxmox_virtual_environment_vm" "vault" {
+resource "proxmox_virtual_environment_vm" "virtual_machine" {
   vm_id     = 101
   name      = "vault"
   tags      = ["terraform", "vault"]
