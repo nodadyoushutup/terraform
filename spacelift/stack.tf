@@ -5,8 +5,8 @@ resource "spacelift_stack" "k8s-cluster" {
   autodeploy        = true
   branch            = "main"
   description       = "Provisions a Kubernetes cluster"
-  name              = "Kubernetes Cluster Stack"
-  project_root      = "spacelift"
+  name              = "k3s"
+  project_root      = "k3s"
   repository        = "terraform"
   terraform_version = "1.5.7"
 }
