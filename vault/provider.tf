@@ -8,10 +8,6 @@ terraform {
   }
 }
 
-# resource "local_file" "ssh_key" {
-#   content  = var.private_key
-#   filename = "${path.module}/id_rsa.pem"
-# }
 
 resource "null_resource" "create_temp_file" {
   provisioner "local-exec" {
@@ -20,6 +16,12 @@ resource "null_resource" "create_temp_file" {
     EOT
   }
 }
+
+resource "local_file" "ssh_key" {
+  content  = var.private_key
+  filename = "${path.module}/id_rsa.pem"
+}
+
 
 provider "proxmox" {
   endpoint = var.endpoint
