@@ -42,3 +42,9 @@ variable "name" {
   type        = string
   default     = "ubuntu"
 }
+
+variable "tags" {
+  description = "An example list variable"
+  type        = list(string)
+  default     = ["terraform"]
+}
