@@ -1,3 +1,5 @@
+# spacelift/stack.tf
+
 resource "spacelift_stack" "k8s-cluster" {
   administrative    = true
   autodeploy        = true
