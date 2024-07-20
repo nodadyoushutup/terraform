@@ -1,8 +1,10 @@
-resource "proxmox_virtual_environment_vm" "k3s_master_1" {
-  vm_id     = 201
+# vault/vm.tf
+
+resource "proxmox_virtual_environment_vm" "vault" {
+  vm_id     = 101
   name      = "k3s-master-1"
-  tags      = ["terraform", "k3s", "k3s_master"]
-  node_name = var.node_name
+  tags      = ["terraform", "vault"]
+  node_name = "pve"
   bios = "seabios"
   on_boot = true
   stop_on_destroy = true
@@ -12,15 +14,15 @@ resource "proxmox_virtual_environment_vm" "k3s_master_1" {
   initialization {
     ip_config {
       ipv4 {
-        address = "192.168.0.201/24"
+        address = "192.168.0.101/24"
         gateway = "192.168.0.1"
       }
     }
     user_account {
-      keys     = [
-        trimspace(data.local_file.ssh_public_key_init.content),
-        trimspace(data.local_file.ssh_public_key_desktop.content)
-      ]
+      # keys     = [
+      #   trimspace(data.local_file.ssh_public_key_init.content),
+      #   trimspace(data.local_file.ssh_public_key_desktop.content)
+      # ]
       password = var.password
       username = "ubuntu"
     }
