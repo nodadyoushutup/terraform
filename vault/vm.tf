@@ -6,7 +6,8 @@ resource "proxmox_virtual_environment_vm" "vault" {
   tags      = ["terraform", "vault"]
   node_name = "pve"
   bios = "seabios"
-  on_boot = true
+  on_boot = false
+  started = false
   stop_on_destroy = true
   agent {
     enabled = false
