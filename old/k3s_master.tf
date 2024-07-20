@@ -5,6 +5,10 @@ resource "proxmox_virtual_environment_vm" "k3s_master_1" {
   node_name = var.node_name
   bios = "seabios"
   on_boot = true
+  stop_on_destroy = true
+  agent {
+    enabled = false
+  }
   initialization {
     ip_config {
       ipv4 {
@@ -26,7 +30,7 @@ resource "proxmox_virtual_environment_vm" "k3s_master_1" {
     file_id      = proxmox_virtual_environment_download_file.ubuntu_jammy_22_04_cloud_image.id
     interface    = "scsi0"
     discard      = "on"
-    size         = 20
+    size         = 10
     ssd = true
   }
   network_device {
@@ -51,6 +55,10 @@ resource "proxmox_virtual_environment_vm" "k3s_master_2" {
   node_name = var.node_name
   bios = "seabios"
   on_boot = true
+  stop_on_destroy = true
+  agent {
+    enabled = false
+  }
   initialization {
     ip_config {
       ipv4 {
@@ -72,7 +80,7 @@ resource "proxmox_virtual_environment_vm" "k3s_master_2" {
     file_id      = proxmox_virtual_environment_download_file.ubuntu_jammy_22_04_cloud_image.id
     interface    = "scsi0"
     discard      = "on"
-    size         = 20
+    size         = 10
     ssd = true
   }
   network_device {
@@ -97,6 +105,10 @@ resource "proxmox_virtual_environment_vm" "k3s_master_3" {
   node_name = var.node_name
   bios = "seabios"
   on_boot = true
+  stop_on_destroy = true
+  agent {
+    enabled = false
+  }
   initialization {
     ip_config {
       ipv4 {
@@ -118,7 +130,7 @@ resource "proxmox_virtual_environment_vm" "k3s_master_3" {
     file_id      = proxmox_virtual_environment_download_file.ubuntu_jammy_22_04_cloud_image.id
     interface    = "scsi0"
     discard      = "on"
-    size         = 20
+    size         = 10
     ssd = true
   }
   network_device {
