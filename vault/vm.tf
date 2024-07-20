@@ -20,10 +20,10 @@ resource "proxmox_virtual_environment_vm" "vault" {
       }
     }
     user_account {
-      # keys     = [
-      #   trimspace(data.local_file.ssh_public_key_init.content),
-      #   trimspace(data.local_file.ssh_public_key_desktop.content)
-      # ]
+      keys     = [
+        file("/mnt/workspace/desktop.pub"),
+        # trimspace(data.local_file.ssh_public_key_desktop.content)
+      ]
       password = var.password
       username = "ubuntu"
     }

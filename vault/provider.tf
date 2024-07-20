@@ -23,6 +23,6 @@ provider "proxmox" {
       address = var.address
     }
     username = var.username
-    private_key = file("/mnt/workspace/id_rsa")
+    private_key = file("/mnt/workspace/proxmox.pem")
   }
 }
