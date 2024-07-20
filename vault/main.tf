@@ -14,4 +14,5 @@ module "vault" {
 
   # VM Config
   name = "vault"
+  tags = ["terraform", "vault"]
 }
