@@ -28,12 +28,6 @@ variable "api_token" {
   default     = false
 }
 
-variable "private_key" {
-  description = "Private SSH Key"
-  type        = string
-  default     = false
-}
-
 variable "address" {
   description = "PVE Node IP Address"
   type        = string
