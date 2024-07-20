@@ -15,6 +15,7 @@ provider "proxmox" {
   ssh {
     agent = true
     username = "root"
+    password = var.password
     # private_key = var.private_key
   }
 }
