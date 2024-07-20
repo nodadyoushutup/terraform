@@ -33,7 +33,7 @@ resource "proxmox_virtual_environment_vm" "vault" {
     file_id      = "local:iso/jammy-server-cloudimg-amd64.img"
     interface    = "scsi0"
     discard      = "on"
-    size         = 10
+    size         = 50
     ssd = true
   }
   network_device {
