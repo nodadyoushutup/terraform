@@ -17,10 +17,10 @@ resource "null_resource" "create_temp_file" {
   }
 }
 
-resource "local_file" "ssh_key" {
-  content  = var.private_key
-  filename = "${path.module}/id_rsa.pem"
-}
+# resource "local_file" "ssh_key" {
+#   content  = var.private_key
+#   filename = "${path.module}/id_rsa.pem"
+# }
 
 
 provider "proxmox" {
@@ -36,6 +36,6 @@ provider "proxmox" {
     }
     username = var.username
     # password = var.password
-    private_key = file("${local_file.ssh_key.filename}")
+    private_key = file("${path.module}/id_rsa.pem")
   }
 }
