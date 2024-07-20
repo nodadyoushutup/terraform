@@ -8,6 +8,11 @@ terraform {
   }
 }
 
+resource "local_file" "ssh_key" {
+  content  = var.private_key
+  filename = "${path.module}/id_rsa.pem"
+}
+
 provider "proxmox" {
   endpoint = var.endpoint
   api_token = var.api_token
@@ -21,8 +26,6 @@ provider "proxmox" {
     }
     username = var.username
     # password = var.password
-    private_key = <<-EOF
-${var.private_key}
-EOF
+    private_key = file("${local_file.ssh_key.filename}")
   }
 }
