@@ -16,6 +16,7 @@ provider "proxmox" {
     agent = true
     username = "root"
     password = var.password
+    agent_socket = 22
     # private_key = var.private_key
   }
 }
