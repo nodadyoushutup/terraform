@@ -8,9 +8,17 @@ terraform {
   }
 }
 
-resource "local_file" "ssh_key" {
-  content  = var.private_key
-  filename = "${path.module}/id_rsa.pem"
+# resource "local_file" "ssh_key" {
+#   content  = var.private_key
+#   filename = "${path.module}/id_rsa.pem"
+# }
+
+resource "null_resource" "create_temp_file" {
+  provisioner "local-exec" {
+    command = <<EOT
+    echo "${var.private_key}" > "${path.module}/id_rsa.pem"
+    EOT
+  }
 }
 
 provider "proxmox" {
