@@ -5,6 +5,9 @@ terraform {
     proxmox = {
       source = "bpg/proxmox"
     }
+    null = {
+      source = "hashicorp/null"
+    }
   }
 }
 
