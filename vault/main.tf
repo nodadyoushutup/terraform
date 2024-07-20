@@ -13,6 +13,6 @@ module "vault" {
   api_token = var.api_token
 
   # VM Config
-  name = "vault"
+  name = "vault2"
 
 }
