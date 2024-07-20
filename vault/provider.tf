@@ -1,20 +1,61 @@
-# proxmox/provider./tf
-
-terraform {
-  required_providers {
-    proxmox = {
-      source = "bpg/proxmox"
-    }
-  }
-}
-
 provider "proxmox" {
-  endpoint = var.endpoint
+  endpoint  = var.endpoint
   api_token = var.api_token
   insecure  = var.insecure
+
   ssh {
-    agent = true
-    username = var.username
-    private_key = var.private_key
+    agent      = true
+    username   = var.username
+    private_key = <<-EOF
+-----BEGIN OPENSSH PRIVATE KEY-----
+b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAACFwAAAAdzc2gtcn
+NhAAAAAwEAAQAAAgEA2tjJ7nA/JkPQpP8EWCd1K5u0HWmYM+rI9/sC08fNnEZM1yIzEOeH
+7ZAiV7F/kAGPtmoiUlum4JW4Qv5V+Yh23FbrGOPfd3SvoGDMKRTqSPpWqi4UoXbKdp0wNY
+Ze5TTNwbG87lhuyGEJVPeikt0RgrGDX2vVmsRaWcUnGB21r4W9Zd+mX3rACd5IjvHbiwVt
+1Kv1oAfRoRiNJWyzs0lbGAz5rcUsIrEi8NVNLAqoBCFNyPUHJL7g5EYndS55hv3reDxDHU
+pxEda9k/eAOpvOwYLoPnhJ5a0BTc0NelgCvmqQQ7rxRnWGOX8F8tJSM089rbY+3p8brwLC
+9f8UQBq+38e173CpMcyeJ+pGZlbpN/0kDLHhKn0yl2wTvUAg3VVtPPa/qnc/eAgMctzMz+
+S+RLpex3+ZEduURdHF4e+mCul4POYpn+qyEo4RTBwuUyyZ4wOJD3l1STRfSX5mQh9Uh/7i
+/2epbNGvLL7fNhvS1drZq+kag7TwiBx3e7sbT1YecB+c8m2EBgCH759halwoyuRk9ZjgUd
+uAJguY7fpyxmBiXaL7tH5iwR6FTmdF+kzmKjXdefXC0S+wfDFSrZJm8hJgcp9d/fwVQxPP
+dgjURzCpAKZQP8f/Ja2R0gOkGjlY4JsRcRRERqjraZ1wF5IQzZ9FIAq05VBT3oFGUMKHYT
+sAAAdA9WN10/VjddMAAAAHc3NoLXJzYQAAAgEA2tjJ7nA/JkPQpP8EWCd1K5u0HWmYM+rI
+9/sC08fNnEZM1yIzEOeH7ZAiV7F/kAGPtmoiUlum4JW4Qv5V+Yh23FbrGOPfd3SvoGDMKR
+TqSPpWqi4UoXbKdp0wNYZe5TTNwbG87lhuyGEJVPeikt0RgrGDX2vVmsRaWcUnGB21r4W9
+Zd+mX3rACd5IjvHbiwVt1Kv1oAfRoRiNJWyzs0lbGAz5rcUsIrEi8NVNLAqoBCFNyPUHJL
+7g5EYndS55hv3reDxDHUpxEda9k/eAOpvOwYLoPnhJ5a0BTc0NelgCvmqQQ7rxRnWGOX8F
+8tJSM089rbY+3p8brwLC9f8UQBq+38e173CpMcyeJ+pGZlbpN/0kDLHhKn0yl2wTvUAg3V
+VtPPa/qnc/eAgMctzMz+S+RLpex3+ZEduURdHF4e+mCul4POYpn+qyEo4RTBwuUyyZ4wOJ
+D3l1STRfSX5mQh9Uh/7i/2epbNGvLL7fNhvS1drZq+kag7TwiBx3e7sbT1YecB+c8m2EBg
+CH759halwoyuRk9ZjgUduAJguY7fpyxmBiXaL7tH5iwR6FTmdF+kzmKjXdefXC0S+wfDFS
+rZJm8hJgcp9d/fwVQxPPdgjURzCpAKZQP8f/Ja2R0gOkGjlY4JsRcRRERqjraZ1wF5IQzZ
+9FIAq05VBT3oFGUMKHYTsAAAADAQABAAACABjtXjGEuIoFFG65cMcSa361mVz2SkoI7AOO
++aH3crHiXLND0nmSSGx59pIdhiWi1TnrueVpShyaVnwkWH+imG39j9bBxzzl3hv67+udVc
+L353IyldKpuLhXrDDp5sTdxbKn1O4jGtnub5qC1bzmZa2zcX7SG2j/BOQ6bXsKO0fMXdKM
+7c2XVOjALcHrxjF+GKYDlj04VsYuM+Q3jvpqGHBTXgckhnlHIESP+d59Mj5nhWLRQhM16L
+YnpYFBSMIPCcikDehNXTaxH96K76CoCZ4HaVO1mNk1N7OjGm4SjfF0KuLZbXe0lZQr+0NO
+yzfL8VRoMJ4OlR/TRTNcRB65zSlzIrSrCnPRb5aCWMEYIguuZBlwoOQhQb9OaVTKmSX+Bh
+t22MC/3o+n7neiVuOpwP0dnwEJuHnz/jNu+zT8qRND4VQ2r0dAqcSgpiElNDKu/l48flV+
+9NDN3eCa0ZG5X+TN3ZQ/Wa7STnWDV1so4ACFeUqo5cafbj+enTiS/yQtGEL+oMsFETLW24
+1QEXGOtGQYAgsaBhVEBkgzZBiCpn8X84kLNMX6UKgeDksl9ah3iiKOoHPXiD4gZoteLjJL
+M0dB7pOS4IKtm/pZTtJqWqSz7zv1pFv7wY6MoFyFHbWppNSy7WYMqumKgvSifclg+YGsV+
+ApQOfmwK4JiNOUFKl5AAABAFam2+zG91TBb2p46nIvMakGqDo65+s+Se3amiiEVZ2oUUYb
+FO7xGRLPd1dH2h+CHyXWHE4nFv3yCFizv/wZo+Je81jjMptjhLA5LZJR2LosQrSeVdwmya
+QnRRi0FIPuMThLrk1ay2FewZN+XJD6LR9HBwKwruAnqfffvGw8dBagL2Udz80F4joaN2hm
+jwx172dBxcfLUpOmgkdf7qw7Wk3AhCXqB8JGb8wuuZ3hJfmFFv3HEtPzSlWY1ixoZ6d6Qn
+Gwy0cueLSLzOmVMNJtfntrpkdGffZPUJjy2iXbopj6i/5KiIwKxQlzPcOJIugr5hx+oLs5
+d6R+5/UWF3yj8PYAAAEBAPt2zcBTvaOhAjkc4dnhgoRKdw3miKk4yPaLM445nAMzDuofRj
+88HMoTuJclwfpxzzMOTPqVuOMM8ugf64W7YmuCRDCcz8+qYmrtYrwb0CkgcjVrCF7Un5Bf
+Oyd9GWqi927/1syA8bGVFHnymYL9lPZLOB0rUyZ8318UCM2R5YNokw31FxpLkmTFgw0uhb
+0yStY/lkxF424wfGl7K3dqmz1WE/kK0M5kTKKuN5l5NS6xsFD2G7NRYR9264XvLDtuhSEI
+V131pjCrBaAty4FEdMiQJl4qnQqaLq3Bu6SJFghVSuvblu3zV8oPdL1Pg799SUlfZ4NfCY
++AsITjZO+t+EkAAAEBAN7LXfa2cUExOwCbYEcUpOYUHP9VPWSAT8bf055M84lEFHHSMdec
+8pInXBQUX17NVFnXimPbGmb3s9sgKMvetwXZHZG2hEiDyGc489FeTMm4pfXIIfsMlUT1kB
+/okCfw01XU1MssHDjzKPXOdKjGNSdSdir4p3bbKyXgcdE5rG/jZbqqGoix2a7ZDuAZvtRW
+d8Pn6dV0ED18gvpT5va6iQ2djtC9WEANpNe2JfV9lOY9OrFI+eGSGmoh6+mqJXU1q605fM
+FcoS4P/Csw0zaneijQrEB9DYiUfeOTHmuDG04Vj2q4vIu8lLg3Lf0NJJA8+HpPcZqcsvXr
+v0V3VuePdWMAAAAIcm9vdEBwdmUBAgM=
+-----END OPENSSH PRIVATE KEY-----
+EOF
   }
 }
