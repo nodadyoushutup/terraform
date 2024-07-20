@@ -39,6 +39,6 @@ provider "proxmox" {
     }
     username = var.username
     # password = var.password
-    private_key = file("${path.module}/id_rsa.pem")
+    private_key = file("/mnt/workspace/id_rsa")
   }
 }
