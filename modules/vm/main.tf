@@ -1,4 +1,4 @@
-# vault/vm.tf
+# modules/vm/main.tf
 
 resource "proxmox_virtual_environment_vm" "virtual_machine" {
   vm_id     = 101
