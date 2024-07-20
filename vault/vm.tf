@@ -53,7 +53,7 @@
 
 
 module "vault" {
-  source  = "spacelift.io/nodadyoushutup/terraform-proxmox-vm/proxmox"
+  source  = "spacelift.io/nodadyoushutup/vm/proxmox"
   version = "0.0.1"
 
   password = "12345"
