@@ -13,7 +13,7 @@ resource "spacelift_stack" "proxmox" {
 
 resource "spacelift_stack" "vault" {
   administrative    = true
-  autodeploy        = true
+  autodeploy        = false
   branch            = "main"
   description       = "Provisions HashiCorp Vault resources"
   name              = "vault"
