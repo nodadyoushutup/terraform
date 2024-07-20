@@ -2,7 +2,7 @@
 
 resource "proxmox_virtual_environment_vm" "vault" {
   vm_id     = 101
-  name      = "k3s-master-1"
+  name      = "vault"
   tags      = ["terraform", "vault"]
   node_name = "pve"
   bios = "seabios"
@@ -28,7 +28,7 @@ resource "proxmox_virtual_environment_vm" "vault" {
     }
   }
   disk {
-    datastore_id = var.datastore_id.k3s
+    datastore_id = "k3s"
     file_id      = "local:iso/ubuntu-jammy-22.04-cloudimg-amd64.img"
     interface    = "scsi0"
     discard      = "on"
