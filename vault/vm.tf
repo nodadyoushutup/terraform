@@ -22,7 +22,7 @@ resource "proxmox_virtual_environment_vm" "vault" {
     user_account {
       keys     = [
         file("/mnt/workspace/desktop.pub"),
-        # trimspace(data.local_file.ssh_public_key_desktop.content)
+        file("/mnt/workspace/proxmox.pub"),
       ]
       password = var.password
       username = "ubuntu"
