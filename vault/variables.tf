@@ -24,6 +24,6 @@ variable "insecure" {
 
 variable "api_token" {
   description = "Proxmox API token"
-  type        = bool
+  type        = string
   default     = false
 }
