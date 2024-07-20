@@ -1,6 +1,6 @@
 resource "spacelift_module" "vm" {
   name               = "vm"
-  terraform_provider = "bgp/proxmox"
+  terraform_provider = "proxmox"
   administrative     = false
   branch             = "master"
   description        = "Virtual Machine"
