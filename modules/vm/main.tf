@@ -3,7 +3,7 @@
 resource "proxmox_virtual_environment_vm" "virtual_machine" {
   vm_id     = 101
   name      = var.name
-  tags      = ["terraform", "vault"]
+  tags      = var.tags
   node_name = "pve"
   bios = "seabios"
   on_boot = false

@@ -2,7 +2,7 @@
 
 module "vault" {
   source  = "spacelift.io/nodadyoushutup/vm/proxmox"
-  version = "0.0.3"
+  version = "0.0.4"
 
   # Provider Config
   username = var.username
