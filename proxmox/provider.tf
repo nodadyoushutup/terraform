@@ -9,8 +9,17 @@ terraform {
 }
 
 provider "proxmox" {
-  endpoint  = var.endpoint
-  username  = var.username
-  password  = var.password
+  endpoint = var.endpoint
+  api_token = var.api_token
   insecure  = var.insecure
+  ssh {
+    agent = true
+    agent_socket = 22
+    node {
+      name = "pve"
+      address = var.address
+    }
+    username = var.username
+    private_key = file("/mnt/workspace/proxmox.pem")
+  }
 }
