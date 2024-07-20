@@ -22,12 +22,6 @@ resource "spacelift_stack" "vault" {
   terraform_version = "1.5.7"
 }
 
-# resource "spacelift_stack_dependency" "vault_depends_on_proxmox" {
-#   stack_id            = spacelift_stack.vault.id
-#   depends_on_stack_id = spacelift_stack.proxmox.id
-# }
-
-
 # resource "spacelift_stack" "k8s-cluster" {
 #   administrative    = true
 #   autodeploy        = true
