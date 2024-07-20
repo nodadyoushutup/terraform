@@ -33,3 +33,9 @@ variable "private_key" {
   type        = string
   default     = false
 }
+
+variable "address" {
+  description = "PVE Node IP Address"
+  type        = string
+  default     = false
+}
