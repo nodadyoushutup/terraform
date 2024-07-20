@@ -1,7 +1,7 @@
 # spacelift/stack.tf
 
 resource "spacelift_stack" "proxmox" {
-  administrative    = true
+  administrative    = false
   autodeploy        = true
   branch            = "main"
   description       = "Provisions Proxmox resources"
@@ -12,7 +12,7 @@ resource "spacelift_stack" "proxmox" {
 }
 
 resource "spacelift_stack" "vault" {
-  administrative    = true
+  administrative    = false
   autodeploy        = true
   branch            = "main"
   description       = "Provisions HashiCorp Vault resources"
