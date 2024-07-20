@@ -22,7 +22,7 @@ provider "proxmox" {
     username = var.username
     # password = var.password
     private_key = <<-EOF
-    ${var.private_key}
-    EOF
+${var.private_key}
+EOF
   }
 }
