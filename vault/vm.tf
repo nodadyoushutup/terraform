@@ -52,7 +52,7 @@
 # }
 
 
-module "my-birthday-cake" {
+module "vault" {
   source  = "spacelift.io/nodadyoushutup/terraform-proxmox-vm/proxmox"
   version = "0.0.1"
 
