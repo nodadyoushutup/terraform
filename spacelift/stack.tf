@@ -8,5 +8,5 @@ resource "spacelift_stack" "k8s-cluster" {
   name              = "Kubernetes Cluster Stack"
   project_root      = "spacelift"
   repository        = "terraform"
-  terraform_version = "1.9.2"
+  terraform_version = "1.5.7"
 }
