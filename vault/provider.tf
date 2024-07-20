@@ -13,4 +13,7 @@ provider "proxmox" {
   username  = var.username
   password  = var.password
   insecure  = var.insecure
+  ssh {
+    agent = true
+  }
 }
