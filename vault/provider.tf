@@ -20,6 +20,6 @@ provider "proxmox" {
     agent = true
     agent_socket = 22
     username = var.username
-    password = var.password
+    # password = var.password
   }
 }
