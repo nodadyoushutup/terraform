@@ -22,4 +22,5 @@ module "vault" {
     file("/mnt/workspace/proxmox.pub"),
   ]
   user_account_password = var.password
+  ipv4_address = "192.168.1.102"
 }
