@@ -1,9 +1,9 @@
-resource "spacelift_module" "vm" {
-  name               = "vm"
+resource "spacelift_module" "virtual_machine" {
+  name               = "virtual_machine"
   terraform_provider = "proxmox"
   administrative     = false
   branch             = "main"
   description        = "Virtual Machine"
   repository         = "terraform"
-  project_root       = "modules/vm"
+  project_root       = "modules/virtual_machine"
 }

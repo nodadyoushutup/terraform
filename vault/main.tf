@@ -1,8 +1,8 @@
 # vault/main.tf
 
 module "vault" {
-  source  = "spacelift.io/nodadyoushutup/vm/proxmox"
-  version = "0.0.7"
+  source  = "spacelift.io/nodadyoushutup/virtual_machine/proxmox"
+  version = "0.0.1"
 
   # Provider Config
   username = var.username
