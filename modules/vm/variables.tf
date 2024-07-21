@@ -97,10 +97,6 @@ variable "ipv4_gateway" {
 variable "user_account_keys" {
   description = "User account keys"
   type        = list(string)
-  default     = [
-    file("/mnt/workspace/desktop.pub"),
-    file("/mnt/workspace/proxmox.pub"),
-  ]
 }
 
 variable "user_account_password" {
