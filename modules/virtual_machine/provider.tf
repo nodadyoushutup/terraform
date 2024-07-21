@@ -23,3 +23,4 @@ provider "proxmox" {
     private_key = file("/mnt/workspace/proxmox.pem")
   }
 }
+
