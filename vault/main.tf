@@ -15,7 +15,7 @@ module "vault" {
   # VM Config
   vm_id = 101
   name = "vault"
-  tags = ["terraform", "vault"]
+  tags = ["terraform", "init", "vault"]
   ipv4_address = "192.168.1.101/24"
   user_account_keys = [
     file("/mnt/workspace/desktop.pub"),
