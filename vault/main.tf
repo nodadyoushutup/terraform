@@ -21,5 +21,5 @@ module "vault" {
     file("/mnt/workspace/desktop.pub"),
     file("/mnt/workspace/proxmox.pub"),
   ]
-  user_account_password = var.password
+  user_account_password = "ubuntu"
 }
