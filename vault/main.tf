@@ -2,11 +2,10 @@
 
 module "vault" {
   source  = "spacelift.io/nodadyoushutup/virtual_machine/proxmox"
-  version = "0.1.3"
+  version = "0.1.4"
 
   # Provider Config
   username = var.username
-  # password = var.password
   endpoint = var.endpoint
   address = var.address
   insecure = var.insecure
@@ -21,5 +20,5 @@ module "vault" {
     file("/mnt/workspace/desktop.pub"),
     file("/mnt/workspace/proxmox.pub"),
   ]
-  user_account_password = "ubuntu"
+  user_account_password = var.user_account_password
 }

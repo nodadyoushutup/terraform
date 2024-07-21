@@ -9,11 +9,12 @@ variable "username" {
   type        = string
 }
 
-# variable "password" {
-#   description = "Proxmox API password"
-#   type        = string
-#   sensitive   = true
-# }
+variable "password" {
+  description = "Proxmox API password"
+  type        = string
+  sensitive   = true
+  default     = ""
+}
 
 variable "insecure" {
   description = "Allow insecure API connections"

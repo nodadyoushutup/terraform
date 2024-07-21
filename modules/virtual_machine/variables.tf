@@ -9,11 +9,12 @@ variable "username" {
   type        = string
 }
 
-# variable "password" {
-#   description = "Proxmox API password"
-#   type        = string
-#   sensitive   = true
-# }
+variable "password" {
+  description = "Proxmox API password"
+  type        = string
+  sensitive   = true
+  default     = ""
+}
 
 variable "insecure" {
   description = "Allow insecure API connections"
@@ -97,11 +98,13 @@ variable "ipv4_gateway" {
 variable "user_account_keys" {
   description = "User account keys"
   type        = list(string)
+  default     = []
 }
 
 variable "user_account_password" {
   description = "User account password"
   type        = string
+  default     = "ubuntu"
 }
 
 variable "user_account_username" {
