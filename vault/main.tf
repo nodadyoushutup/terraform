@@ -25,12 +25,12 @@
 
 module "virtual_machine" {
   source  = "spacelift.io/nodadyoushutup/virtual_machine/proxmox"
-  version = "0.1.8"
+  version = "0.1.9"
 
-  address      = var.address
-  api_token    = var.api_token
-  endpoint     = var.endpoint
+  address      = "ssh.proxmox.nodadyoushutup.com"
+  api_token    = "root@pve!provider=85e05ca2-aa11-4813-af6d-35a4d1f188b8"
+  endpoint     = "https://proxmox.nodadyoushutup.com/"
   ipv4_address = "192.168.1.101/24"
-  username     = var.username
+  username     = "root"
   vm_id        = "101"
 }
