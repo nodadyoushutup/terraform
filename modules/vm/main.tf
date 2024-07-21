@@ -1,53 +1,50 @@
 # modules/vm/main.tf
 
 resource "proxmox_virtual_environment_vm" "virtual_machine" {
-  vm_id     = 101
+  vm_id     = var.vm_id
   name      = var.name
   tags      = var.tags
-  node_name = "pve"
-  bios = "seabios"
-  on_boot = false
-  started = false
-  stop_on_destroy = true
+  node_name = var.node_name
+  bios      = var.bios
+  on_boot   = var.on_boot
+  started   = var.started
+  stop_on_destroy = var.stop_on_destroy
   agent {
-    enabled = false
+    enabled = var.agent_enabled
   }
   initialization {
     ip_config {
       ipv4 {
-        address = "192.168.1.101/24"
-        gateway = "192.168.1.1"
+        address = var.ipv4_address
+        gateway = var.ipv4_gateway
       }
     }
     user_account {
-      keys     = [
-        file("/mnt/workspace/desktop.pub"),
-        file("/mnt/workspace/proxmox.pub"),
-      ]
-      password = var.password
-      username = "ubuntu"
+      keys     = var.user_account_keys
+      password = var.user_account_password
+      username = var.user_account_username
     }
   }
   disk {
-    datastore_id  = "local-lvm"
-    file_id       = "local:iso/jammy-server-cloudimg-amd64.img"
-    interface     = "scsi0"
-    discard       = "on"
-    size          = 50
-    ssd           = true
+    datastore_id  = var.disk_datastore_id
+    file_id       = var.disk_file_id
+    interface     = var.disk_interface
+    discard       = var.disk_discard
+    size          = var.disk_size
+    ssd           = var.disk_ssd
   }
   network_device {
-    bridge = "vmbr0"
-    model = "e1000e"
+    bridge = var.network_bridge
+    model = var.network_model
   }
   memory {
-    dedicated = 4096
+    dedicated = var.memory_dedicated
   }
   cpu {
-    cores = 2
-    sockets = 1
-    type = "host"
-    numa = true
+    cores = var.cpu_cores
+    sockets = var.cpu_sockets
+    type = var.cpu_type
+    numa = var.cpu_numa
   }
 }
 
