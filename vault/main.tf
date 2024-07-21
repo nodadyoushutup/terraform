@@ -6,7 +6,7 @@ module "vault" {
 
   # Provider Config
   username = var.username
-  password = var.password
+  # password = var.password
   endpoint = var.endpoint
   address = var.address
   insecure = var.insecure
