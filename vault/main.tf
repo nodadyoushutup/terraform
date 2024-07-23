@@ -34,3 +34,10 @@ module "virtual_machine" {
   username     = "root"
   vm_id        = "101"
 }
+
+output "provider_endpoint_value" {
+  value = getenv("PROVIDER_ENDPOINT")
+  # value = lookup("PROVIDER_ENDPOINT")
+  description = "The value of the PROVIDER_ENDPOINT environment variable"
+}
+
