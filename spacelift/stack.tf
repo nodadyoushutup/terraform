@@ -15,7 +15,7 @@ resource "spacelift_stack" "vault" {
   administrative    = false
   autodeploy        = true
   branch            = "main"
-  description       = "Provisions HashiCorp Vault resources"
+  description       = "Provisions HashiCorp Vault infrastructure."
   name              = "vault"
   project_root      = "vault"
   repository        = "terraform"

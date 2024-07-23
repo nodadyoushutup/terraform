@@ -4,7 +4,7 @@ locals {
   config = yamldecode(file("/mnt/workspace/provider.yaml"))
 }
 
-module "virtual_machine" {
+module "vault" {
   source  = "spacelift.io/nodadyoushutup/virtual_machine/proxmox"
   version = "0.1.9"
 
