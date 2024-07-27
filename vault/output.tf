@@ -1,7 +1,7 @@
 # vault/output.tf
 
 output "provider_endpoint_value" {
-  value = local.provider_proxmox
+  value = local.provider.proxmox
   description = "Test"
 }
 

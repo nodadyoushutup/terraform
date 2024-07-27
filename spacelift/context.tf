@@ -3,7 +3,7 @@ resource "spacelift_context" "debug" {
   name        = "debug"
 }
 
-resource "spacelift_context" "provider_proxmox_ip" {
-  description = "Proxmox provider credentials"
-  name        = "provider_proxmox_ip"
+resource "spacelift_context" "provider" {
+  description = "Provider credentials"
+  name        = "provider"
 }
