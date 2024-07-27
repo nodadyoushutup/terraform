@@ -5,5 +5,5 @@ resource "spacelift_context" "debug" {
 
 resource "spacelift_context" "provider_proxmox_ip" {
   description = "Proxmox provider credentials"
-  name        = "provider-proxmox-ip"
+  name        = "provider_proxmox_ip"
 }
