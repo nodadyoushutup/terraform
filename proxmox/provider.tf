@@ -1,7 +1,7 @@
 # proxmox/provider./tf
 
 locals {
-  config = yamldecode(file("/mnt/workspace/provider_proxmox.yaml"))
+  provider_proxmox = yamldecode(file("/mnt/workspace/provider_proxmox.yaml"))
 }
 
 terraform {
