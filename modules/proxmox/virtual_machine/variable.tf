@@ -1,68 +1,53 @@
 # modules/proxmox/virtual_machine/variable.tf
 
-variable "name" {
-  description = "Virtual machine name"
-  type        = string
-  default     = "ubuntu"
+variable "vm" {
+  description = "Virtual machine details"
+  type = object({
+    id = string
+    name = string
+    tags = list(string)
+    node_name = string
+    bios = string
+    on_boot = bool
+    started = bool
+    stop_on_destroy = bool
+  })
+  default = {
+    id = "100"
+    name = "ubuntu"
+    tags = ["terraform"]
+    node_name = "pve"
+    bios = "seabios"
+    on_boot = false
+    started = false
+    stop_on_destroy = true
+  }
 }
 
-variable "tags" {
-  description = "An example list variable"
-  type        = list(string)
-  default     = ["terraform"]
+variable "agent" {
+  description = "Agent settings"
+  type = object({
+    enabled = bool
+  })
+  default = {
+    enabled = false
+  }
 }
 
-variable "node_name" {
-  description = "Node name"
-  type        = string
-  default     = "pve"
-}
-
-variable "bios" {
-  description = "BIOS type"
-  type        = string
-  default     = "seabios"
-}
-
-variable "on_boot" {
-  description = "Start VM on boot"
-  type        = bool
-  default     = false
-}
-
-variable "started" {
-  description = "Start VM immediately after creation"
-  type        = bool
-  default     = false
-}
-
-variable "stop_on_destroy" {
-  description = "Stop VM on destroy"
-  type        = bool
-  default     = true
-}
-
-variable "agent_enabled" {
-  description = "Enable agent"
-  type        = bool
-  default     = false
-}
-
-variable "ipv4_address" {
-  description = "IPv4 address"
-  type        = string
-}
-
-variable "ipv4_gateway" {
-  description = "IPv4 gateway"
-  type        = string
-  default     = "192.168.1.1"
-}
-
-variable "user_account_keys" {
-  description = "User account keys"
-  type        = list(string)
-  default     = []
+variable "network" {
+  description = "Network configuration"
+  type = object({
+    ipv4_address = string
+    ipv4_gateway = string
+    bridge = string
+    model = string
+  })
+  default = {
+    ipv4_address = ""
+    ipv4_gateway = "192.168.1.1"
+    bridge = "vmbr0"
+    model = "e1000e"
+  }
 }
 
 variable "user_account" {
@@ -70,92 +55,57 @@ variable "user_account" {
   type = object({
     username = string
     password = string
+    keys = list(string)
   })
   default = {
     username = "ubuntu"
     password = "ubuntu"
+    keys = []
   }
 }
 
-variable "disk_datastore_id" {
-  description = "Disk datastore ID"
-  type        = string
-  default     = "local-lvm"
+variable "disk" {
+  description = "Disk configuration"
+  type = object({
+    datastore_id = string
+    file_id = string
+    interface = string
+    discard = string
+    size = number
+    ssd = bool
+  })
+  default = {
+    datastore_id = "local-lvm"
+    file_id = "local:iso/jammy-server-cloudimg-amd64.img"
+    interface = "scsi0"
+    discard = "on"
+    size = 50
+    ssd = true
+  }
 }
 
-variable "vm_id" {
-  description = "VM ID"
-  type        = string
+variable "memory" {
+  description = "Memory configuration"
+  type = object({
+    dedicated = number
+  })
+  default = {
+    dedicated = 4096
+  }
 }
 
-variable "disk_size" {
-  description = "Disk size in GB"
-  type        = number
-  default     = 50
-}
-
-variable "disk_file_id" {
-  description = "Disk file ID"
-  type        = string
-  default     = "local:iso/jammy-server-cloudimg-amd64.img"
-}
-
-variable "disk_interface" {
-  description = "Disk interface type"
-  type        = string
-  default     = "scsi0"
-}
-
-variable "disk_discard" {
-  description = "Disk discard option"
-  type        = string
-  default     = "on"
-}
-
-variable "disk_ssd" {
-  description = "Is the disk SSD?"
-  type        = bool
-  default     = true
-}
-
-variable "network_bridge" {
-  description = "Network bridge"
-  type        = string
-  default     = "vmbr0"
-}
-
-variable "network_model" {
-  description = "Network model"
-  type        = string
-  default     = "e1000e"
-}
-
-variable "memory_dedicated" {
-  description = "Dedicated memory in MB"
-  type        = number
-  default     = 4096
-}
-
-variable "cpu_cores" {
-  description = "Number of CPU cores"
-  type        = number
-  default     = 2
-}
-
-variable "cpu_sockets" {
-  description = "Number of CPU sockets"
-  type        = number
-  default     = 1
-}
-
-variable "cpu_type" {
-  description = "CPU type"
-  type        = string
-  default     = "host"
-}
-
-variable "cpu_numa" {
-  description = "Enable NUMA"
-  type        = bool
-  default     = true
+variable "cpu" {
+  description = "CPU configuration"
+  type = object({
+    cores = number
+    sockets = number
+    type = string
+    numa = bool
+  })
+  default = {
+    cores = 2
+    sockets = 1
+    type = "host"
+    numa = true
+  }
 }
