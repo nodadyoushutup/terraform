@@ -19,6 +19,7 @@ variable "vm" {
     stop_on_destroy = bool
   })
   default = {
+    id = "101"
     name = "ubuntu"
     tags = ["terraform"]
     node_name = "pve"
