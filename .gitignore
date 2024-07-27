@@ -36,3 +36,4 @@ terraform.rc
 .ssh/
 desktop.pub
 provider.yaml
+virtual_machine.yaml
