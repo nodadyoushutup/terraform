@@ -50,42 +50,6 @@ variable "initialization" {
   })
 }
 
-# variable "network" {
-#   description = "Network configuration"
-#   type = object({
-#     ipv4 = object({
-#       ipv4_address = string
-#       ipv4_gateway = string
-#       bridge = string
-#       model = string
-#     })
-#     ipv4_address = string
-#     ipv4_gateway = string
-#     bridge = string
-#     model = string
-#   })
-#   default = {
-#     ipv4_address = ""
-#     ipv4_gateway = "192.168.1.1"
-#     bridge = "vmbr0"
-#     model = "e1000e"
-#   }
-# }
-
-variable "user_account" {
-  description = "User account details"
-  type = object({
-    username = string
-    password = string
-    keys = list(string)
-  })
-  default = {
-    username = "ubuntu"
-    password = "ubuntu"
-    keys = []
-  }
-}
-
 variable "disk" {
   description = "Disk configuration"
   type = object({
