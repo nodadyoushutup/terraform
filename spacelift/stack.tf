@@ -20,6 +20,7 @@ resource "spacelift_stack" "vault" {
   project_root      = "vault"
   repository        = "terraform"
   terraform_version = "1.5.7"
+  labels            = ["infrastructure"]
 }
 
 # resource "spacelift_stack" "k8s-cluster" {
