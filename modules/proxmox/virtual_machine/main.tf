@@ -21,8 +21,8 @@ resource "proxmox_virtual_environment_vm" "virtual_machine" {
     }
     user_account {
       keys     = var.user_account_keys
-      password = var.user_account_password
-      username = var.user_account_username
+      password = var.user_account.password
+      username = var.user_account.username
     }
   }
   disk {
@@ -47,4 +47,3 @@ resource "proxmox_virtual_environment_vm" "virtual_machine" {
     numa = var.cpu_numa
   }
 }
-

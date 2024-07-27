@@ -65,16 +65,16 @@ variable "user_account_keys" {
   default     = []
 }
 
-variable "user_account_password" {
-  description = "User account password"
-  type        = string
-  default     = "ubuntu"
-}
-
-variable "user_account_username" {
-  description = "User account username"
-  type        = string
-  default     = "ubuntu"
+variable "user_account" {
+  description = "User account details"
+  type = object({
+    username = string
+    password = string
+  })
+  default = {
+    username = "ubuntu"
+    password = "ubuntu"
+  }
 }
 
 variable "disk_datastore_id" {
