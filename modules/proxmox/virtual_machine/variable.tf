@@ -50,6 +50,18 @@ variable "initialization" {
   })
 }
 
+variable "network" {
+  description = "Network configuration"
+  type = object({
+    bridge = string
+    model = string
+  })
+  default = {
+    bridge = "vmbr0"
+    model = "e1000e"
+  }
+}
+
 variable "disk" {
   description = "Disk configuration"
   type = object({
