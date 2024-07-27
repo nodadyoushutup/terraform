@@ -1,9 +1,5 @@
 # modules/proxmox/virtual_machine/provider.tf
 
-locals {
-  provider = yamldecode(file("/mnt/workspace/provider.yaml"))
-}
-
 terraform {
   required_providers {
     proxmox = {
