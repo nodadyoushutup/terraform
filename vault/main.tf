@@ -16,7 +16,3 @@
 #   ipv4_address  = "192.168.1.101/24"
 #   vm_id         = "101"
 # }
-
-module "proxmox_provider" {
-  source = "spacelift.io/nodadyoushutup/provider_proxmox/proxmox"
-}

@@ -1,5 +1,9 @@
 # proxmox/provider./tf
 
+locals {
+  config = yamldecode(file("/mnt/workspace/provider_proxmox.yaml"))
+}
+
 terraform {
   required_providers {
     proxmox = {
@@ -8,23 +12,18 @@ terraform {
   }
 }
 
-# provider "proxmox" {
-#   endpoint = var.endpoint
-#   api_token = var.api_token
-#   insecure  = var.insecure
-#   ssh {
-#     agent = true
-#     agent_socket = 22
-#     username = var.username
-#     private_key = file("/mnt/workspace/proxmox.pem")
-#     node {
-#       name = "pve"
-#       address = var.address
-#     }
-#   }
-# }
-
-module "proxmox_provider" {
-  source = "spacelift.io/nodadyoushutup/provider_proxmox/proxmox"
-  version = "0.1.1"
+provider "proxmox" {
+  endpoint = local.provider_proxmox.endpoint
+  api_token = local.provider_proxmox.api_token
+  insecure  = local.provider_proxmox.insecure
+  ssh {
+    agent = true
+    agent_socket = 22
+    username = local.provider_proxmox.username
+    private_key = file("/mnt/workspace/proxmox.pem")
+    node {
+      name = local.provider_proxmox.node_name
+      address = local.provider_proxmox.node_address
+    }
+  }
 }
