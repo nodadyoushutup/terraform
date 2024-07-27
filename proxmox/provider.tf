@@ -15,11 +15,11 @@ provider "proxmox" {
   ssh {
     agent = true
     agent_socket = 22
+    username = var.username
+    private_key = file("/mnt/workspace/proxmox.pem")
     node {
       name = "pve"
       address = var.address
     }
-    username = var.username
-    private_key = file("/mnt/workspace/proxmox.pem")
   }
 }
