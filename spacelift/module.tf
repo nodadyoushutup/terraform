@@ -5,5 +5,5 @@ resource "spacelift_module" "virtual_machine" {
   branch             = "main"
   description        = "Virtual Machine"
   repository         = "terraform"
-  project_root       = "modules/virtual_machine"
+  project_root       = "modules/proxmox/virtual_machine"
 }
