@@ -2,7 +2,7 @@
 
 module "vault" {
   source  = "spacelift.io/nodadyoushutup/virtual_machine/proxmox"
-  version = "0.2.7"
+  version = "0.2.8"
 
   ###
   acpi = true
@@ -20,6 +20,9 @@ module "vault" {
 
   agent = {
     enabled = false
+    timeout = "15"
+    trim = false
+    type = "virtio"
   }
 
   initialization = {

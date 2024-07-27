@@ -6,6 +6,30 @@ variable "acpi" {
   default = true
 }
 
+variable "agent" {
+  description = "(Optional) The QEMU agent configuration."
+  type = object({
+    enabled = bool
+    timeout = string
+    trim = bool
+    type = string
+  })
+  default = {
+    enabled = false
+    timeout = "15m"
+    trim = false
+    type = "virtio"
+  }
+  validation {
+    condition = can(regex("^\\d+m$", var.agent.timeout))
+    error_message = "Invalid timeout format. The timeout should be a number followed by 'm' (e.g., '15m')."
+  }
+  validation {
+    condition = contains(["isa", "virtio"], var.agent.type)
+    error_message = "Inalid instance type. Valid options are ['isa', 'virtio']"
+  }
+}
+
 variable "vm" {
   description = "Virtual machine details"
   type = object({
@@ -30,15 +54,7 @@ variable "vm" {
   }
 }
 
-variable "agent" {
-  description = "Agent settings"
-  type = object({
-    enabled = bool
-  })
-  default = {
-    enabled = false
-  }
-}
+
 
 variable "initialization" {
   type = object({

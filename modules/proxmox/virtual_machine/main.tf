@@ -16,6 +16,9 @@ resource "proxmox_virtual_environment_vm" "virtual_machine" {
 
   agent {
     enabled = var.agent.enabled
+    timeout = var.agent.timeout
+    trim = var.agent.trim
+    type = var.agent.type
   }
 
   initialization {
