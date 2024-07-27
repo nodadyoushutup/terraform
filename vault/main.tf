@@ -20,7 +20,7 @@ module "vault" {
 
   agent = {
     enabled = false
-    timeout = "15"
+    timeout = "15m"
     trim = false
     type = "virtio"
   }
