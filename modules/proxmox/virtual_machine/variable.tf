@@ -34,21 +34,43 @@ variable "agent" {
   }
 }
 
-variable "network" {
-  description = "Network configuration"
+variable "initialization" {
   type = object({
-    ipv4_address = string
-    ipv4_gateway = string
-    bridge = string
-    model = string
+    ip_config = object({
+      ipv4 = object({
+        address = string
+        gateway = string
+      })
+    })
+    user_account = object({
+      keys = list(string)
+      password = string
+      username = string
+    })
   })
-  default = {
-    ipv4_address = ""
-    ipv4_gateway = "192.168.1.1"
-    bridge = "vmbr0"
-    model = "e1000e"
-  }
 }
+
+# variable "network" {
+#   description = "Network configuration"
+#   type = object({
+#     ipv4 = object({
+#       ipv4_address = string
+#       ipv4_gateway = string
+#       bridge = string
+#       model = string
+#     })
+#     ipv4_address = string
+#     ipv4_gateway = string
+#     bridge = string
+#     model = string
+#   })
+#   default = {
+#     ipv4_address = ""
+#     ipv4_gateway = "192.168.1.1"
+#     bridge = "vmbr0"
+#     model = "e1000e"
+#   }
+# }
 
 variable "user_account" {
   description = "User account details"

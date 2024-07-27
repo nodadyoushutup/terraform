@@ -15,16 +15,17 @@ resource "proxmox_virtual_environment_vm" "virtual_machine" {
   }
 
   initialization {
+    datastore_id = var.initialization.datastore_id
     ip_config {
       ipv4 {
-        address = var.network.ipv4_address
-        gateway = var.network.ipv4_gateway
+        address = var.initialization.ip_config.ipv4.address
+        gateway = var.initialization.ip_config.ipv4.gateway
       }
     }
     user_account {
-      keys     = var.user_account.keys
-      password = var.user_account.password
-      username = var.user_account.username
+      keys     = var.initialization.user_account.keys
+      password = var.initialization.user_account.password
+      username = var.initialization.user_account.username
     }
   }
 
