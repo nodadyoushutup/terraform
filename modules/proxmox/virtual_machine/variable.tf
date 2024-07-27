@@ -30,6 +30,30 @@ variable "agent" {
   }
 }
 
+variable "audio_device" {
+  description = "(Optional) An audio device."
+  type = object({
+    device = string
+    driver = string
+    enabled = bool
+  })
+  default = {
+    device = "intel-hda"
+    driver = "spice"
+    enabled = true
+  }
+  validation {
+    condition = contains(["AC97", "ich9-intel-hda", "intel-hda"], var.audio_device.device)
+    error_message = "Inalid instance type. Valid options are ['AC97', 'ich9-intel-hda', 'intel-hda']"
+  }
+  validation {
+    condition = contains(["spice"], var.audio_device.driver)
+    error_message = "Inalid instance type. Valid options are ['spice']"
+  }
+}
+
+###
+
 variable "vm" {
   description = "Virtual machine details"
   type = object({

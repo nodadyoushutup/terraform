@@ -2,10 +2,21 @@
 
 module "vault" {
   source  = "spacelift.io/nodadyoushutup/virtual_machine/proxmox"
-  version = "0.2.8"
+  version = "0.2.9"
 
   ###
   acpi = true
+  agent = {
+    enabled = false
+    timeout = "15m"
+    trim = false
+    type = "virtio"
+  }
+  audio_device = {
+    device = "intel-hda"
+    driver = "spice"
+    enabled = true
+  }
   ###
   vm = {
     id = "101"
@@ -18,12 +29,7 @@ module "vault" {
     stop_on_destroy = true
   }
 
-  agent = {
-    enabled = false
-    timeout = "15m"
-    trim = false
-    type = "virtio"
-  }
+  
 
   initialization = {
     ip_config = {

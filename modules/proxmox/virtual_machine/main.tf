@@ -1,10 +1,6 @@
 # modules/proxmox/virtual_machine/main.tf
 
 resource "proxmox_virtual_environment_vm" "virtual_machine" {
-  ###
-  acpi = var.acpi
-  ###
-
   vm_id     = var.vm.id
   name      = var.vm.name
   tags      = var.vm.tags
@@ -13,13 +9,21 @@ resource "proxmox_virtual_environment_vm" "virtual_machine" {
   on_boot   = var.vm.on_boot
   started   = var.vm.started
   stop_on_destroy = var.vm.stop_on_destroy
-
+  
+  ###
+  acpi = var.acpi
   agent {
     enabled = var.agent.enabled
     timeout = var.agent.timeout
     trim = var.agent.trim
     type = var.agent.type
   }
+  audio_device {
+    device = var.audio_device.device
+    driver = var.audio_device.driver
+    enabled = var.audio_device.enabled
+  }
+  ###
 
   initialization {
     ip_config {
