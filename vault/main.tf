@@ -6,17 +6,17 @@ module "vault" {
 
   vm = {
     id = "101"
-    name = "vault-server"
-    tags = ["vault", "terraform"]
+    name = "vault"
+    tags = ["terraform", "vault"]
     node_name = "pve"
     bios = "seabios"
-    on_boot = true
-    started = true
+    on_boot = false
+    started = false
     stop_on_destroy = true
   }
 
   agent = {
-    enabled = true
+    enabled = false
   }
 
   network = {
