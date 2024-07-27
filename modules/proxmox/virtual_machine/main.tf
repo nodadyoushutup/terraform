@@ -1,6 +1,10 @@
 # modules/proxmox/virtual_machine/main.tf
 
 resource "proxmox_virtual_environment_vm" "virtual_machine" {
+  ###
+  acpi = var.acpi
+  ###
+
   vm_id     = var.vm.id
   name      = var.vm.name
   tags      = var.vm.tags

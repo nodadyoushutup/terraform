@@ -2,8 +2,11 @@
 
 module "vault" {
   source  = "spacelift.io/nodadyoushutup/virtual_machine/proxmox"
-  version = "0.2.5"
+  version = "0.2.6"
 
+  ###
+  acpi = true
+  ###
   vm = {
     id = "101"
     name = "vault"

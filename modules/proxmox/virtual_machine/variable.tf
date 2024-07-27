@@ -1,5 +1,11 @@
 # modules/proxmox/virtual_machine/variable.tf
 
+variable "acpi" {
+  description = "(Optional) Whether to enable ACPI (defaults to true)."
+  type = bool
+  default = true
+}
+
 variable "vm" {
   description = "Virtual machine details"
   type = object({
@@ -13,7 +19,6 @@ variable "vm" {
     stop_on_destroy = bool
   })
   default = {
-    id = "100"
     name = "ubuntu"
     tags = ["terraform"]
     node_name = "pve"
