@@ -1,4 +1,4 @@
-# modules/proxmox/virtual_machine/variables.tf
+# modules/proxmox/virtual_machine/variable.tf
 
 variable "name" {
   description = "Virtual machine name"

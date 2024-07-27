@@ -27,3 +27,9 @@ resource "spacelift_context_attachment" "provider_vault" {
   stack_id   = "vault"
   priority   = 0
 }
+
+resource "spacelift_context_attachment" "virtual_machine_vault" {
+  context_id = "virtual_machine"
+  stack_id   = "vault"
+  priority   = 0
+}
