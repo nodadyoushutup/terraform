@@ -140,7 +140,7 @@ variable "initialization" {
         address = optional(string, "dhcp")
         gateway = optional(string, null)
       }), null)
-    }), {})
+    }), null)
     user_account = optional(object({
       keys = optional(list(string), [])
       password = optional(string, "ubuntu")
