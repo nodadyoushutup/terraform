@@ -18,7 +18,7 @@ module "vault" {
     enabled = false
   }
   bios = "seabios"
-  # boot_order = ["scsi0"]
+  boot_order = ["scsi0"]
   cdrom = {
     enabled = false
     file_id = "local:iso/TrueNAS-SCALE-24.04.0.iso"
