@@ -90,6 +90,23 @@ variable "cdrom" {
   }
 }
 
+variable "clone" {
+  description = "(Optional) The cloning configuration."
+  type = object({
+    datastore_id = string
+    node_name = string
+    retries = number
+    vm_id = number
+    full = bool
+  })
+  default = {
+    datastore_id = "local-lvm"
+    node_name = "pve"
+    retries = 5
+    vm_id = 900
+    full = true
+  }
+}
 ###
 
 variable "vm" {

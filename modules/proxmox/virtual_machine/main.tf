@@ -30,6 +30,13 @@ resource "proxmox_virtual_environment_vm" "virtual_machine" {
     file_id = var.cdrom.file_id
     interface = var.cdrom.interface
   }
+  clone {
+    datastore_id = var.clone.datastore_id
+    node_name = var.clone.node_name
+    retries = var.clone.retries
+    vm_id = var.clone.vm_id
+    full = var.clone.full
+  }
   ###
 
   initialization {
