@@ -57,7 +57,7 @@ variable "bios" {
   type = string
   default = "seabios"
   validation {
-    condition = contains(["ovmf", "seabios"], var.audio_device.driver)
+    condition = contains(["ovmf", "seabios"], var.bios)
     error_message = "Inalid instance type. Valid options are ['ovmf', 'seabios']"
   }
 }
