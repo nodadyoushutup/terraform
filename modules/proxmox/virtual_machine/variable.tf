@@ -96,6 +96,40 @@ variable "clone" {
     error_message = "The vm_id must be between 100 and 999999999."
   }
 }
+
+variable "cpu" {
+  description = "(Optional) The CPU configuration."
+  type = object({
+    architecture = optional(string, "x86_64")
+    cores = optional(number, 1)
+    flags = optional(list(string), [])
+    hotplugged = optional(number, 0)
+    limit = optional(number, 0)
+    numa = optional(bool, false)
+    sockets = optional(number, 1)
+    type = optional(string, "host")
+    units = optional(number, 1024)
+    affinity = optional(string, null)
+  })
+  default = null
+  validation {
+    condition = var.cpu == [] || alltrue([
+      for flag in var.cpu.flags :
+      can(regex(
+        "^[-+](aes|amd-no-ssb|amd-ssbd|hv-evmcs|" +
+        "hv-tlbflush|ibpb|md-clear|pcid|pdpe1gb|" +
+        "spec-ctrl|ssbd|virt-ssbd)$", flag)
+      )
+    ])
+    error_message = join("", [
+      "Each flag must start with + or - and be one of the allowed values: ",
+      "+aes, -aes, +amd-no-ssb, -amd-no-ssb, +amd-ssbd, -amd-ssbd, ",
+      "+hv-evmcs, -hv-evmcs, +hv-tlbflush, -hv-tlbflush, +ibpb, -ibpb, ",
+      "+md-clear, -md-clear, +pcid, -pcid, +pdpe1gb, -pdpe1gb, ",
+      "+spec-ctrl, -spec-ctrl, +ssbd, -ssbd, +virt-ssbd, -virt-ssbd."
+    ])
+  }
+}
 ###
 
 variable "vm" {

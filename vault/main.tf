@@ -31,7 +31,27 @@ module "vault" {
   #   vm_id = 900
   #   full = true
   # }
+  cpu = {
+    architecture = "x86_64"
+    cores = 1
+    flags = []
+    hotplugged = 0
+    limit = 0
+    numa = false
+    sockets = 1
+    type = "host"
+    units = 1024
+    affinity = null
+  }
+  
   ###
+  
+  
+  
+  
+  
+  
+  
   vm = {
     id = "101"
     name = "vault"
@@ -71,10 +91,5 @@ module "vault" {
     dedicated = 8192
   }
 
-  cpu = {
-    cores = 4
-    sockets = 1
-    type = "host"
-    numa = true
-  }
+  
 }

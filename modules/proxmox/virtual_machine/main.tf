@@ -49,6 +49,21 @@ resource "proxmox_virtual_environment_vm" "virtual_machine" {
       full = lookup(var.clone, "full", null)
     }
   }
+  dynamic "cpu" {
+    for_each = var.cpu != null && var.cpu != {} ? [1] : []
+    content {
+      architecture  = lookup(var.cpu, "architecture", null)
+      cores  = lookup(var.cpu, "cores", null)
+      flags = lookup(var.cpu, "flags", null)
+      hotplugged = lookup(var.cpu, "hotplugged", null)
+      limit = lookup(var.cpu, "limit", null)
+      numa = lookup(var.cpu, "numa", null)
+      sockets = lookup(var.cpu, "limit", null)
+      type = lookup(var.cpu, "type", null)
+      units = lookup(var.cpu, "units", null)
+      affinity = lookup(var.cpu, "affinity", null)
+    }
+  }
   ###
 
   # initialization {
