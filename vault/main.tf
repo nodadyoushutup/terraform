@@ -6,12 +6,12 @@ module "vault" {
 
   ###
   # acpi = true
-  # agent = {
-  #   enabled = false
-  #   timeout = "15m"
-  #   trim = false
-  #   type = "virtio"
-  # }
+  agent = {
+    enabled = false
+    timeout = "15m"
+    trim = false
+    type = "virtio2"
+  }
   audio_device = {
     device = "intel-hda"
     driver = "spice"
