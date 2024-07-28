@@ -45,13 +45,6 @@ module "vault" {
   }
   
   ###
-  
-  
-  
-  
-  
-  
-  
   vm = {
     id = "101"
     name = "vault"
@@ -61,9 +54,7 @@ module "vault" {
     started = false
     stop_on_destroy = true
   }
-
   
-
   # initialization = {
   #   ip_config = {
   #     ipv4 = {
@@ -90,6 +81,5 @@ module "vault" {
   memory = {
     dedicated = 8192
   }
-
-  
 }
+

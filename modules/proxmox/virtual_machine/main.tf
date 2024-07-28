@@ -123,11 +123,4 @@ resource "proxmox_virtual_environment_vm" "virtual_machine" {
   memory {
     dedicated = var.memory.dedicated
   }
-
-  cpu {
-    cores   = var.cpu.cores
-    sockets = var.cpu.sockets
-    type    = var.cpu.type
-    numa    = var.cpu.numa
-  }
 }
