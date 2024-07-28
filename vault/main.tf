@@ -18,7 +18,12 @@ module "vault" {
     enabled = true
   }
   bios = "seabios"
-  boot_order = ["scsi0"]
+  boot_order = ["ide3", "scsi0"]
+  cdrom = {
+    enabled = true
+    file_id = "local:iso/TrueNAS-SCALE-24.04.0.iso"
+    interface = "ide3"
+  }
   ###
   vm = {
     id = "101"

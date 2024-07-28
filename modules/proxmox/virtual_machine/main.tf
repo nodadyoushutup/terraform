@@ -25,6 +25,11 @@ resource "proxmox_virtual_environment_vm" "virtual_machine" {
   }
   bios  = var.bios
   boot_order = var.boot_order
+  cdrom {
+    enabled = var.cdrom.enabled
+    file_id = var.cdrom.file_id
+    interface = var.cdrom.interface
+  }
   ###
 
   initialization {

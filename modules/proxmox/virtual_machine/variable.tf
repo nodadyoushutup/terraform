@@ -68,6 +68,28 @@ variable "boot_order" {
   default = []
 }
 
+variable "cdrom" {
+  description = "(Optional) The CDROM configuration."
+  type = object({
+    enabled = bool
+    file_id = string
+    interface = string
+  })
+  default = {
+    enabled = false
+    file_id = "cdrom"
+    interface = "ide3"
+  }
+  validation {
+    condition = can(regex("^(cdrom|[^:]+:iso/[^\\s]+)$", var.cdrom.file_id))
+    error_message = "The file_id must be 'cdrom' or in the format 'volume:iso/path/to/file'."
+  }
+  validation {
+    condition = can(regex("^ide\\d+$", var.cdrom.interface))
+    error_message = "The interface must be in the form ideN where N is a number."
+  }
+}
+
 ###
 
 variable "vm" {
