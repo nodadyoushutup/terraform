@@ -54,13 +54,13 @@ resource "proxmox_virtual_environment_vm" "virtual_machine" {
   # }
 
   dynamic "initialization" {
-    for_each = var.initialization != null && !isempty(var.initialization) ? [1] : []
+    for_each = var.initialization != null && var.initialization != {} ? [1] : []
     content {
       dynamic "ip_config" {
-        for_each = var.initialization.ip_config != null && !isempty(var.initialization.ip_config) ? [1] : []
+        for_each = var.initialization.ip_config != null && var.initialization.ip_config != {} ? [1] : []
         content {
           dynamic "ipv4" {
-            for_each = var.initialization.ip_config.ipv4 != null && !isempty(var.initialization.ip_config.ipv4) ? [1] : []
+            for_each = var.initialization.ip_config.ipv4 != null && var.initialization.ip_config.ipv4 != {} ? [1] : []
             content {
               address = lookup(var.initialization.ip_config.ipv4, "address", "dhcp")
               gateway = lookup(var.initialization.ip_config.ipv4, "gateway", null)
@@ -69,7 +69,7 @@ resource "proxmox_virtual_environment_vm" "virtual_machine" {
         }
       }
       dynamic "user_account" {
-        for_each = var.initialization.user_account != null && !isempty(var.initialization.user_account) ? [1] : []
+        for_each = var.initialization.user_account != null && var.initialization.user_account != {} ? [1] : []
         content {
           keys     = lookup(var.initialization.user_account, "keys", [])
           password = lookup(var.initialization.user_account, "password", "ubuntu")
@@ -78,7 +78,7 @@ resource "proxmox_virtual_environment_vm" "virtual_machine" {
       }
     }
   }
-  
+
   disk {
     datastore_id  = var.disk.datastore_id
     file_id       = var.disk.file_id
