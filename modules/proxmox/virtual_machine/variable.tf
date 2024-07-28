@@ -20,7 +20,7 @@ variable "agent" {
     error_message = "Invalid timeout format. The timeout should be a number followed by 'm' (e.g., '15m')."
   }
   validation {
-    condition = var.agent == null || (var.agent != null && contains(["isa", "virtio"], var.agent.type))
+    condition = var.agent == null || can(contains(["isa", "virtio"], var.agent.type))
     error_message = "Invalid instance type. Valid options are ['isa', 'virtio']"
   }
 }
