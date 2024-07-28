@@ -42,7 +42,6 @@ resource "proxmox_virtual_environment_vm" "virtual_machine" {
   dynamic "clone" {
     for_each = var.clone != null && var.clone != {} ? [1] : []
     content {
-      enabled  = lookup(var.clone, "enabled", null)
       file_id  = lookup(var.clone, "file_id", null)
       retries = lookup(var.clone, "retries", null)
       vm_id = lookup(var.clone, "vm_id", null)
