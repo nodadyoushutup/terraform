@@ -17,7 +17,7 @@ module "vault" {
     driver = "spice"
     enabled = false
   }
-  bios = "seabios"
+  # bios = "seabios"
   boot_order = ["scsi0"]
   cdrom = {
     enabled = false
