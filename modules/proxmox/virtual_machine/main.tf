@@ -5,7 +5,7 @@ resource "proxmox_virtual_environment_vm" "virtual_machine" {
   name      = var.vm.name
   tags      = var.vm.tags
   node_name = var.vm.node_name
-  bios      = var.vm.bios
+  
   on_boot   = var.vm.on_boot
   started   = var.vm.started
   stop_on_destroy = var.vm.stop_on_destroy
@@ -23,6 +23,7 @@ resource "proxmox_virtual_environment_vm" "virtual_machine" {
     driver = var.audio_device.driver
     enabled = var.audio_device.enabled
   }
+  bios  = var.bios
   ###
 
   initialization {

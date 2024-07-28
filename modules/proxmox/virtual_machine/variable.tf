@@ -52,6 +52,16 @@ variable "audio_device" {
   }
 }
 
+variable "bios" {
+  description = "(Optional) The BIOS implementation (defaults to seabios)."
+  type = string
+  default = "seabios"
+  validation {
+    condition = contains(["ovmf", "seabios"], var.audio_device.driver)
+    error_message = "Inalid instance type. Valid options are ['ovmf', 'seabios']"
+  }
+}
+
 ###
 
 variable "vm" {
@@ -61,7 +71,6 @@ variable "vm" {
     name = string
     tags = list(string)
     node_name = string
-    bios = string
     on_boot = bool
     started = bool
     stop_on_destroy = bool
@@ -71,7 +80,6 @@ variable "vm" {
     name = "ubuntu"
     tags = ["terraform"]
     node_name = "pve"
-    bios = "seabios"
     on_boot = false
     started = false
     stop_on_destroy = true

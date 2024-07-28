@@ -17,13 +17,13 @@ module "vault" {
     driver = "spice"
     enabled = true
   }
+  bios = "seabios"
   ###
   vm = {
     id = "101"
     name = "vault"
     tags = ["terraform", "vault"]
     node_name = "pve"
-    bios = "seabios"
     on_boot = false
     started = false
     stop_on_destroy = true
