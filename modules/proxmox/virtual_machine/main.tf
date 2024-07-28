@@ -39,20 +39,46 @@ resource "proxmox_virtual_environment_vm" "virtual_machine" {
   # }
   ###
 
-  initialization {
-    ip_config {
-      ipv4 {
-        address = var.initialization.ip_config.ipv4.address
-        gateway = var.initialization.ip_config.ipv4.gateway
+  # initialization {
+  #   ip_config {
+  #     ipv4 {
+  #       address = var.initialization.ip_config.ipv4.address
+  #       gateway = var.initialization.ip_config.ipv4.gateway
+  #     }
+  #   }
+  #   user_account {
+  #     keys     = var.initialization.user_account.keys
+  #     password = var.initialization.user_account.password
+  #     username = var.initialization.user_account.username
+  #   }
+  # }
+
+  dynamic "initialization" {
+    for_each = var.initialization != null && !isempty(var.initialization) ? [1] : []
+    content {
+      dynamic "ip_config" {
+        for_each = var.initialization.ip_config != null && !isempty(var.initialization.ip_config) ? [1] : []
+        content {
+          dynamic "ipv4" {
+            for_each = var.initialization.ip_config.ipv4 != null && !isempty(var.initialization.ip_config.ipv4) ? [1] : []
+            content {
+              address = lookup(var.initialization.ip_config.ipv4, "address", "dhcp")
+              gateway = lookup(var.initialization.ip_config.ipv4, "gateway", null)
+            }
+          }
+        }
+      }
+      dynamic "user_account" {
+        for_each = var.initialization.user_account != null && !isempty(var.initialization.user_account) ? [1] : []
+        content {
+          keys     = lookup(var.initialization.user_account, "keys", [])
+          password = lookup(var.initialization.user_account, "password", "ubuntu")
+          username = lookup(var.initialization.user_account, "username", "ubuntu")
+        }
       }
     }
-    user_account {
-      keys     = var.initialization.user_account.keys
-      password = var.initialization.user_account.password
-      username = var.initialization.user_account.username
-    }
   }
-
+  
   disk {
     datastore_id  = var.disk.datastore_id
     file_id       = var.disk.file_id
