@@ -48,7 +48,7 @@ resource "proxmox_virtual_environment_vm" "virtual_machine" {
 
   disk {
     datastore_id  = var.disk.datastore_id
-    # file_id       = var.disk.file_id
+    file_id       = var.disk.file_id
     interface     = var.disk.interface
     discard       = var.disk.discard
     size          = var.disk.size

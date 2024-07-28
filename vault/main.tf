@@ -53,7 +53,7 @@ module "vault" {
 
   disk = {
     datastore_id = "local-lvm"
-    # file_id = "local:iso/jammy-server-cloudimg-amd64.img"
+    file_id = "local:iso/TrueNAS-SCALE-24.04.0.iso"
     interface = "scsi0"
     discard = "on"
     size = 50
