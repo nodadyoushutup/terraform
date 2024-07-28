@@ -10,7 +10,7 @@ module "vault" {
     enabled = false
     timeout = "15m"
     trim = false
-    type = "virtio2"
+    type = "virtio"
   }
   audio_device = {
     device = "intel-hda"
