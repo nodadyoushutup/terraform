@@ -44,19 +44,19 @@ module "vault" {
 
   
 
-  # initialization = {
-  #   ip_config = {
-  #     ipv4 = {
-  #       address = "192.168.1.101/24"
-  #       gateway = "192.168.1.1"
-  #     }
-  #   }
-  #   user_account = {
-  #     username = local.virtual_machine.username
-  #     password = local.virtual_machine.password
-  #     keys = []
-  #   }
-  # }
+  initialization = {
+    ip_config = {
+      ipv4 = {
+        address = "192.168.1.101/24"
+        gateway = "192.168.1.1"
+      }
+    }
+    # user_account = {
+    #   username = local.virtual_machine.username
+    #   password = local.virtual_machine.password
+    #   keys = []
+    # }
+  }
 
   disk = {
     datastore_id = "local-lvm"
