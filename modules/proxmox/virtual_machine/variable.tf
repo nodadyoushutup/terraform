@@ -72,11 +72,11 @@ variable "cdrom" {
   })
   default = null
   validation {
-    condition = var.bios == null || can(regex("^(cdrom|[^:]+:iso/[^\\s]+)$", var.cdrom.file_id))
+    condition = var.cdrom == null || can(regex("^(cdrom|[^:]+:iso/[^\\s]+)$", var.cdrom.file_id))
     error_message = "The file_id must be 'cdrom' or in the format 'volume:iso/path/to/file'."
   }
   validation {
-    condition = var.bios == null || can(regex("^ide\\d+$", var.cdrom.interface))
+    condition = var.cdrom == null || can(regex("^ide\\d+$", var.cdrom.interface))
     error_message = "The interface must be in the form ideN where N is a number."
   }
 }
