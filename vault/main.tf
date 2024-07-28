@@ -5,13 +5,13 @@ module "vault" {
   # version = "0.2.10"
 
   ###
-  acpi = true
-  agent = {
-    enabled = false
-    timeout = "15m"
-    trim = false
-    type = "virtio"
-  }
+  # acpi = true
+  # agent = {
+  #   enabled = false
+  #   timeout = "15m"
+  #   trim = false
+  #   type = "virtio"
+  # }
   audio_device = {
     device = "intel-hda"
     driver = "spice"

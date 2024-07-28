@@ -2,24 +2,17 @@
 
 variable "acpi" {
   description = "(Optional) Whether to enable ACPI (defaults to true)."
-  type = bool
-  default = true
+  type = optional(bool, true)
 }
 
 variable "agent" {
   description = "(Optional) The QEMU agent configuration."
   type = object({
-    enabled = bool
-    timeout = string
-    trim = bool
-    type = string
+    enabled = optional(bool, false)
+    timeout = optional(string, "15m")
+    trim = optional(bool, false)
+    type = optional(string, "virtio")
   })
-  default = {
-    enabled = false
-    timeout = "15m"
-    trim = false
-    type = "virtio"
-  }
   validation {
     condition = can(regex("^\\d+m$", var.agent.timeout))
     error_message = "Invalid timeout format. The timeout should be a number followed by 'm' (e.g., '15m')."

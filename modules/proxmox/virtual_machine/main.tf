@@ -11,12 +11,15 @@ resource "proxmox_virtual_environment_vm" "virtual_machine" {
   stop_on_destroy = var.vm.stop_on_destroy
   
   ###
-  acpi = var.acpi
-  agent {
-    enabled = var.agent.enabled
-    timeout = var.agent.timeout
-    trim = var.agent.trim
-    type = var.agent.type
+  acpi = lookup(var, "acpi", true)
+  dynamic "agent" {
+    for_each = var.agent != null && var.agent != {} ? [1] : []
+    content {
+      enabled = lookup(var.agent, "enabled", null)
+      timeout = lookup(var.agent, "timeout", null)
+      trim    = lookup(var.agent, "trim", null)
+      type    = lookup(var.agent, "type", null)
+    }
   }
   audio_device {
     device = var.audio_device.device
