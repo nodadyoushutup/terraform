@@ -53,7 +53,7 @@ module "vault" {
 
   disk = {
     datastore_id = "local-lvm"
-    file_id = "local:iso/jammy-server-cloudimg-amd64.img"
+    # file_id = "local:iso/jammy-server-cloudimg-amd64.img"
     interface = "scsi0"
     discard = "on"
     size = 50
