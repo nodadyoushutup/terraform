@@ -14,13 +14,14 @@ variable "agent" {
     trim = optional(bool, false)
     type = optional(string, "virtio")
   })
+  default = null
   validation {
     condition = can(regex("^\\d+m$", var.agent.timeout))
     error_message = "Invalid timeout format. The timeout should be a number followed by 'm' (e.g., '15m')."
   }
   validation {
     condition = contains(["isa", "virtio"], var.agent.type)
-    error_message = "Inalid instance type. Valid options are ['isa', 'virtio']"
+    error_message = "Invalid instance type. Valid options are ['isa', 'virtio']"
   }
 }
 
