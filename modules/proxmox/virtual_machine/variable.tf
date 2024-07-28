@@ -148,7 +148,7 @@ variable "disk" {
   description = "Disk configuration"
   type = object({
     datastore_id = string
-    file_id = string
+    # file_id = string
     interface = string
     discard = string
     size = number
@@ -156,7 +156,7 @@ variable "disk" {
   })
   default = {
     datastore_id = "local-lvm"
-    file_id = "local:iso/jammy-server-cloudimg-amd64.img"
+    # file_id = "local:iso/jammy-server-cloudimg-amd64.img"
     interface = "scsi0"
     discard = "on"
     size = 50
