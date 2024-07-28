@@ -62,6 +62,12 @@ variable "bios" {
   }
 }
 
+variable "boot_order" {
+  description = "(Optional) Specify a list of devices to boot from in the order they appear in the list (defaults to [])."
+  type = list(string)
+  default = []
+}
+
 ###
 
 variable "vm" {

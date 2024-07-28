@@ -24,6 +24,7 @@ resource "proxmox_virtual_environment_vm" "virtual_machine" {
     enabled = var.audio_device.enabled
   }
   bios  = var.bios
+  boot_order = var.boot_order
   ###
 
   initialization {
