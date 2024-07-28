@@ -147,6 +147,7 @@ variable "initialization" {
       username = string
     })
   })
+  default = {}
 }
 
 variable "network" {
