@@ -37,3 +37,4 @@ terraform.rc
 desktop.pub
 provider.yaml
 virtual_machine.yaml
+notes/
