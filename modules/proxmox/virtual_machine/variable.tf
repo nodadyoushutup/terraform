@@ -20,7 +20,7 @@ variable "agent" {
     error_message = "Invalid timeout format. The timeout should be a number followed by 'm' (e.g., '15m')."
   }
   validation {
-    condition = var.agent == null || can(contains(["isa", "virtio"], var.agent.type))
+    condition = var.agent == null || contains(["isa", "virtio"], var.agent.type)
     error_message = "Invalid instance type. Valid options are ['isa', 'virtio']"
   }
 }
@@ -28,22 +28,18 @@ variable "agent" {
 variable "audio_device" {
   description = "(Optional) An audio device."
   type = object({
-    device = string
-    driver = string
-    enabled = bool
+    device  = optional(string, "intel-hda")
+    driver  = optional(string, "spice")
+    enabled = optional(bool, true)
   })
-  default = {
-    device = "intel-hda"
-    driver = "spice"
-    enabled = true
+  default = null
+  validation {
+    condition = var.audio_device == null || contains(["AC97", "ich9-intel-hda", "intel-hda"], var.audio_device.device)
+    error_message = "Invalid device type. Valid options are ['AC97', 'ich9-intel-hda', 'intel-hda']"
   }
   validation {
-    condition = contains(["AC97", "ich9-intel-hda", "intel-hda"], var.audio_device.device)
-    error_message = "Inalid instance type. Valid options are ['AC97', 'ich9-intel-hda', 'intel-hda']"
-  }
-  validation {
-    condition = contains(["spice"], var.audio_device.driver)
-    error_message = "Inalid instance type. Valid options are ['spice']"
+    condition = var.audio_device == null || contains(["spice"], var.audio_device.driver)
+    error_message = "Invalid driver type. Valid options are ['spice']"
   }
 }
 

@@ -21,10 +21,13 @@ resource "proxmox_virtual_environment_vm" "virtual_machine" {
       type    = lookup(var.agent, "type", null)
     }
   }
-  audio_device {
-    device = var.audio_device.device
-    driver = var.audio_device.driver
-    enabled = var.audio_device.enabled
+  dynamic "audio_device" {
+    for_each = var.audio_device != null && var.audio_device != {} ? [1] : []
+    content {
+      device  = lookup(var.audio_device, "device", null)
+      driver  = lookup(var.audio_device, "driver", null)
+      enabled = lookup(var.audio_device, "enabled", null)
+    }
   }
   bios  = var.bios
   boot_order = var.boot_order
