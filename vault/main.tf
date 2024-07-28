@@ -47,8 +47,8 @@ module "vault" {
   initialization = {
     ip_config = {
       ipv4 = {
-        address = "192.168.1.101/24"
-        gateway = "192.168.1.1"
+        # address = "192.168.1.101/24"
+        # gateway = "192.168.1.1"
       }
     }
     # user_account = {
