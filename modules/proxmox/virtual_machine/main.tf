@@ -31,18 +31,24 @@ resource "proxmox_virtual_environment_vm" "virtual_machine" {
   }
   bios  = var.bios
   boot_order = var.boot_order
-  cdrom {
-    enabled = var.cdrom.enabled
-    file_id = var.cdrom.file_id
-    interface = var.cdrom.interface
+  dynamic "cdrom" {
+    for_each = var.cdrom != null && var.cdrom != {} ? [1] : []
+    content {
+      enabled  = lookup(var.cdrom, "enabled", null)
+      file_id  = lookup(var.cdrom, "file_id", null)
+      interface = lookup(var.cdrom, "interface", null)
+    }
   }
-  # clone {
-  #   datastore_id = var.clone.datastore_id
-  #   node_name = var.clone.node_name
-  #   retries = var.clone.retries
-  #   vm_id = var.clone.vm_id
-  #   full = var.clone.full
-  # }
+  dynamic "clone" {
+    for_each = var.clone != null && var.clone != {} ? [1] : []
+    content {
+      enabled  = lookup(var.clone, "enabled", null)
+      file_id  = lookup(var.clone, "file_id", null)
+      retries = lookup(var.clone, "retries", null)
+      vm_id = lookup(var.clone, "vm_id", null)
+      full = lookup(var.clone, "full", null)
+    }
+  }
   ###
 
   # initialization {

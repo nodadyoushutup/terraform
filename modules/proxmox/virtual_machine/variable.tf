@@ -66,42 +66,36 @@ variable "boot_order" {
 variable "cdrom" {
   description = "(Optional) The CDROM configuration."
   type = object({
-    enabled = bool
-    file_id = string
-    interface = string
+    enabled = optional(bool, false)
+    file_id = optional(string, "cdrom")
+    interface = optional(string, "ide3")
   })
-  default = {
-    enabled = false
-    file_id = "cdrom"
-    interface = "ide3"
-  }
+  default = null
   validation {
-    condition = can(regex("^(cdrom|[^:]+:iso/[^\\s]+)$", var.cdrom.file_id))
+    condition = var.bios == null || can(regex("^(cdrom|[^:]+:iso/[^\\s]+)$", var.cdrom.file_id))
     error_message = "The file_id must be 'cdrom' or in the format 'volume:iso/path/to/file'."
   }
   validation {
-    condition = can(regex("^ide\\d+$", var.cdrom.interface))
+    condition = var.bios == null || can(regex("^ide\\d+$", var.cdrom.interface))
     error_message = "The interface must be in the form ideN where N is a number."
   }
 }
 
-# variable "clone" {
-#   description = "(Optional) The cloning configuration."
-#   type = object({
-#     datastore_id = string
-#     node_name = string
-#     retries = number
-#     vm_id = number
-#     full = bool
-#   })
-#   default = {
-#     datastore_id = "local-lvm"
-#     node_name = "pve"
-#     retries = 5
-#     vm_id = 900
-#     full = true
-#   }
-# }
+variable "clone" {
+  description = "(Optional) The cloning configuration."
+  type = object({
+    datastore_id = optional(string, "local-lvm")
+    node_name = optional(string, "pve")
+    retries = optional(number, 5)
+    vm_id = optional(number, 999)
+    full = optional(bool, true)
+  })
+  default = null
+  validation {
+    condition = var.clone.vm_id >= 100 && var.clone.vm_id <= 999999999
+    error_message = "The vm_id must be between 100 and 999999999."
+  }
+}
 ###
 
 variable "vm" {
