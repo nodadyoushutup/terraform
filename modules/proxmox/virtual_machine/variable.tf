@@ -147,7 +147,7 @@ variable "initialization" {
       username = optional(string, "ubuntu")
     }))
   })
-  default = {}
+  default = null
 }
 
 variable "network" {
