@@ -141,12 +141,13 @@ variable "initialization" {
         gateway = optional(string)
       }))
     }))
-    user_account = object({
+    user_account = optional(object({
       keys = optional(list(string), [])
-      password = optional(string)
-      username = string
-    })
+      password = optional(string, "ubuntu")
+      username = optional(string, "ubuntu")
+    }))
   })
+  default = {}
 }
 
 variable "network" {

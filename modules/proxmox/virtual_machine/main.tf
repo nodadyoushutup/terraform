@@ -39,22 +39,17 @@ resource "proxmox_virtual_environment_vm" "virtual_machine" {
   # }
   ###
 
-  dynamic "initialization" {
-    for_each = (
-      var.initialization.user_account.username != "" 
-    ) ? [1] : []
-    content {
-      ip_config {
-        ipv4 {
-          address = var.initialization.ip_config.ipv4.address
-          gateway = var.initialization.ip_config.ipv4.gateway
-        }
+  initialization {
+    ip_config {
+      ipv4 {
+        address = var.initialization.ip_config.ipv4.address
+        gateway = var.initialization.ip_config.ipv4.gateway
       }
-      user_account {
-        keys     = var.initialization.user_account.keys
-        password = var.initialization.user_account.password
-        username = var.initialization.user_account.username
-      }
+    }
+    user_account {
+      keys     = var.initialization.user_account.keys
+      password = var.initialization.user_account.password
+      username = var.initialization.user_account.username
     }
   }
 
