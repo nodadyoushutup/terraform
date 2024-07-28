@@ -57,6 +57,10 @@ variable "boot_order" {
   description = "(Optional) Specify a list of devices to boot from in the order they appear in the list (defaults to [])."
   type = list(string)
   default = []
+  validation {
+    condition = var.boot_order == [] || alltrue([for device in var.boot_order : can(regex("^(scsi|ide|virtio|sata|net)\\d+$", device))])
+    error_message = "Each entry in boot_order must match the pattern 'scsiN', 'ideN', 'virtioN', 'sataN', or 'netN' where N is a number."
+  }
 }
 
 variable "cdrom" {
