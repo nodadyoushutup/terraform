@@ -15,7 +15,7 @@ module "vault" {
   audio_device = {
     device = "intel-hda"
     driver = "spice"
-    enabled = true
+    enabled = false
   }
   bios = "seabios"
   boot_order = ["ide3", "scsi0"]
