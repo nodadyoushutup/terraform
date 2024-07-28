@@ -2,7 +2,8 @@
 
 variable "acpi" {
   description = "(Optional) Whether to enable ACPI (defaults to true)."
-  type = optional(bool, true)
+  type = bool
+  default = true
 }
 
 variable "agent" {

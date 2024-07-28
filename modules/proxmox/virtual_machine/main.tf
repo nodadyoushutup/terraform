@@ -11,7 +11,7 @@ resource "proxmox_virtual_environment_vm" "virtual_machine" {
   stop_on_destroy = var.vm.stop_on_destroy
   
   ###
-  acpi = lookup(var, "acpi", true)
+  acpi = lookup(var, "acpi", null)
   dynamic "agent" {
     for_each = var.agent != null && var.agent != {} ? [1] : []
     content {
