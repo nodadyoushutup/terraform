@@ -24,13 +24,13 @@ module "vault" {
     file_id = "local:iso/TrueNAS-SCALE-24.04.0.iso"
     interface = "ide3"
   }
-  clone = {
-    datastore_id = "local-lvm"
-    node_name = "pve"
-    retries = 5
-    vm_id = 900
-    full = true
-  }
+  # clone = {
+  #   datastore_id = "local-lvm"
+  #   node_name = "pve"
+  #   retries = 5
+  #   vm_id = 900
+  #   full = true
+  # }
   ###
   vm = {
     id = "101"
@@ -44,37 +44,37 @@ module "vault" {
 
   
 
-  # initialization = {
-  #   ip_config = {
-  #     ipv4 = {
-  #       address = "192.168.1.101/24"
-  #       gateway = "192.168.1.1"
-  #     }
-  #   }
-  #   user_account = {
-  #     username = local.virtual_machine.username
-  #     password = local.virtual_machine.password
-  #     keys = []
-  #   }
-  # }
+  initialization = {
+    # ip_config = {
+    #   ipv4 = {
+    #     address = "192.168.1.101/24"
+    #     gateway = "192.168.1.1"
+    #   }
+    # }
+    user_account = {
+      username = local.virtual_machine.username
+      password = local.virtual_machine.password
+      keys = []
+    }
+  }
 
-  # disk = {
-  #   datastore_id = "local-lvm"
-  #   file_id = "local:iso/jammy-server-cloudimg-amd64.img"
-  #   interface = "scsi0"
-  #   discard = "on"
-  #   size = 50
-  #   ssd = true
-  # }
+  disk = {
+    datastore_id = "local-lvm"
+    file_id = "local:iso/jammy-server-cloudimg-amd64.img"
+    interface = "scsi0"
+    discard = "on"
+    size = 50
+    ssd = true
+  }
 
-  # memory = {
-  #   dedicated = 8192
-  # }
+  memory = {
+    dedicated = 8192
+  }
 
-  # cpu = {
-  #   cores = 4
-  #   sockets = 1
-  #   type = "host"
-  #   numa = true
-  # }
+  cpu = {
+    cores = 4
+    sockets = 1
+    type = "host"
+    numa = true
+  }
 }

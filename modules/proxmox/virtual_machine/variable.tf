@@ -90,23 +90,23 @@ variable "cdrom" {
   }
 }
 
-variable "clone" {
-  description = "(Optional) The cloning configuration."
-  type = object({
-    datastore_id = string
-    node_name = string
-    retries = number
-    vm_id = number
-    full = bool
-  })
-  default = {
-    datastore_id = "local-lvm"
-    node_name = "pve"
-    retries = 5
-    vm_id = 900
-    full = true
-  }
-}
+# variable "clone" {
+#   description = "(Optional) The cloning configuration."
+#   type = object({
+#     datastore_id = string
+#     node_name = string
+#     retries = number
+#     vm_id = number
+#     full = bool
+#   })
+#   default = {
+#     datastore_id = "local-lvm"
+#     node_name = "pve"
+#     retries = 5
+#     vm_id = 900
+#     full = true
+#   }
+# }
 ###
 
 variable "vm" {
@@ -135,19 +135,18 @@ variable "vm" {
 
 variable "initialization" {
   type = object({
-    ip_config = object({
-      ipv4 = object({
-        address = string
-        gateway = string
-      })
-    })
+    ip_config = optional(object({
+      ipv4 = optional(object({
+        address = optional(string, "dhcp")
+        gateway = optional(string)
+      }))
+    }))
     user_account = object({
-      keys = list(string)
-      password = string
+      keys = optional(list(string), [])
+      password = optional(string)
       username = string
     })
   })
-  default = {}
 }
 
 variable "network" {
