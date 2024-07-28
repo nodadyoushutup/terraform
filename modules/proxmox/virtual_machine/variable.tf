@@ -92,7 +92,7 @@ variable "clone" {
   })
   default = null
   validation {
-    condition = var.clone == null || (var.clone.vm_id >= 100 && var.clone.vm_id <= 999999999)
+    condition = var.clone == null || can((var.clone.vm_id >= 100 && var.clone.vm_id <= 999999999))
     error_message = "The vm_id must be between 100 and 999999999."
   }
 }
