@@ -62,7 +62,7 @@ resource "proxmox_virtual_environment_vm" "virtual_machine" {
           dynamic "ipv4" {
             for_each = var.initialization.ip_config.ipv4 != null && var.initialization.ip_config.ipv4 != {} ? [1] : []
             content {
-              address = lookup(var.initialization.ip_config.ipv4, "address", "dhcp")
+              address = lookup(var.initialization.ip_config.ipv4, "address", null)
               gateway = lookup(var.initialization.ip_config.ipv4, "gateway", null)
             }
           }
@@ -71,9 +71,9 @@ resource "proxmox_virtual_environment_vm" "virtual_machine" {
       dynamic "user_account" {
         for_each = var.initialization.user_account != null && var.initialization.user_account != {} ? [1] : []
         content {
-          keys     = lookup(var.initialization.user_account, "keys", [])
-          password = lookup(var.initialization.user_account, "password", "ubuntu")
-          username = lookup(var.initialization.user_account, "username", "ubuntu")
+          keys     = lookup(var.initialization.user_account, "keys", null)
+          password = lookup(var.initialization.user_account, "password", null)
+          username = lookup(var.initialization.user_account, "username", null)
         }
       }
     }

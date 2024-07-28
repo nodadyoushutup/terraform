@@ -138,14 +138,14 @@ variable "initialization" {
     ip_config = optional(object({
       ipv4 = optional(object({
         address = optional(string, "dhcp")
-        gateway = optional(string, "192.168.1.1")
+        gateway = optional(string, null)
       }))
-    }))
+    }), null)
     user_account = optional(object({
       keys = optional(list(string), [])
       password = optional(string, "ubuntu")
       username = optional(string, "ubuntu")
-    }))
+    }), null)
   })
   default = null
 }
