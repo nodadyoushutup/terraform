@@ -58,7 +58,7 @@ resource "proxmox_virtual_environment_vm" "virtual_machine" {
       hotplugged = lookup(var.cpu, "hotplugged", null)
       limit = lookup(var.cpu, "limit", null)
       numa = lookup(var.cpu, "numa", null)
-      sockets = lookup(var.cpu, "limit", null)
+      sockets = lookup(var.cpu, "sockets", null)
       type = lookup(var.cpu, "type", null)
       units = lookup(var.cpu, "units", null)
       affinity = lookup(var.cpu, "affinity", null)
