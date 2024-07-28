@@ -214,19 +214,3 @@ variable "memory" {
     dedicated = 4096
   }
 }
-
-variable "cpu" {
-  description = "CPU configuration"
-  type = object({
-    cores = number
-    sockets = number
-    type = string
-    numa = bool
-  })
-  default = {
-    cores = 2
-    sockets = 1
-    type = "host"
-    numa = true
-  }
-}
