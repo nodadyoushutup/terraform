@@ -18,7 +18,7 @@ module "vault" {
     enabled = true
   }
   bios = "seabios"
-  boot_order = []
+  boot_order = ["scsi0"]
   ###
   vm = {
     id = "101"
