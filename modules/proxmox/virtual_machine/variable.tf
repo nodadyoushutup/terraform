@@ -139,7 +139,7 @@ variable "initialization" {
       ipv4 = optional(object({
         address = optional(string, "dhcp")
         gateway = optional(string, null)
-      }))
+      }), null)
     }), null)
     user_account = optional(object({
       keys = optional(list(string), [])
