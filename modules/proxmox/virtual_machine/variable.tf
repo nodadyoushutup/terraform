@@ -97,10 +97,6 @@ variable "clone" {
   }
 }
 
-output "cpu_flags_debug_individual" {
-  value = [for flag in var.cpu.flags : flag]
-}
-
 variable "cpu" {
   description = "(Optional) The CPU configuration."
   type = object({
@@ -121,7 +117,7 @@ variable "cpu" {
       for flag in var.cpu.flags :
         can(
           regex(
-            join("", local.cpu_flags_regex), 
+            join("", local.flags_regex), 
             flag
           )
         )
