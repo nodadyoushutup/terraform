@@ -117,28 +117,30 @@ variable "cpu" {
     error_message = "Inalid instance type. Valid options are ['aarch64', 'x86_64']"
   }
   validation {
-    condition = var.cpu == null || can(alltrue([
+    condition = var.cpu == null || alltrue([
       for flag in var.cpu.flags :
-        regex(
-          join("", [
-            "^[-+](",
-            "aes|",
-            "amd-no-ssb|",
-            "amd-ssbd|",
-            "hv-evmcs|",
-            "hv-tlbflush|",
-            "ibpb|",
-            "md-clear|",
-            "pcid|",
-            "pdpe1gb|",
-            "spec-ctrl|",
-            "ssbd|",
-            "virt-ssbd|",
-            ")"
-          ]), 
-          flag
+        can(
+          regex(
+            join("", [
+              "^[-+](",
+              "aes|",
+              "amd-no-ssb|",
+              "amd-ssbd|",
+              "hv-evmcs|",
+              "hv-tlbflush|",
+              "ibpb|",
+              "md-clear|",
+              "pcid|",
+              "pdpe1gb|",
+              "spec-ctrl|",
+              "ssbd|",
+              "virt-ssbd|",
+              ")"
+            ]), 
+            flag
+          )
         )
-    ]))
+    ])
     error_message = join("", [
       "Each flag must start with + or - and be one of the allowed values: ",
       "+aes, -aes, +amd-no-ssb, -amd-no-ssb, +amd-ssbd, -amd-ssbd, ",
