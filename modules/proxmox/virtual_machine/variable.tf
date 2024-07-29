@@ -120,7 +120,7 @@ variable "cpu" {
     condition = var.cpu == null || alltrue([
       for flag in var.cpu.flags :
         can(regex(
-          "^[-+]aes$", flag)
+          "^[-+](aes|amd-no-ssb)$", flag)
         )
     ])
     error_message = join("", [
