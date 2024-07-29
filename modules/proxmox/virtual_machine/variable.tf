@@ -135,7 +135,7 @@ variable "cpu" {
               "spec-ctrl|",
               "ssbd|",
               "virt-ssbd|",
-              ")"
+              ")$"
             ]), 
             flag
           )
