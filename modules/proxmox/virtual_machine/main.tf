@@ -64,6 +64,7 @@ resource "proxmox_virtual_environment_vm" "virtual_machine" {
       affinity = lookup(var.cpu, "affinity", null)
     }
   }
+  description = var.description
   ###
 
   # initialization {

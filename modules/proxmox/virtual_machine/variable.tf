@@ -228,6 +228,12 @@ variable "cpu" {
     error_message = "Affinity must be a string of comma separated numbers, or two numbers separated by a hyphen."
   }
 }
+
+variable "description" {
+  description = "(Optional) Virtual machine description."
+  type = string
+  default = "Virtual machine"
+}
 ###
 
 variable "vm" {
