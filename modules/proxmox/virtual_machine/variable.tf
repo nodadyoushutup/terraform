@@ -224,7 +224,7 @@ variable "cpu" {
     ])
   }
   validation {
-    condition = var.cpu == null || can(regex("^\\d+(,\\d+)*$|^\\d+-\\d+$", var.cpu.affinity))
+    condition = var.cpu == null || var.cpu.affinity == null || can(regex("^\\d+(,\\d+)*$|^\\d+-\\d+$", var.cpu.affinity))
     error_message = "Affinity must be a string of comma separated numbers, or two numbers separated by a hyphen."
   }
 }
