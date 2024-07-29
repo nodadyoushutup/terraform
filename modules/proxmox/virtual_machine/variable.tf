@@ -109,7 +109,7 @@ variable "cpu" {
     sockets = optional(number, 1)
     type = optional(string, "host")
     units = optional(number, 1024)
-    affinity = optional(list, null)
+    affinity = optional(list(number), null)
   })
   default = null
   validation {
