@@ -121,7 +121,7 @@ variable "cpu" {
       for flag in var.cpu.flags :
         can(
           regex(
-            "^[-+](aes|" + "amd-no-ssb)$", 
+            join("", local.cpu_flags_regex), 
             flag
           )
         )
