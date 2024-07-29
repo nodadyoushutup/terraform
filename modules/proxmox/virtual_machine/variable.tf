@@ -119,8 +119,11 @@ variable "cpu" {
   validation {
     condition = var.cpu == null || alltrue([
       for flag in var.cpu.flags :
-        can(regex(
-          "^[-+](aes|amd-no-ssb)$", flag)
+        can(
+          regex(
+            "^[-+](aes|" + "amd-no-ssb)$", 
+            flag
+          )
         )
     ])
     error_message = join("", [
