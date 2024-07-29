@@ -113,7 +113,7 @@ variable "cpu" {
   })
   default = null
   validation {
-    condition = var.cpu == [] || alltrue([
+    condition = var.cpu == null || alltrue([
       for flag in var.cpu.flags :
       can(regex(
         "^[-+](aes|amd-no-ssb|amd-ssbd|hv-evmcs|" +
