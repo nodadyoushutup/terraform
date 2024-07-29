@@ -34,7 +34,20 @@ module "vault" {
   cpu = {
     architecture = "x86_64"
     cores = 2
-    flags = ["+aes", "+amd-no-ssb"]
+    flags = [
+      "+aes",
+      "+amd-no-ssb",
+      "+amd-ssbd",
+      "+hv-evmcs",
+      "+hv-tlbflush",
+      "+ibpb",
+      "+md-clear",
+      "+pcid",
+      "+pdpe1gb",
+      "+spec-ctrl",
+      "+ssbd",
+      "+virt-ssbd"
+    ]
     hotplugged = 0
     limit = 0
     numa = false
