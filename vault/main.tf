@@ -21,7 +21,7 @@ module "vault" {
   boot_order = ["scsi0"]
   cdrom = {
     enabled = false
-    # file_id = "local:iso/TrueNAS-SCALE-24.04.0.iso"
+    file_id = "local:iso/TrueNAS-SCALE-24.04.0.iso"
     interface = "ide3"
   }
   # clone = {
@@ -54,7 +54,7 @@ module "vault" {
     sockets = 1
     type = "host"
     units = 1024
-    affinity = null
+    affinity = "0-7"
   }
   
   ###
