@@ -37,16 +37,16 @@ module "vault" {
     flags = [
       "+aes",
       "+amd-no-ssb",
-      "+amd-ssbd",
-      "+hv-evmcs",
-      "+hv-tlbflush",
-      "+ibpb",
-      "+md-clear",
-      "+pcid",
-      "+pdpe1gb",
-      "+spec-ctrl",
-      "+ssbd",
-      "+virt-ssbd"
+      # "+amd-ssbd",
+      # "+hv-evmcs",
+      # "+hv-tlbflush",
+      # "+ibpb",
+      # "+md-clear",
+      # "+pcid",
+      # "+pdpe1gb",
+      # "+spec-ctrl",
+      # "+ssbd",
+      # "+virt-ssbd"
     ]
     hotplugged = 0
     limit = 0
