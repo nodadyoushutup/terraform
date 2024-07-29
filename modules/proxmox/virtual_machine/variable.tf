@@ -116,23 +116,23 @@ variable "cpu" {
     affinity = optional(string, null)
   })
   default = null
-  validation {
-    condition = var.cpu == null || alltrue([
-      for flag in var.cpu.flags :
-        can(regex(
-          "^[-+](aes|amd-no-ssb|amd-ssbd|hv-evmcs|" +
-          "hv-tlbflush|ibpb|md-clear|pcid|pdpe1gb|" +
-          "spec-ctrl|ssbd|virt-ssbd)$", flag)
-        )
-    ])
-    error_message = join("", [
-      "Each flag must start with + or - and be one of the allowed values: ",
-      "+aes, -aes, +amd-no-ssb, -amd-no-ssb, +amd-ssbd, -amd-ssbd, ",
-      "+hv-evmcs, -hv-evmcs, +hv-tlbflush, -hv-tlbflush, +ibpb, -ibpb, ",
-      "+md-clear, -md-clear, +pcid, -pcid, +pdpe1gb, -pdpe1gb, ",
-      "+spec-ctrl, -spec-ctrl, +ssbd, -ssbd, +virt-ssbd, -virt-ssbd."
-    ])
-  }
+  # validation {
+  #   condition = var.cpu == null || alltrue([
+  #     for flag in var.cpu.flags :
+  #       can(regex(
+  #         "^[-+](aes|amd-no-ssb|amd-ssbd|hv-evmcs|" +
+  #         "hv-tlbflush|ibpb|md-clear|pcid|pdpe1gb|" +
+  #         "spec-ctrl|ssbd|virt-ssbd)$", flag)
+  #       )
+  #   ])
+  #   error_message = join("", [
+  #     "Each flag must start with + or - and be one of the allowed values: ",
+  #     "+aes, -aes, +amd-no-ssb, -amd-no-ssb, +amd-ssbd, -amd-ssbd, ",
+  #     "+hv-evmcs, -hv-evmcs, +hv-tlbflush, -hv-tlbflush, +ibpb, -ibpb, ",
+  #     "+md-clear, -md-clear, +pcid, -pcid, +pdpe1gb, -pdpe1gb, ",
+  #     "+spec-ctrl, -spec-ctrl, +ssbd, -ssbd, +virt-ssbd, -virt-ssbd."
+  #   ])
+  # }
 }
 ###
 
