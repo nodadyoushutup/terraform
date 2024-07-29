@@ -1,4 +1,4 @@
 # modules/proxmox/virtual_machine/.spacelift/config.yml
 version: "1"
-module_version: 0.3.18
+module_version: 0.3.19
 runner_image: spacelift/runner:latest
