@@ -97,6 +97,10 @@ variable "clone" {
   }
 }
 
+output "cpu_flags_debug_individual" {
+  value = [for flag in var.cpu.flags : flag]
+}
+
 variable "cpu" {
   description = "(Optional) The CPU configuration."
   type = object({
