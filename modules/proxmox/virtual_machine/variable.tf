@@ -223,6 +223,10 @@ variable "cpu" {
       "'or custom- followed by alphanumeric characters and symbols']."
     ])
   }
+  validation {
+    condition = var.cpu == null || can(regex("^\\d+(,\\d+)*$|^\\d+-\\d+$", var.cpu.affinity))
+    error_message = "Affinity must be a string of comma separated numbers, or two numbers separated by a hyphen. "
+  }
 }
 ###
 
