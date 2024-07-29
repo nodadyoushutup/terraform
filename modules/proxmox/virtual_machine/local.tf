@@ -2,10 +2,4 @@
 
 locals {
   provider = yamldecode(file("/mnt/workspace/provider.yaml"))
-  flags_regex = [
-    "^[-+](",
-    "aes|",
-    "amd-no-ssb",
-    ")"
-  ]
 }
