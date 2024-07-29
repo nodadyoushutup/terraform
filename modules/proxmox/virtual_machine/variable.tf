@@ -185,7 +185,7 @@ variable "cpu" {
           "custom-[A-Za-z0-9@#$%^&*()-_=+]+",
           ")$"
         ]), 
-        flag
+        var.cpu
       )
     )
     error_message = join("", [
