@@ -52,7 +52,7 @@ module "vault" {
     limit = 0
     numa = false
     sockets = 1
-    type = "host2"
+    type = "host"
     units = 1024
     affinity = null
   }
