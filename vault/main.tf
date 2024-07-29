@@ -35,7 +35,7 @@ module "vault" {
     architecture = "x86_64"
     cores = 2
     flags = [
-      "-aes2",
+      "-aes",
       # "-amd-no-ssb",
       # "-amd-ssbd",
       # "-hv-evmcs",
