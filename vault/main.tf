@@ -5,7 +5,7 @@ module "vault" {
   # version = "0.2.10"
 
   ###
-  # acpi = true
+  acpi = true
   agent = {
     enabled = false
     timeout = "15m"
@@ -35,7 +35,7 @@ module "vault" {
     architecture = "x86_64"
     cores = 2
     flags = [
-      "-aes",
+      # "-aes",
       # "-amd-no-ssb",
       # "-amd-ssbd",
       # "-hv-evmcs",
