@@ -34,7 +34,7 @@ module "vault" {
   cpu = {
     architecture = "x86_64"
     cores = 2
-    flags = ["+aes", "+pcid"]
+    flags = []
     hotplugged = 0
     limit = 0
     numa = false
