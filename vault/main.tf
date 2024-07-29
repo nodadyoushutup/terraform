@@ -54,7 +54,7 @@ module "vault" {
     sockets = 1
     type = "host"
     units = 1024
-    affinity = null
+    affinity = [0,1]
   }
   
   ###
