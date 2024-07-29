@@ -115,11 +115,11 @@ variable "cpu" {
   validation {
     condition = var.cpu == null || alltrue([
       for flag in var.cpu.flags :
-      can(regex(
-        "^[-+](aes|amd-no-ssb|amd-ssbd|hv-evmcs|" +
-        "hv-tlbflush|ibpb|md-clear|pcid|pdpe1gb|" +
-        "spec-ctrl|ssbd|virt-ssbd)$", flag)
-      )
+        can(regex(
+          "^[-+](aes|amd-no-ssb|amd-ssbd|hv-evmcs|" +
+          "hv-tlbflush|ibpb|md-clear|pcid|pdpe1gb|" +
+          "spec-ctrl|ssbd|virt-ssbd)$", flag)
+        )
     ])
     error_message = join("", [
       "Each flag must start with + or - and be one of the allowed values: ",
