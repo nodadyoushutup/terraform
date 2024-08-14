@@ -87,7 +87,7 @@ variable "clone" {
     datastore_id = optional(string, "local-lvm")
     node_name = optional(string, "pve")
     retries = optional(number, 5)
-    vm_id = optional(number, 999)
+    vm_id = optional(number, 100)
     full = optional(bool, true)
   })
   default = null
@@ -238,22 +238,81 @@ variable "description" {
 variable "disk" {
   description = "Disk configuration"
   type = object({
-    datastore_id = string
-    file_id = string
-    interface = string
-    discard = string
-    size = number
-    ssd = bool
+    aio = optional(string, "io_uring")
+    backup = optional(bool, true)
+    cache = optional(string, "none")
+    datastore_id = optional(string, "local-lvm")
+    path_in_datastore = optional(string, null)
+    discard = optional(string, "ignore")
+    file_format = optional(string, "qcow2")
+    file_id = optional(string, "local:iso/jammy-server-cloudimg-amd64.img")
+    interface = optional(string, "scsi0")
+    iothread = optional(bool, false)
+    replicate = optional(bool, true)
+    serial = optional(string, null)
+    size = optional(number, 8)
+    speed = optional(object({
+      iops_read = optional(number, null)
+      iops_read_burstable = optional(number, null)
+      iops_write = optional(number, null)
+      iops_write_burstable = optional(number, null)
+      read = optional(number, null)
+      read_burstable = optional(number, null)
+      write = optional(number, null)
+      write_burstable = optional(number, null)
+    }), null)
+    ssd = optional(bool, false)
   })
-  default = {
-    datastore_id = "local-lvm"
-    file_id = "local:iso/jammy-server-cloudimg-amd64.img"
-    interface = "scsi0"
-    discard = "on"
-    size = 50
-    ssd = true
+  default = null
+  validation {
+    condition = var.disk == null || contains(["io_uring", "native", "threads"], var.disk.aio)
+    error_message = "Inalid instance type. Valid options are ['io_uring', 'native', 'threads']"
+  }
+  validation {
+    condition = var.disk == null || contains(["none", "directsync", "writethrough", "writeback", "unsafe"], var.disk.cache)
+    error_message = "Inalid instance type. Valid options are ['io_uring', 'native', 'threads']"
+  }
+  validation {
+    condition = var.disk == null || contains(["on", "ignore"], var.disk.discard)
+    error_message = "Inalid instance type. Valid options are ['on', 'ignore']"
+  }
+  validation {
+    condition = var.disk == null || contains(["qcow2", "raw", "vmdk"], var.disk.discard)
+    error_message = "Inalid instance type. Valid options are ['qcow2', 'raw', 'vmdk']"
+  }
+  validation {
+    condition = var.disk == null || can(regex("^[^:]+:[^/]+/[^\\s]+$", var.disk.file_id))
+    error_message = "The file_id must be in the format 'volume:content_type/path/to/file'."
+  }
+  validation {
+    condition = var.disk == null || can(regex("^(scsi|sata|virtio)\\d+$", var.disk.interface))
+    error_message = "The interface must start with 'scsi', 'sata', or 'virtio' followed by a number (e.g., 'scsi0', 'sata1', 'virtio3')."
+  }
+  validation {
+    condition = var.disk == null || var.disk.serial == null || length(base64encode(var.disk.serial)) <= 28
+    error_message = "The serial must be a string that evaluates to up to 20 bytes."
   }
 }
+
+# variable "disk" {
+#   description = "Disk configuration"
+#   type = object({
+#     datastore_id = string
+#     file_id = string
+#     interface = string
+#     discard = string
+#     size = number
+#     ssd = bool
+#   })
+#   default = {
+#     datastore_id = "local-lvm"
+#     file_id = "local:iso/jammy-server-cloudimg-amd64.img"
+#     interface = "scsi0"
+#     discard = "on"
+#     size = 50
+#     ssd = true
+#   }
+# }
 ###
 
 variable "vm" {
