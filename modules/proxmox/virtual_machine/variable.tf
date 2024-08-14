@@ -34,11 +34,11 @@ variable "audio_device" {
   })
   default = null
   validation {
-    condition = var.audio_device == null || contains(["AC97", "ich9-intel-hda", "intel-hda"], var.audio_device.device)
+    condition = var.audio_device == null || can(contains(["AC97", "ich9-intel-hda", "intel-hda"], var.audio_device.device))
     error_message = "Invalid device type. Valid options are ['AC97', 'ich9-intel-hda', 'intel-hda']"
   }
   validation {
-    condition = var.audio_device == null || contains(["spice"], var.audio_device.driver)
+    condition = var.audio_device == null || can(contains(["spice"], var.audio_device.driver))
     error_message = "Invalid driver type. Valid options are ['spice']"
   }
 }
@@ -48,7 +48,7 @@ variable "bios" {
   type = string
   default = "seabios"
   validation {
-    condition = var.bios == null || contains(["ovmf", "seabios"], var.bios)
+    condition = var.bios == null || can(contains(["ovmf", "seabios"], var.bios))
     error_message = "Inalid instance type. Valid options are ['ovmf', 'seabios']"
   }
 }
@@ -113,7 +113,7 @@ variable "cpu" {
   })
   default = null
   validation {
-    condition = var.cpu == null || contains(["aarch64", "x86_64"], var.cpu.architecture)
+    condition = var.cpu == null || can(contains(["aarch64", "x86_64"], var.cpu.architecture))
     error_message = "Inalid instance type. Valid options are ['aarch64', 'x86_64']"
   }
   validation {
@@ -265,19 +265,19 @@ variable "disk" {
   })
   default = null
   validation {
-    condition = var.disk == null || contains(["io_uring", "native", "threads"], var.disk.aio)
+    condition = var.disk == null || can(contains(["io_uring", "native", "threads"], var.disk.aio))
     error_message = "Inalid instance type. Valid options are ['io_uring', 'native', 'threads']"
   }
   validation {
-    condition = var.disk == null || contains(["none", "directsync", "writethrough", "writeback", "unsafe"], var.disk.cache)
+    condition = var.disk == null || can(contains(["none", "directsync", "writethrough", "writeback", "unsafe"], var.disk.cache))
     error_message = "Inalid instance type. Valid options are ['io_uring', 'native', 'threads']"
   }
   validation {
-    condition = var.disk == null || contains(["on", "ignore"], var.disk.discard)
+    condition = var.disk == null || can(contains(["on", "ignore"], var.disk.discard))
     error_message = "Inalid instance type. Valid options are ['on', 'ignore']"
   }
   validation {
-    condition = var.disk == null || contains(["qcow2", "raw", "vmdk"], var.disk.file_format)
+    condition = var.disk == null || can(contains(["qcow2", "raw", "vmdk"], var.disk.file_format))
     error_message = "Inalid instance type. Valid options are ['qcow2', 'raw', 'vmdk']"
   }
   validation {
