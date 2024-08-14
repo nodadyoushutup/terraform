@@ -56,6 +56,15 @@ module "vault" {
     units = 1024
     affinity = null
   }
+  description = "Test virtual machine"
+  disk = {
+    datastore_id = "local-lvm"
+    file_id = "local:iso/jammy-server-cloudimg-amd64.img"
+    interface = "scsi0"
+    discard = "on"
+    size = 50
+    ssd = true
+  }
   
   ###
   vm = {
@@ -80,15 +89,6 @@ module "vault" {
       password = local.virtual_machine.password
       keys = []
     }
-  }
-
-  disk = {
-    datastore_id = "local-lvm"
-    file_id = "local:iso/jammy-server-cloudimg-amd64.img"
-    interface = "scsi0"
-    discard = "on"
-    size = 50
-    ssd = true
   }
 
   memory = {
