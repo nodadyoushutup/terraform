@@ -234,6 +234,26 @@ variable "description" {
   type = string
   default = "Virtual machine"
 }
+
+variable "disk" {
+  description = "Disk configuration"
+  type = object({
+    datastore_id = string
+    file_id = string
+    interface = string
+    discard = string
+    size = number
+    ssd = bool
+  })
+  default = {
+    datastore_id = "local-lvm"
+    file_id = "local:iso/jammy-server-cloudimg-amd64.img"
+    interface = "scsi0"
+    discard = "on"
+    size = 50
+    ssd = true
+  }
+}
 ###
 
 variable "vm" {
@@ -257,8 +277,6 @@ variable "vm" {
     stop_on_destroy = true
   }
 }
-
-
 
 variable "initialization" {
   type = object({
@@ -286,26 +304,6 @@ variable "network" {
   default = {
     bridge = "vmbr0"
     model = "e1000e"
-  }
-}
-
-variable "disk" {
-  description = "Disk configuration"
-  type = object({
-    datastore_id = string
-    file_id = string
-    interface = string
-    discard = string
-    size = number
-    ssd = bool
-  })
-  default = {
-    datastore_id = "local-lvm"
-    file_id = "local:iso/jammy-server-cloudimg-amd64.img"
-    interface = "scsi0"
-    discard = "on"
-    size = 50
-    ssd = true
   }
 }
 
