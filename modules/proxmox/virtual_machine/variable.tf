@@ -117,7 +117,7 @@ variable "cpu" {
     error_message = "Inalid instance type. Valid options are ['aarch64', 'x86_64']"
   }
   validation {
-    condition = var.cpu == null || alltrue([
+    condition = var.cpu == null || can(alltrue([
       for flag in var.cpu.flags :
         can(
           regex(
@@ -140,7 +140,7 @@ variable "cpu" {
             flag
           )
         )
-    ])
+    ]))
     error_message = join("", [
       "Each flag must start with + or - and be one of the allowed values: ",
       "['+aes', '-aes', '+amd-no-ssb', '-amd-no-ssb', '+amd-ssbd', '-amd-ssbd', ",
@@ -150,8 +150,7 @@ variable "cpu" {
     ])
   }
   validation {
-    condition = var.cpu == null || can(
-      regex(
+    condition = var.cpu == null || can(regex(
         join("", [
           "^(",
           "486|",
@@ -224,7 +223,7 @@ variable "cpu" {
     ])
   }
   validation {
-    condition = var.cpu == null || var.cpu.affinity == null || can(regex("^\\d+(,\\d+)*$|^\\d+-\\d+$", var.cpu.affinity))
+    condition = var.cpu == null || can(var.cpu.affinity == null) || can(regex("^\\d+(,\\d+)*$|^\\d+-\\d+$", var.cpu.affinity))
     error_message = "Affinity must be a string of comma separated numbers, or two numbers separated by a hyphen."
   }
 }
