@@ -272,14 +272,14 @@ variable "disk" {
     condition = var.disk == null || contains(["none", "directsync", "writethrough", "writeback", "unsafe"], var.disk.cache)
     error_message = "Inalid instance type. Valid options are ['io_uring', 'native', 'threads']"
   }
-  # validation {
-  #   condition = var.disk == null || contains(["on", "ignore"], var.disk.discard)
-  #   error_message = "Inalid instance type. Valid options are ['on', 'ignore']"
-  # }
-  # validation {
-  #   condition = var.disk == null || contains(["qcow2", "raw", "vmdk"], var.disk.file_format)
-  #   error_message = "Inalid instance type. Valid options are ['qcow2', 'raw', 'vmdk']"
-  # }
+  validation {
+    condition = var.disk == null || contains(["on", "ignore"], var.disk.discard)
+    error_message = "Inalid instance type. Valid options are ['on', 'ignore']"
+  }
+  validation {
+    condition = var.disk == null || contains(["qcow2", "raw", "vmdk"], var.disk.file_format)
+    error_message = "Inalid instance type. Valid options are ['qcow2', 'raw', 'vmdk']"
+  }
   validation {
     condition = var.disk == null || can(regex("^[^:]+:[^/]+/[^\\s]+$", var.disk.file_id))
     error_message = "The file_id must be in the format 'volume:content_type/path/to/file'."

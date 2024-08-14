@@ -2,7 +2,7 @@
 
 module "vault" {
   source  = "spacelift.io/nodadyoushutup/virtual_machine/proxmox"
-  version = "0.4.4"
+  version = "0.4.5"
 
   ###
   acpi = true
