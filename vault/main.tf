@@ -5,25 +5,25 @@ module "vault" {
   # version = "0.4.5"
 
   ###
-  acpi = true
-  agent = {
-    enabled = false
-    timeout = "15m"
-    trim = false
-    type = "virtio"
-  }
-  audio_device = {
-    device = "intel-hda"
-    driver = "spice"
-    enabled = false
-  }
-  bios = "seabios"
-  boot_order = ["scsi0"]
-  cdrom = {
-    enabled = false
-    file_id = "local:iso/TrueNAS-SCALE-24.04.0.iso"
-    interface = "ide3"
-  }
+  # acpi = true
+  # agent = {
+  #   enabled = false
+  #   timeout = "15m"
+  #   trim = false
+  #   type = "virtio"
+  # }
+  # audio_device = {
+  #   device = "intel-hda"
+  #   driver = "spice"
+  #   enabled = false
+  # }
+  # bios = "seabios"
+  # boot_order = ["scsi0"]
+  # cdrom = {
+  #   enabled = false
+  #   file_id = "local:iso/TrueNAS-SCALE-24.04.0.iso"
+  #   interface = "ide3"
+  # }
   # clone = {
   #   datastore_id = "local-lvm"
   #   node_name = "pve"
@@ -31,32 +31,32 @@ module "vault" {
   #   vm_id = 900
   #   full = true
   # }
-  cpu = {
-    architecture = "x86_64"
-    cores = 2
-    flags = [
-      # "-aes",
-      # "-amd-no-ssb",
-      # "-amd-ssbd",
-      # "-hv-evmcs",
-      # "-hv-tlbflush",
-      # "-ibpb",
-      # "-md-clear",
-      # "-pcid",
-      # "-pdpe1gb",
-      # "-spec-ctrl",
-      # "-ssbd",
-      # "-virt-ssbd"
-    ]
-    hotplugged = 0
-    limit = 0
-    numa = false
-    sockets = 1
-    type = "host"
-    units = 1024
-    affinity = null
-  }
-  description = "Test virtual machine"
+  # cpu = {
+  #   architecture = "x86_64"
+  #   cores = 2
+  #   flags = [
+  #     # "-aes",
+  #     # "-amd-no-ssb",
+  #     # "-amd-ssbd",
+  #     # "-hv-evmcs",
+  #     # "-hv-tlbflush",
+  #     # "-ibpb",
+  #     # "-md-clear",
+  #     # "-pcid",
+  #     # "-pdpe1gb",
+  #     # "-spec-ctrl",
+  #     # "-ssbd",
+  #     # "-virt-ssbd"
+  #   ]
+  #   hotplugged = 0
+  #   limit = 0
+  #   numa = false
+  #   sockets = 1
+  #   type = "host"
+  #   units = 1024
+  #   affinity = null
+  # }
+  # description = "Test virtual machine"
   disk = {
     aio = "io_uring"
     backup = true
