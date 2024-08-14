@@ -289,7 +289,7 @@ variable "disk" {
     error_message = "The interface must start with 'scsi', 'sata', or 'virtio' followed by a number (e.g., 'scsi0', 'sata1', 'virtio3')."
   }
   validation {
-    condition = var.disk == null || var.disk.serial == null || length(base64encode(var.disk.serial)) <= 28
+    condition = var.disk == null || var.disk.serial == null || (var.disk.serial != null && length(base64encode(var.disk.serial)) <= 28)
     error_message = "The serial must be a string that evaluates to up to 20 bytes."
   }
 }
