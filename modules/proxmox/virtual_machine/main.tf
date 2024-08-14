@@ -65,21 +65,39 @@ resource "proxmox_virtual_environment_vm" "virtual_machine" {
     }
   }
   description = var.description
+  dynamic "disk" {
+    for_each = var.disk != null && var.disk != {} ? [1] : []
+    content {
+      aio = lookup(var.disk, "aio", null)
+      backup = lookup(var.disk, "backup", null)
+      cache = lookup(var.disk, "cache", null)
+      datastore_id = lookup(var.disk, "datastore_id", null)
+      path_in_datastore = lookup(var.disk, "path_in_datastore", null)
+      discard = lookup(var.disk, "discard", null)
+      file_format = lookup(var.disk, "file_format", null)
+      file_id = lookup(var.disk, "file_id", null)
+      interface = lookup(var.disk, "interface", null)
+      iothread = lookup(var.disk, "iothread", null)
+      replicate = lookup(var.disk, "replicate", null)
+      serial = lookup(var.disk, "serial", null)
+      size = lookup(var.disk, "size", null)
+      dynamic "speed"{
+        for_each = var.disk.speed != null && var.disk.speed != {} ? [1] : []
+        content {
+          iops_read = lookup(var.disk.speed, "iops_read", null)
+          iops_read_burstable = lookup(var.disk.speed, "iops_read_burstable", null)
+          iops_write = lookup(var.disk.speed, "iops_write", null)
+          iops_write_burstable = lookup(var.disk.speed, "iops_write_burstable", null)
+          read = lookup(var.disk.speed, "read", null)
+          read_burstable = lookup(var.disk.speed, "read_burstable", null)
+          write = lookup(var.disk.speed, "write", null)
+          write_burstable = lookup(var.disk.speed, "write_burstable", null)
+        }
+      }
+      ssd = lookup(var.disk, "ssd", null)
+    }
+  }
   ###
-
-  # initialization {
-  #   ip_config {
-  #     ipv4 {
-  #       address = var.initialization.ip_config.ipv4.address
-  #       gateway = var.initialization.ip_config.ipv4.gateway
-  #     }
-  #   }
-  #   user_account {
-  #     keys     = var.initialization.user_account.keys
-  #     password = var.initialization.user_account.password
-  #     username = var.initialization.user_account.username
-  #   }
-  # }
 
   dynamic "initialization" {
     for_each = var.initialization != null && var.initialization != {} ? [1] : []
@@ -107,13 +125,29 @@ resource "proxmox_virtual_environment_vm" "virtual_machine" {
     }
   }
 
+  dynamic "disk" {
+    for_each = var.disk != null && var.disk != {} ? [1] : []
+    content {
+      
+    }
+  }
+
   disk {
-    datastore_id  = var.disk.datastore_id
-    file_id       = var.disk.file_id
-    interface     = var.disk.interface
-    discard       = var.disk.discard
-    size          = var.disk.size
-    ssd           = var.disk.ssd
+    aio = var.disk.aio
+    backup = var.disk.backup
+    cache = var.disk.cache
+    datastore_id = var.disk.datastore_id
+    path_in_datastore = var.disk.path_in_datastore
+    discard = var.disk.discard
+    file_format = var.disk.file_format
+    file_id = var.disk.file_id
+    interface = var.disk.interface
+    iothread = var.disk.iothread
+    replicate = var.disk.replicate
+    serial = var.disk.serial
+    size = var.disk.size
+    speed = var.disk.speed
+    ssd = var.disk.ssd
   }
 
   network_device {
