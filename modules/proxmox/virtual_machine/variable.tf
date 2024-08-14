@@ -277,7 +277,7 @@ variable "disk" {
     error_message = "Inalid instance type. Valid options are ['on', 'ignore']"
   }
   validation {
-    condition = var.disk == null || contains(["qcow2", "raw", "vmdk"], var.disk.discard)
+    condition = var.disk == null || contains(["qcow2", "raw", "vmdk"], var.disk.file_format)
     error_message = "Inalid instance type. Valid options are ['qcow2', 'raw', 'vmdk']"
   }
   validation {
