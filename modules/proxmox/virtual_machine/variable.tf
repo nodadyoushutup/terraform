@@ -236,7 +236,7 @@ variable "description" {
 
 variable "disk" {
   description = "Disk configuration"
-  type = object({
+  type = list(object({
     aio = optional(string, "io_uring")
     backup = optional(bool, true)
     cache = optional(string, "none")
@@ -261,7 +261,7 @@ variable "disk" {
       write_burstable = optional(number, null)
     }), null)
     ssd = optional(bool, false)
-  })
+  }))
   default = null
   validation {
     condition = var.disk == null || can(var.disk.aio == null) || can(contains(["io_uring", "native", "threads"], var.disk.aio))
