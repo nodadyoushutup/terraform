@@ -83,7 +83,7 @@ resource "proxmox_virtual_environment_vm" "virtual_machine" {
       size = lookup(each.value, "size", null)
       
       dynamic "speed" {
-        for_each = lookup(each.value.speed, "speed", null) != null && lookup(each.value.speed, "speed", null) != {} ? [1] : []
+        for_each = each.value.speed != null && each.value.speed != {} ? [1] : []
         content {
           iops_read = lookup(each.value.speed, "iops_read", null)
           iops_read_burstable = lookup(each.value.speed, "iops_read_burstable", null)
