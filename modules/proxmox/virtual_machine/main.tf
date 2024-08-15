@@ -84,10 +84,10 @@ resource "proxmox_virtual_environment_vm" "virtual_machine" {
       ssd = lookup(disk.value, "ssd", null)
 
       # Extract speed attribute
-      speed_config = lookup(disk.value, "speed", null)
+      # speed_config = lookup(disk.value, "speed", null)
 
       dynamic "speed" {
-        for_each = speed_config != null && speed_config != {} ? [1] : []
+        for_each = disk.value.speed != null && disk.value.speed != {} ? [1] : []
         content {
           iops_read = lookup(speed.value, "iops_read", null)
           iops_read_burstable = lookup(speed.value, "iops_read_burstable", null)
