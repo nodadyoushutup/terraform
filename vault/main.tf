@@ -1,20 +1,22 @@
 # vault/main.tf
 
 resource "proxmox_virtual_environment_vm" "vault" {
-  name        = "vault"
+  vm_id = 101
+  name = "vault"
   description = "HashiCorp Vault"
-  tags        = ["terraform", "ubuntu"]
+  tags = ["terraform", "ubuntu"]
   node_name = "pve"
-  vm_id     = 101
+  on_boot = false
+  started = false
   stop_on_destroy = true
   agent {
     enabled = false
   }
   disk {
     datastore_id = "local-lvm"
-    file_id      = "local:iso/jammy-server-cloudimg-amd64.img"
-    interface    = "scsi0"
-    size         = 10
+    file_id = "local:iso/jammy-server-cloudimg-amd64.img"
+    interface = "scsi0"
+    size = 10
   }
   memory {
     dedicated = 4096
