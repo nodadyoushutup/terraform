@@ -66,7 +66,7 @@ resource "proxmox_virtual_environment_vm" "virtual_machine" {
   }
   description = var.description
   dynamic "disk" {
-  for_each = var.disk != null && length(var.disk) > 0 ? { for i, d in var.disk : i => d } : {}
+  for_each = var.disk != null && length(var.disk) > 0 ? var.disk : []
   content {
     aio = lookup(disk.value, "aio", null)
     backup = lookup(disk.value, "backup", null)
@@ -81,6 +81,19 @@ resource "proxmox_virtual_environment_vm" "virtual_machine" {
     replicate = lookup(disk.value, "replicate", null)
     serial = lookup(disk.value, "serial", null)
     size = lookup(disk.value, "size", null)
+    # dynamic "speed" {
+    #   for_each = speed_config != null && speed_config != {} ? [speed_config] : []
+    #   content {
+    #     iops_read = lookup(speed_config, "iops_read", null)
+    #     iops_read_burstable = lookup(speed_config, "iops_read_burstable", null)
+    #     iops_write = lookup(speed_config, "iops_write", null)
+    #     iops_write_burstable = lookup(speed_config, "iops_write_burstable", null)
+    #     read = lookup(speed_config, "read", null)
+    #     read_burstable = lookup(speed_config, "read_burstable", null)
+    #     write = lookup(speed_config, "write", null)
+    #     write_burstable = lookup(speed_config, "write_burstable", null)
+    #   }
+    # }
     ssd = lookup(disk.value, "ssd", null)
   }
 }
