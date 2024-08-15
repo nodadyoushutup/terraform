@@ -23,7 +23,7 @@ resource "proxmox_virtual_environment_vm" "vault" {
         gateway = "192.168.1.1"
       }
     }
-    user_account = {
+    user_account {
       username = local.virtual_machine.username
       password = local.virtual_machine.password
       keys = [file("/mnt/workspace/work.pub")]
