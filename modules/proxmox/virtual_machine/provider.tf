@@ -18,8 +18,8 @@ provider "proxmox" {
     username = local.provider.proxmox.username
     private_key = file("/mnt/workspace/proxmox.pem")
     node {
-      name = local.provider.proxmox.node_name
-      address = local.provider.proxmox.node_address
+      name = local.provider.proxmox.node.name
+      address = local.provider.proxmox.node.address
     }
   }
 }
