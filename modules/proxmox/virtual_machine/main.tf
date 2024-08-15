@@ -82,23 +82,6 @@ resource "proxmox_virtual_environment_vm" "virtual_machine" {
       serial = lookup(disk.value, "serial", null)
       size = lookup(disk.value, "size", null)
       ssd = lookup(disk.value, "ssd", null)
-
-      # Extract speed attribute
-      # speed_config = lookup(each.value, "speed", null)
-
-      # dynamic "speed" {
-      #   for_each = speed_config != null && speed_config != {} ? [speed_config] : []
-      #   content {
-      #     iops_read = lookup(speed_config, "iops_read", null)
-      #     iops_read_burstable = lookup(speed_config, "iops_read_burstable", null)
-      #     iops_write = lookup(speed_config, "iops_write", null)
-      #     iops_write_burstable = lookup(speed_config, "iops_write_burstable", null)
-      #     read = lookup(speed_config, "read", null)
-      #     read_burstable = lookup(speed_config, "read_burstable", null)
-      #     write = lookup(speed_config, "write", null)
-      #     write_burstable = lookup(speed_config, "write_burstable", null)
-      #   }
-      # }
     }
   }
   ###
