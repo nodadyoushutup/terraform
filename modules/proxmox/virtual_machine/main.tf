@@ -15,10 +15,10 @@ resource "proxmox_virtual_environment_vm" "virtual_machine" {
   dynamic "agent" {
     for_each = var.agent != null && var.agent != {} ? [1] : []
     content {
-      enabled = lookup(agent.value, "enabled", null)
-      timeout = lookup(agent.value, "timeout", null)
-      trim    = lookup(agent.value, "trim", null)
-      type    = lookup(agent.value, "type", null)
+      enabled = lookup(var.agent, "enabled", null)
+      timeout = lookup(var.agent, "timeout", null)
+      trim    = lookup(var.agent, "trim", null)
+      type    = lookup(var.agent, "type", null)
     }
   }
   dynamic "audio_device" {
@@ -82,20 +82,23 @@ resource "proxmox_virtual_environment_vm" "virtual_machine" {
       serial = lookup(each.value, "serial", null)
       size = lookup(each.value, "size", null)
       ssd = lookup(each.value, "ssd", null)
-      speed_config = lookup(each.value, "speed", null)
-      dynamic "speed" {
-        for_each = speed_config.value != null && speed_config.value != {} ? [1] : []
-        content {
-          iops_read = lookup(speed_config.value, "iops_read", null)
-          iops_read_burstable = lookup(speed_config.value, "iops_read_burstable", null)
-          iops_write = lookup(speed_config.value, "iops_write", null)
-          iops_write_burstable = lookup(speed_config.value, "iops_write_burstable", null)
-          read = lookup(speed_config.value, "read", null)
-          read_burstable = lookup(speed_config.value, "read_burstable", null)
-          write = lookup(speed_config.value, "write", null)
-          write_burstable = lookup(speed_config.value, "write_burstable", null)
-        }
-      }
+
+      # Extract speed attribute
+      # speed_config = lookup(each.value, "speed", null)
+
+      # dynamic "speed" {
+      #   for_each = speed_config != null && speed_config != {} ? [speed_config] : []
+      #   content {
+      #     iops_read = lookup(speed_config, "iops_read", null)
+      #     iops_read_burstable = lookup(speed_config, "iops_read_burstable", null)
+      #     iops_write = lookup(speed_config, "iops_write", null)
+      #     iops_write_burstable = lookup(speed_config, "iops_write_burstable", null)
+      #     read = lookup(speed_config, "read", null)
+      #     read_burstable = lookup(speed_config, "read_burstable", null)
+      #     write = lookup(speed_config, "write", null)
+      #     write_burstable = lookup(speed_config, "write_burstable", null)
+      #   }
+      # }
     }
   }
   ###
