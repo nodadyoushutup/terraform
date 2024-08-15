@@ -68,20 +68,20 @@ resource "proxmox_virtual_environment_vm" "virtual_machine" {
   dynamic "disk" {
     for_each = var.disk != null && var.disk != {} ? [1] : []
     content {
-      aio = lookup(disk, "aio", null)
-      backup = lookup(disk, "backup", null)
-      cache = lookup(disk, "cache", null)
-      datastore_id = lookup(disk, "datastore_id", null)
-      path_in_datastore = lookup(disk, "path_in_datastore", null)
-      discard = lookup(disk, "discard", null)
-      file_format = lookup(disk, "file_format", null)
-      file_id = lookup(disk, "file_id", null)
-      interface = lookup(disk, "interface", null)
-      iothread = lookup(disk, "iothread", null)
-      replicate = lookup(disk, "replicate", null)
-      serial = lookup(disk, "serial", null)
-      size = lookup(disk, "size", null)
-      ssd = lookup(disk, "ssd", null)
+      aio = lookup(disk.value, "aio", null)
+      backup = lookup(disk.value, "backup", null)
+      cache = lookup(disk.value, "cache", null)
+      datastore_id = lookup(disk.value, "datastore_id", null)
+      path_in_datastore = lookup(disk.value, "path_in_datastore", null)
+      discard = lookup(disk.value, "discard", null)
+      file_format = lookup(disk.value, "file_format", null)
+      file_id = lookup(disk.value, "file_id", null)
+      interface = lookup(disk.value, "interface", null)
+      iothread = lookup(disk.value, "iothread", null)
+      replicate = lookup(disk.value, "replicate", null)
+      serial = lookup(disk.value, "serial", null)
+      size = lookup(disk.value, "size", null)
+      ssd = lookup(disk.value, "ssd", null)
     }
   }
   ###
