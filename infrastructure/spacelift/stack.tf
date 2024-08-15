@@ -6,7 +6,7 @@ resource "spacelift_stack" "proxmox" {
   branch            = "main"
   description       = "Provisions Proxmox resources"
   name              = "proxmox"
-  project_root      = "infrastructure/proxmox"
+  project_root      = "/infrastructure/proxmox"
   repository        = "terraform"
   terraform_version = "1.5.7"
 }
@@ -17,7 +17,7 @@ resource "spacelift_stack" "vault" {
   branch            = "main"
   description       = "Provisions HashiCorp Vault infrastructure."
   name              = "vault"
-  project_root      = "infrastructure/vault"
+  project_root      = "/infrastructure/vault"
   repository        = "terraform"
   terraform_version = "1.5.7"
   labels            = ["infrastructure", "virtual_machine"]
