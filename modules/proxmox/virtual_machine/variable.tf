@@ -268,7 +268,7 @@ variable "disk" {
     error_message = "Inalid instance type. Valid options are ['io_uring', 'native', 'threads']"
   }
   validation {
-    condition = var.disk == null || can(var.disk.var.disk.cache == null) || can(contains(["none", "directsync", "writethrough", "writeback", "unsafe"], var.disk.cache))
+    condition = var.disk == null || can(var.disk.cache == null) || can(contains(["none", "directsync", "writethrough", "writeback", "unsafe"], var.disk.cache))
     error_message = "Inalid instance type. Valid options are ['io_uring', 'native', 'threads']"
   }
   validation {
@@ -276,7 +276,7 @@ variable "disk" {
     error_message = "Inalid instance type. Valid options are ['on', 'ignore']"
   }
   validation {
-    condition = var.disk == null || can(var.disk.var.disk.file_format == null) || can(contains(["qcow2", "raw", "vmdk"], var.disk.file_format))
+    condition = var.disk == null || can(var.disk.file_format == null) || can(contains(["qcow2", "raw", "vmdk"], var.disk.file_format))
     error_message = "Inalid instance type. Valid options are ['qcow2', 'raw', 'vmdk']"
   }
   validation {
