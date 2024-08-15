@@ -15,10 +15,10 @@ resource "proxmox_virtual_environment_vm" "virtual_machine" {
   dynamic "agent" {
     for_each = var.agent != null && var.agent != {} ? [1] : []
     content {
-      enabled = lookup(var.agent, "enabled", null)
-      timeout = lookup(var.agent, "timeout", null)
-      trim    = lookup(var.agent, "trim", null)
-      type    = lookup(var.agent, "type", null)
+      enabled = lookup(agent.value, "enabled", null)
+      timeout = lookup(agent.value, "timeout", null)
+      trim    = lookup(agent.value, "trim", null)
+      type    = lookup(agent.value, "type", null)
     }
   }
   dynamic "audio_device" {
