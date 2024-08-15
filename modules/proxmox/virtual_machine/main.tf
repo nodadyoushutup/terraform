@@ -82,7 +82,7 @@ resource "proxmox_virtual_environment_vm" "virtual_machine" {
       serial = lookup(disk, "serial", null)
       size = lookup(disk, "size", null)
       dynamic "speed"{
-        for_each = lookup(disk, "speed", null) != null && disk.speed != {} ? [1] : []
+        for_each = lookup(disk, "speed", null) != null && lookup(disk, "speed", null) != {} ? [1] : []
         content {
           iops_read = lookup(speed, "iops_read", null)
           iops_read_burstable = lookup(speed, "iops_read_burstable", null)
