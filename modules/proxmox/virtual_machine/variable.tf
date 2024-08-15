@@ -264,27 +264,32 @@ variable "disk" {
   }))
   default = null
   validation {
-    condition = var.disk == null || can(disk.aio == null) || can(contains(["io_uring", "native", "threads"], var.disk.aio))
-    error_message = "Inalid instance type. Valid options are ['io_uring', 'native', 'threads']"
+    condition = var.disk == null || can(alltrue([for d in var.disk : d.aio == null || contains(["io_uring", "native", "threads"], d.aio)]))
+    error_message = "Invalid instance type for 'aio'. Valid options are ['io_uring', 'native', 'threads']."
   }
+
   validation {
-    condition = var.disk == null || can(var.disk.cache == null) || can(contains(["none", "directsync", "writethrough", "writeback", "unsafe"], var.disk.cache))
-    error_message = "Inalid instance type. Valid options are ['io_uring', 'native', 'threads']"
+    condition = var.disk == null || can(alltrue([for d in var.disk : d.cache == null || contains(["none", "directsync", "writethrough", "writeback", "unsafe"], d.cache)]))
+    error_message = "Invalid instance type for 'cache'. Valid options are ['none', 'directsync', 'writethrough', 'writeback', 'unsafe']."
   }
+
   validation {
-    condition = var.disk == null || can(var.disk.discard == null) || can(contains(["on", "ignore"], var.disk.discard))
-    error_message = "Inalid instance type. Valid options are ['on', 'ignore']"
+    condition = var.disk == null || can(alltrue([for d in var.disk : d.discard == null || contains(["on", "ignore"], d.discard)]))
+    error_message = "Invalid instance type for 'discard'. Valid options are ['on', 'ignore']."
   }
+
   validation {
-    condition = var.disk == null || can(var.disk.file_format == null) || can(contains(["qcow2", "raw", "vmdk"], var.disk.file_format))
-    error_message = "Inalid instance type. Valid options are ['qcow2', 'raw', 'vmdk']"
+    condition = var.disk == null || can(alltrue([for d in var.disk : d.file_format == null || contains(["qcow2", "raw", "vmdk"], d.file_format)]))
+    error_message = "Invalid instance type for 'file_format'. Valid options are ['qcow2', 'raw', 'vmdk']."
   }
+
   validation {
-    condition = var.disk == null || can(var.disk.file_id == null) || can(regex("^[^:]+:[^/]+/[^\\s]+$", var.disk.file_id))
+    condition = var.disk == null || can(alltrue([for d in var.disk : d.file_id == null || can(regex("^[^:]+:[^/]+/[^\\s]+$", d.file_id))]))
     error_message = "The file_id must be in the format 'volume:content_type/path/to/file'."
   }
+
   validation {
-    condition = var.disk == null || can(var.disk.interface == null) || can(regex("^(scsi|sata|virtio)\\d+$", var.disk.interface))
+    condition = var.disk == null || can(alltrue([for d in var.disk : d.interface == null || can(regex("^(scsi|sata|virtio)\\d+$", d.interface))]))
     error_message = "The interface must start with 'scsi', 'sata', or 'virtio' followed by a number (e.g., 'scsi0', 'sata1', 'virtio3')."
   }
 }
