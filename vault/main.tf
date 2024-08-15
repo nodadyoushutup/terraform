@@ -57,7 +57,7 @@ module "vault" {
   #   affinity = null
   # }
   # description = "Test virtual machine"
-  disk = {
+  disk = [{
     aio = "io_uring"
     backup = true
     cache = "none"
@@ -82,9 +82,8 @@ module "vault" {
       write_burstable = null
     }
     ssd = false
-  }
-
-  disk = {
+  },
+  {
     aio = "io_uring"
     backup = true
     cache = "none"
@@ -109,7 +108,7 @@ module "vault" {
       write_burstable = null
     }
     ssd = false
-  }
+  }]
   
   ###
   vm = {
