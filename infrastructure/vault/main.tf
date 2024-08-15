@@ -38,11 +38,6 @@ resource "proxmox_virtual_environment_vm" "vault" {
       password = local.virtual_machine.password
       keys = [file("/mnt/workspace/work.pub")]
     }
-    user_account {
-      username = "postgres"
-      password = "postgres"
-      keys = [file("/mnt/workspace/work.pub")]
-    }
   }
 }
 
