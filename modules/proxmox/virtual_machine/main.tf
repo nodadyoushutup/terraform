@@ -84,16 +84,16 @@ resource "proxmox_virtual_environment_vm" "virtual_machine" {
       ssd = lookup(each.value, "ssd", null)
       speed_config = lookup(each.value, "speed", null)
       dynamic "speed" {
-        for_each = speed_config != null && speed_config != {} ? [1] : []
+        for_each = speed_config.value != null && speed_config.value != {} ? [1] : []
         content {
-          iops_read = lookup(speed_config, "iops_read", null)
-          iops_read_burstable = lookup(speed_config, "iops_read_burstable", null)
-          iops_write = lookup(speed_config, "iops_write", null)
-          iops_write_burstable = lookup(speed_config, "iops_write_burstable", null)
-          read = lookup(speed_config, "read", null)
-          read_burstable = lookup(speed_config, "read_burstable", null)
-          write = lookup(speed_config, "write", null)
-          write_burstable = lookup(speed_config, "write_burstable", null)
+          iops_read = lookup(speed_config.value, "iops_read", null)
+          iops_read_burstable = lookup(speed_config.value, "iops_read_burstable", null)
+          iops_write = lookup(speed_config.value, "iops_write", null)
+          iops_write_burstable = lookup(speed_config.value, "iops_write_burstable", null)
+          read = lookup(speed_config.value, "read", null)
+          read_burstable = lookup(speed_config.value, "read_burstable", null)
+          write = lookup(speed_config.value, "write", null)
+          write_burstable = lookup(speed_config.value, "write_burstable", null)
         }
       }
     }
