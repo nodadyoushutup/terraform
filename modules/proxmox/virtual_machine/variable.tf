@@ -250,7 +250,6 @@ variable "disk" {
     replicate = optional(bool, true)
     serial = optional(string, null)
     size = optional(number, 8)
-    # speed_config = optional(object, null)
     speed = optional(object({
       iops_read = optional(number, null)
       iops_read_burstable = optional(number, null)

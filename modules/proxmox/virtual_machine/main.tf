@@ -82,23 +82,19 @@ resource "proxmox_virtual_environment_vm" "virtual_machine" {
       serial = lookup(disk.value, "serial", null)
       size = lookup(disk.value, "size", null)
       ssd = lookup(disk.value, "ssd", null)
-
-      # Extract speed attribute
-      # speed_config = lookup(disk.value, "speed", null)
-
-      dynamic "speed" {
-        for_each = disk.value.speed != null && disk.value.speed != {} ? [1] : []
-        content {
-          iops_read = lookup(speed.value, "iops_read", null)
-          iops_read_burstable = lookup(speed.value, "iops_read_burstable", null)
-          iops_write = lookup(speed.value, "iops_write", null)
-          iops_write_burstable = lookup(speed.value, "iops_write_burstable", null)
-          read = lookup(speed.value, "read", null)
-          read_burstable = lookup(speed.value, "read_burstable", null)
-          write = lookup(speed.value, "write", null)
-          write_burstable = lookup(speed.value, "write_burstable", null)
-        }
-      }
+      # dynamic "speed" {
+      #   for_each = disk.value.speed != null && disk.value.speed != {} ? [1] : []
+      #   content {
+      #     iops_read = lookup(speed.value, "iops_read", null)
+      #     iops_read_burstable = lookup(speed.value, "iops_read_burstable", null)
+      #     iops_write = lookup(speed.value, "iops_write", null)
+      #     iops_write_burstable = lookup(speed.value, "iops_write_burstable", null)
+      #     read = lookup(speed.value, "read", null)
+      #     read_burstable = lookup(speed.value, "read_burstable", null)
+      #     write = lookup(speed.value, "write", null)
+      #     write_burstable = lookup(speed.value, "write_burstable", null)
+      #   }
+      # }
     }
   }
   ###
