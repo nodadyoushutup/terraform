@@ -66,7 +66,7 @@ resource "proxmox_virtual_environment_vm" "virtual_machine" {
   }
   description = var.description
   dynamic "disk" {
-  for_each = var.disk != null && length(var.disk) > 0 ? var.disk : []
+  for_each = var.disk != null && can(length(var.disk)) > 0 ? var.disk : []
   content {
     aio = lookup(disk.value, "aio", null)
     backup = lookup(disk.value, "backup", null)
