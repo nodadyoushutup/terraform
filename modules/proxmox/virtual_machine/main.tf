@@ -66,7 +66,7 @@ resource "proxmox_virtual_environment_vm" "virtual_machine" {
   }
   description = var.description
   dynamic "disk" {
-    for_each = var.disk != null && length(var.disk) > 0 ? var.disk : []
+    for_each = var.disk != null && var.disk != {} ? [1] : []
     content {
       aio = lookup(disk.value, "aio", null)
       backup = lookup(disk.value, "backup", null)
@@ -86,19 +86,19 @@ resource "proxmox_virtual_environment_vm" "virtual_machine" {
       # Extract speed attribute
       # speed_config = lookup(each.value, "speed", null)
 
-      # dynamic "speed" {
-      #   for_each = speed_config != null && speed_config != {} ? [speed_config] : []
-      #   content {
-      #     iops_read = lookup(speed_config, "iops_read", null)
-      #     iops_read_burstable = lookup(speed_config, "iops_read_burstable", null)
-      #     iops_write = lookup(speed_config, "iops_write", null)
-      #     iops_write_burstable = lookup(speed_config, "iops_write_burstable", null)
-      #     read = lookup(speed_config, "read", null)
-      #     read_burstable = lookup(speed_config, "read_burstable", null)
-      #     write = lookup(speed_config, "write", null)
-      #     write_burstable = lookup(speed_config, "write_burstable", null)
-      #   }
-      # }
+      dynamic "speed" {
+        for_each = lookup(disk.value, "speed", null) != null && lookup(disk.value, "speed", null) != {} ? [1] : []
+        content {
+          iops_read = lookup(speed.value, "iops_read", null)
+          iops_read_burstable = lookup(speed.value, "iops_read_burstable", null)
+          iops_write = lookup(speed.value, "iops_write", null)
+          iops_write_burstable = lookup(speed.value, "iops_write_burstable", null)
+          read = lookup(speed.value, "read", null)
+          read_burstable = lookup(speed.value, "read_burstable", null)
+          write = lookup(speed.value, "write", null)
+          write_burstable = lookup(speed.value, "write_burstable", null)
+        }
+      }
     }
   }
   ###
