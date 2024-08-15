@@ -132,24 +132,6 @@ resource "proxmox_virtual_environment_vm" "virtual_machine" {
     }
   }
 
-  disk {
-    aio = var.disk.aio
-    backup = var.disk.backup
-    cache = var.disk.cache
-    datastore_id = var.disk.datastore_id
-    path_in_datastore = var.disk.path_in_datastore
-    discard = var.disk.discard
-    file_format = var.disk.file_format
-    file_id = var.disk.file_id
-    interface = var.disk.interface
-    iothread = var.disk.iothread
-    replicate = var.disk.replicate
-    serial = var.disk.serial
-    size = var.disk.size
-    speed = var.disk.speed
-    ssd = var.disk.ssd
-  }
-
   network_device {
     bridge = var.network.bridge
     model  = var.network.model
