@@ -82,16 +82,16 @@ resource "proxmox_virtual_environment_vm" "virtual_machine" {
       serial = lookup(disk, "serial", null)
       size = lookup(disk, "size", null)
       dynamic "speed"{
-        for_each = disk.speed != null && disk.speed != {} ? [1] : []
+        for_each = lookup(disk, "speed", null) != null && disk.speed != {} ? [1] : []
         content {
-          iops_read = lookup(disk.speed, "iops_read", null)
-          iops_read_burstable = lookup(disk.speed, "iops_read_burstable", null)
-          iops_write = lookup(disk.speed, "iops_write", null)
-          iops_write_burstable = lookup(disk.speed, "iops_write_burstable", null)
-          read = lookup(disk.speed, "read", null)
-          read_burstable = lookup(disk.speed, "read_burstable", null)
-          write = lookup(disk.speed, "write", null)
-          write_burstable = lookup(disk.speed, "write_burstable", null)
+          iops_read = lookup(speed, "iops_read", null)
+          iops_read_burstable = lookup(speed, "iops_read_burstable", null)
+          iops_write = lookup(speed, "iops_write", null)
+          iops_write_burstable = lookup(speed, "iops_write_burstable", null)
+          read = lookup(speed, "read", null)
+          read_burstable = lookup(speed, "read_burstable", null)
+          write = lookup(speed, "write", null)
+          write_burstable = lookup(speed, "write_burstable", null)
         }
       }
       ssd = lookup(disk, "ssd", null)
