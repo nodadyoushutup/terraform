@@ -9,6 +9,7 @@ resource "proxmox_virtual_environment_vm" "vault" {
   on_boot = false
   started = false
   stop_on_destroy = true
+  boot_order = ["scsi0"]
   agent {
     enabled = false
   }
