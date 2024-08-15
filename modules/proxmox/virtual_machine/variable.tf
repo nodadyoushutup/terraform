@@ -234,12 +234,6 @@ variable "description" {
   default = "Virtual machine"
 }
 
-variable "speed_config" {
-  description = "speed config"
-  type = optional(object)
-  default = {}
-}
-
 variable "disk" {
   description = "Disk configuration"
   type = list(object({
@@ -256,6 +250,7 @@ variable "disk" {
     replicate = optional(bool, true)
     serial = optional(string, null)
     size = optional(number, 8)
+    speed_config = optional(object, null)
     speed = optional(object({
       iops_read = optional(number, null)
       iops_read_burstable = optional(number, null)
