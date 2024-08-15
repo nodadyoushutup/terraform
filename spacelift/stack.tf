@@ -11,7 +11,7 @@ resource "spacelift_stack" "proxmox" {
   terraform_version = "1.5.7"
 }
 
-resource "spacelift_stack" "vault2" {
+resource "spacelift_stack" "vault" {
   administrative    = false
   autodeploy        = true
   branch            = "main"
