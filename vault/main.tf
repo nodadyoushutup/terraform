@@ -16,9 +16,16 @@ resource "proxmox_virtual_environment_vm" "vault" {
     interface    = "scsi0"
     size         = 10
   }
+  memory {
+    dedicated = 4096
+  }
+  cpu {
+    sockets = 1
+    cores = 2
+  }
   initialization {
     ip_config {
-      ipv4 = {
+      ipv4 {
         address = "192.168.1.101/24"
         gateway = "192.168.1.1"
       }
