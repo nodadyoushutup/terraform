@@ -125,13 +125,6 @@ resource "proxmox_virtual_environment_vm" "virtual_machine" {
     }
   }
 
-  dynamic "disk" {
-    for_each = var.disk != null && var.disk != {} ? [1] : []
-    content {
-      
-    }
-  }
-
   network_device {
     bridge = var.network.bridge
     model  = var.network.model
