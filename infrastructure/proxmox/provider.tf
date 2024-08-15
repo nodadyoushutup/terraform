@@ -1,15 +1,4 @@
-# proxmox/provider./tf
-
-locals {
-  provider = yamldecode(file("/mnt/workspace/provider.yaml"))
-}
-
-output "provider" {
-  value = local.provider
-  description = "Provider credentials"
-}
-
-
+# infrastructure/proxmox/provider./tf
 
 terraform {
   required_providers {

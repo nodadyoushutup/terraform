@@ -9,6 +9,7 @@ resource "spacelift_stack" "proxmox" {
   project_root      = "/infrastructure/proxmox"
   repository        = "terraform"
   terraform_version = "1.5.7"
+  labels            = ["infrastructure", "proxmox", "pve"]
 }
 
 resource "spacelift_stack" "vault" {
@@ -20,7 +21,7 @@ resource "spacelift_stack" "vault" {
   project_root      = "/infrastructure/vault"
   repository        = "terraform"
   terraform_version = "1.5.7"
-  labels            = ["infrastructure", "virtual_machine"]
+  labels            = ["infrastructure", "virtual_machine", "vault"]
 }
 
 # resource "spacelift_stack" "k8s-cluster" {
