@@ -264,7 +264,7 @@ variable "disk" {
   }))
   default = null
   validation {
-    condition = var.disk == null || can(var.disk.aio == null) || can(contains(["io_uring", "native", "threads"], var.disk.aio))
+    condition = var.disk == null || can(disk.aio == null) || can(contains(["io_uring", "native", "threads"], var.disk.aio))
     error_message = "Inalid instance type. Valid options are ['io_uring', 'native', 'threads']"
   }
   validation {
