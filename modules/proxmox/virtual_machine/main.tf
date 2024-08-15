@@ -66,35 +66,37 @@ resource "proxmox_virtual_environment_vm" "virtual_machine" {
   }
   description = var.description
   dynamic "disk" {
-    for_each = var.disk != null && var.disk != {} ? [1] : []
+    for_each = var.disk != null && length(var.disk) > 0 ? var.disk : []
     content {
-      aio = lookup(disk, "aio", null)
-      backup = lookup(disk, "backup", null)
-      cache = lookup(disk, "cache", null)
-      datastore_id = lookup(disk, "datastore_id", null)
-      path_in_datastore = lookup(disk, "path_in_datastore", null)
-      discard = lookup(disk, "discard", null)
-      file_format = lookup(disk, "file_format", null)
-      file_id = lookup(disk, "file_id", null)
-      interface = lookup(disk, "interface", null)
-      iothread = lookup(disk, "iothread", null)
-      replicate = lookup(disk, "replicate", null)
-      serial = lookup(disk, "serial", null)
-      size = lookup(disk, "size", null)
-      dynamic "speed"{
-        for_each = lookup(disk, "speed", null) != null && lookup(disk, "speed", null) != {} ? [1] : []
+      aio = lookup(each.value, "aio", null)
+      backup = lookup(each.value, "backup", null)
+      cache = lookup(each.value, "cache", null)
+      datastore_id = lookup(each.value, "datastore_id", null)
+      path_in_datastore = lookup(each.value, "path_in_datastore", null)
+      discard = lookup(each.value, "discard", null)
+      file_format = lookup(each.value, "file_format", null)
+      file_id = lookup(each.value, "file_id", null)
+      interface = lookup(each.value, "interface", null)
+      iothread = lookup(each.value, "iothread", null)
+      replicate = lookup(each.value, "replicate", null)
+      serial = lookup(each.value, "serial", null)
+      size = lookup(each.value, "size", null)
+      
+      dynamic "speed" {
+        for_each = lookup(each.value, "speed", null) != null && lookup(each.value, "speed", null) != {} ? [1] : []
         content {
-          iops_read = lookup(speed, "iops_read", null)
-          iops_read_burstable = lookup(speed, "iops_read_burstable", null)
-          iops_write = lookup(speed, "iops_write", null)
-          iops_write_burstable = lookup(speed, "iops_write_burstable", null)
-          read = lookup(speed, "read", null)
-          read_burstable = lookup(speed, "read_burstable", null)
-          write = lookup(speed, "write", null)
-          write_burstable = lookup(speed, "write_burstable", null)
+          iops_read = lookup(each.value.speed, "iops_read", null)
+          iops_read_burstable = lookup(each.value.speed, "iops_read_burstable", null)
+          iops_write = lookup(each.value.speed, "iops_write", null)
+          iops_write_burstable = lookup(each.value.speed, "iops_write_burstable", null)
+          read = lookup(each.value.speed, "read", null)
+          read_burstable = lookup(each.value.speed, "read_burstable", null)
+          write = lookup(each.value.speed, "write", null)
+          write_burstable = lookup(each.value.speed, "write_burstable", null)
         }
       }
-      ssd = lookup(disk, "ssd", null)
+      
+      ssd = lookup(each.value, "ssd", null)
     }
   }
   ###
