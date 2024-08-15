@@ -57,86 +57,34 @@ module "vault" {
   #   affinity = null
   # }
   # description = "Test virtual machine"
-  # disk = [
-  #   {
-  #     aio = "io_uring"
-  #     backup = true
-  #     cache = "none"
-  #     datastore_id = "local-lvm"
-  #     path_in_datastore = null
-  #     discard = "ignore"
-  #     file_format = "qcow2"
-  #     file_id = "local:iso/jammy-server-cloudimg-amd64.img"
-  #     interface = "scsi0"
-  #     iothread = false
-  #     replicate = true
-  #     serial = null
-  #     size = 8
-  #     speed = {
-  #       iops_read = null
-  #       iops_read_burstable = null
-  #       iops_write = null
-  #       iops_write_burstable = null
-  #       read = null
-  #       read_burstable = null
-  #       write = null
-  #       write_burstable = null
-  #     }
-  #     ssd = false
-  #   },
-  #   {
-  #     aio = "io_uring"
-  #     backup = true
-  #     cache = "none"
-  #     datastore_id = "local-lvm"
-  #     path_in_datastore = null
-  #     discard = "ignore"
-  #     file_format = "qcow2"
-  #     file_id = "local:iso/jammy-server-cloudimg-amd64.img"
-  #     interface = "scsi1"
-  #     iothread = false
-  #     replicate = true
-  #     serial = null
-  #     size = 8
-  #     speed = {
-  #       iops_read = null
-  #       iops_read_burstable = null
-  #       iops_write = null
-  #       iops_write_burstable = null
-  #       read = null
-  #       read_burstable = null
-  #       write = null
-  #       write_burstable = null
-  #     }
-  #     ssd = false
-  #   },
-  #   {
-  #     aio = "io_uring"
-  #     backup = true
-  #     cache = "none"
-  #     datastore_id = "local-lvm"
-  #     path_in_datastore = null
-  #     discard = "ignore"
-  #     file_format = "qcow2"
-  #     file_id = "local:iso/jammy-server-cloudimg-amd64.img"
-  #     interface = "scsi3"
-  #     iothread = false
-  #     replicate = true
-  #     serial = null
-  #     size = 8
-  #     speed = {
-  #       iops_read = null
-  #       iops_read_burstable = null
-  #       iops_write = null
-  #       iops_write_burstable = null
-  #       read = null
-  #       read_burstable = null
-  #       write = null
-  #       write_burstable = null
-  #     }
-  #     ssd = false
-  #   }
-  # ]
+  disk = [
+    {
+      aio = "io_uring"
+      backup = true
+      cache = "none"
+      datastore_id = "local-lvm"
+      path_in_datastore = null
+      discard = "ignore"
+      file_format = "qcow2"
+      file_id = "local:iso/jammy-server-cloudimg-amd64.img"
+      interface = "scsi0"
+      iothread = false
+      replicate = true
+      serial = null
+      size = 8
+      speed = {
+        iops_read = null
+        iops_read_burstable = null
+        iops_write = null
+        iops_write_burstable = null
+        read = null
+        read_burstable = null
+        write = null
+        write_burstable = null
+      }
+      ssd = false
+    }
+  ]
   
   ###
   vm = {
