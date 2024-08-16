@@ -37,4 +37,5 @@ terraform.rc
 desktop.pub
 provider.yaml
 virtual_machine.yaml
+ssh.yaml
 notes/

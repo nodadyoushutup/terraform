@@ -12,3 +12,8 @@ resource "spacelift_context" "virtual_machine" {
   description = "Virtual machine credentials"
   name        = "virtual_machine"
 }
+
+resource "spacelift_context" "ssh" {
+  description = "SSH Keys"
+  name        = "ssh"
+}
