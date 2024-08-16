@@ -13,13 +13,13 @@ provider "proxmox" {
   api_token = local.provider.proxmox.api_token
   insecure  = local.provider.proxmox.insecure
   ssh {
-    agent = true
-    agent_socket = 22
-    username = "root"
+    agent = local.provider.proxmox.ssh.agent
+    agent_socket = local.provider.proxmox.ssh.agent_socket
+    username = local.provider.proxmox.ssh.username
     private_key = file("/mnt/workspace/proxmox.pem")
     node {
-      name = "pve"
-      address = "146.115.179.178"
+      name = local.provider.proxmox.ssh.node.name
+      address = local.provider.proxmox.ssh.node.address
     }
   }
 }
