@@ -1,4 +1,4 @@
-# modules/proxmox/virtual_machine/variable.tf
+# modules/proxmox/virtual_machine_simple/variable.tf
 
 variable "vm_id" {
   description = "The ID of the virtual machine."
