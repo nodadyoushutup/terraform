@@ -92,7 +92,10 @@ variable "initialization" {
         address = "192.168.1.101/24"
         gateway = "192.168.1.1"
       })
-    }), {})
+    }), {ipv4 = {
+      address = "192.168.1.101/24"
+      gateway = "192.168.1.1"
+    }})
     user_account = optional(object({
       username = optional(string, "ubuntu")
       password = optional(string, "ubuntu")
