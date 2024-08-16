@@ -88,7 +88,10 @@ variable "initialization" {
       ipv4 = optional(object({
         address = optional(string, "dhcp")
         gateway = optional(string, null)
-      }), {})
+      }), {
+        address = "192.168.1.101/24"
+        gateway = "192.168.1.1"
+      })
     }), {})
     user_account = optional(object({
       username = optional(string, "ubuntu")
