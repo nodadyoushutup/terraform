@@ -96,5 +96,10 @@ variable "initialization" {
       keys     = optional(list(string), [])
     }), null)
   })
-  default = null
+  default = {
+    ip_config = {
+      ipv4 = {
+      }
+    }
+  }
 }
