@@ -99,6 +99,7 @@ variable "initialization" {
   default = {
     ip_config = {
       ipv4 = {
+        address = "dhcp"
       }
     }
   }
