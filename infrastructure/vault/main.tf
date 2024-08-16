@@ -6,7 +6,7 @@ module "vault" {
   vm_id = 101
   name = "vault"
   description = "HashiCorp Vault"
-  tags = ["terraform", "ubuntu", "vault"]
+  tags = ["terraform", "ubuntu", "vault", "test"]
   disk = {
     size = 20
   }
