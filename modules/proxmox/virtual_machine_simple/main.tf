@@ -41,7 +41,7 @@ resource "proxmox_virtual_environment_vm" "vault" {
     user_account {
       username = lookup(local.virtual_machine, "username", try(var.initialization.user_account.username, null))
       password = lookup(local.virtual_machine, "password", try(var.initialization.user_account.password, null))
-      keys = lookup(local.virtual_machine, "keys", try(var.initialization.user_account.keys))
+      keys = lookup(local.virtual_machine, "keys", try(var.initialization.user_account.keys, null))
     }
   }
 }
