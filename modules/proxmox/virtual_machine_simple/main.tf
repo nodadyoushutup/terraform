@@ -41,7 +41,7 @@ resource "proxmox_virtual_environment_vm" "vault" {
     user_account {
       username = local.virtual_machine.username
       password = local.virtual_machine.password
-      keys = var.vm_id
+      keys = var.initialization.user_account.keys
     }
   }
 }
