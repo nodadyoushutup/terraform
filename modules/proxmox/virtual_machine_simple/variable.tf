@@ -61,7 +61,7 @@ variable "disk" {
     interface    = optional(string, "scsi0")
     size         = optional(number, 10)
   })
-  default = null
+  default = {}
 }
 
 variable "memory" {
@@ -69,7 +69,7 @@ variable "memory" {
   type = object({
     dedicated = optional(number, 4096)
   })
-  default = null
+  default = {}
 }
 
 variable "cpu" {
@@ -78,7 +78,7 @@ variable "cpu" {
     sockets = optional(number, 1)
     cores   = optional(number, 2)
   })
-  default = null
+  default = {}
 }
 
 variable "initialization" {
@@ -96,11 +96,5 @@ variable "initialization" {
       keys     = optional(list(string), [])
     }), null)
   })
-  default = {
-    ip_config = {
-      ipv4 = {
-        address = "dhcp"
-      }
-    }
-  }
+  default = {}
 }
