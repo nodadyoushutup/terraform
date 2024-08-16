@@ -39,3 +39,4 @@ provider.yaml
 virtual_machine.yaml
 ssh.yaml
 notes/
+provider.env
