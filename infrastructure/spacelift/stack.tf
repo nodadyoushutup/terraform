@@ -12,7 +12,7 @@ resource "spacelift_stack" "proxmox" {
   labels            = ["infrastructure", "proxmox", "pve"]
 }
 
-resource "spacelift_stack" "vault" {
+resource "spacelift_stack" "vault2" {
   administrative    = false
   autodeploy        = true
   branch            = "main"
