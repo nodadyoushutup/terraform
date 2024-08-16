@@ -93,7 +93,7 @@ variable "initialization" {
     user_account = optional(object({
       username = optional(string, "ubuntu")
       password = optional(string, "ubuntu")
-      keys     = optional(list(string), local.virtual_machine.keys)
+      keys     = optional(list(string), [])
     }), null)
   })
   default = null
