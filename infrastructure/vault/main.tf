@@ -2,7 +2,7 @@
 
 module "vault" {
   source  = "spacelift.io/nodadyoushutup/virtual_machine_simple/proxmox"
-  # version = "0.4.5"
+  # version = "1.0.0"
   vm_id = 101
   name = "vault"
   description = "HashiCorp Vault"
