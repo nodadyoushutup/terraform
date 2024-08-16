@@ -23,5 +23,10 @@ module "vault" {
         gateway = "192.168.1.1"
       }
     }
+    user_account = {
+      username = "simple"
+      password = "test"
+      keys = []
+    }
   }
 }
