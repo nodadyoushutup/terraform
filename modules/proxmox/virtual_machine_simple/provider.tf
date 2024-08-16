@@ -10,8 +10,8 @@ terraform {
 
 provider "proxmox" {
   endpoint = local.provider.proxmox.endpoint
-  api_token = "root@pve!provider=cd31cf14-ec77-4fb5-ac61-d2db0bd390e1"
-  insecure  = true
+  api_token = local.provider.proxmox.api_token
+  insecure  = local.provider.proxmox.insecure
   ssh {
     agent = true
     agent_socket = 22
