@@ -96,5 +96,11 @@ variable "initialization" {
       keys     = optional(list(string), [])
     }), {})
   })
-  default = {}
+  default = {
+    ip_config = {
+      ipv4 = {
+        address = "dhcp"
+      }
+    }
+  }
 }
