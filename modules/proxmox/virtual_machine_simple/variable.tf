@@ -88,13 +88,13 @@ variable "initialization" {
       ipv4 = optional(object({
         address = optional(string, "dhcp")
         gateway = optional(string, null)
-      }), null)
-    }), null)
+      }), {})
+    }), {})
     user_account = optional(object({
       username = optional(string, "ubuntu")
       password = optional(string, "ubuntu")
       keys     = optional(list(string), [])
-    }), null)
+    }), {})
   })
   default = {}
 }
