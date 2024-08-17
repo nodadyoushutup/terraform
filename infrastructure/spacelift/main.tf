@@ -27,6 +27,16 @@ resource "spacelift_module" "virtual_machine_simple" {
   project_root       = "modules/proxmox/virtual_machine_simple"
 }
 
+resource "spacelift_module" "virtual_machine_simple" {
+  name               = "virtual_machine_simple"
+  terraform_provider = "fortigate"
+  administrative     = false
+  branch             = "main"
+  description        = "Fortigate Firewall Virtual IP"
+  repository         = "terraform"
+  project_root       = "modules/fortigate/vip"
+}
+
 resource "spacelift_stack" "proxmox" {
   administrative    = false
   autodeploy        = true

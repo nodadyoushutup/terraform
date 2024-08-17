@@ -1,6 +1,6 @@
 # modules/proxmox/virtual_machine_simple/main.tf
 
-resource "proxmox_virtual_environment_vm" "vault" {
+resource "proxmox_virtual_environment_vm" "virtual_machine_simple" {
   vm_id = var.vm_id
   name = var.name
   description = var.description
