@@ -65,3 +65,28 @@ resource "spacelift_context_attachment" "virtual_machine_database" {
   stack_id   = "database"
   priority   = 0
 }
+
+resource "spacelift_context_attachment" "provider_monitoring" {
+  context_id = "provider"
+  stack_id   = "monitoring"
+  priority   = 0
+}
+
+resource "spacelift_context_attachment" "virtual_machine_monitoring" {
+  context_id = "virtual_machine"
+  stack_id   = "docker"
+  priority   = 0
+}
+
+
+resource "spacelift_context_attachment" "provider_docker" {
+  context_id = "provider"
+  stack_id   = "docker"
+  priority   = 0
+}
+
+resource "spacelift_context_attachment" "virtual_machine_docker" {
+  context_id = "virtual_machine"
+  stack_id   = "docker"
+  priority   = 0
+}

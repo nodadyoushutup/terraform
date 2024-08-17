@@ -36,6 +36,30 @@ resource "spacelift_stack" "database" {
   labels            = ["infrastructure", "virtual_machine", "database"]
 }
 
+resource "spacelift_stack" "monitoring" {
+  administrative    = false
+  autodeploy        = true
+  branch            = "main"
+  description       = "Monitoring infrastructure."
+  name              = "monitoring"
+  project_root      = "/infrastructure/monitoring"
+  repository        = "terraform"
+  terraform_version = "1.5.7"
+  labels            = ["infrastructure", "virtual_machine", "monitoring"]
+}
+
+resource "spacelift_stack" "docker" {
+  administrative    = false
+  autodeploy        = true
+  branch            = "main"
+  description       = "Docker infrastructure."
+  name              = "docker"
+  project_root      = "/infrastructure/docker"
+  repository        = "terraform"
+  terraform_version = "1.5.7"
+  labels            = ["infrastructure", "virtual_machine", "docker"]
+}
+
 # resource "spacelift_stack" "k8s" {
 #   administrative    = true
 #   autodeploy        = true

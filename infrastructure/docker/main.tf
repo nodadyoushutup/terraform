@@ -1,12 +1,12 @@
 # infrastructure/database/main.tf
 
-module "database" {
+module "docker" {
   source  = "spacelift.io/nodadyoushutup/virtual_machine_simple/proxmox"
   # version = "1.0.0"
-  vm_id = 103
-  name = "database"
-  description = "Database services"
-  tags = ["terraform", "ubuntu", "database"]
+  vm_id = 104
+  name = "docker"
+  description = "Docker services"
+  tags = ["terraform", "ubuntu", "docker"]
   disk = {
     size = 50
   }
@@ -19,7 +19,7 @@ module "database" {
   initialization = {
     ip_config = {
       ipv4 = {
-        address = "192.168.1.103/24"
+        address = "192.168.1.104/24"
         gateway = "192.168.1.1"
       }
     }
