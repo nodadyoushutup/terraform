@@ -9,6 +9,7 @@ module "k3s-master-1" {
   tags = ["terraform", "ubuntu", "k3s", "k3s-master",]
   disk = {
     size = 10
+    datastore_id = "k3s"
   }
   memory = {
     dedicated = 2048
@@ -35,6 +36,7 @@ module "k3s-master-2" {
   tags = ["terraform", "ubuntu", "k3s", "k3s-master",]
   disk = {
     size = 10
+    datastore_id = "k3s"
   }
   memory = {
     dedicated = 2048
@@ -61,6 +63,7 @@ module "k3s-master-3" {
   tags = ["terraform", "ubuntu", "k3s", "k3s-master",]
   disk = {
     size = 10
+    datastore_id = "k3s"
   }
   memory = {
     dedicated = 2048
@@ -86,7 +89,8 @@ module "k3s-worker-1" {
   description = "k3s-worker-1 services"
   tags = ["terraform", "ubuntu", "k3s", "k3s-worker",]
   disk = {
-    size = 10
+    size = 400
+    datastore_id = "k3s"
   }
   memory = {
     dedicated = 16384
@@ -112,7 +116,8 @@ module "k3s-worker-2" {
   description = "k3s-worker-2 services"
   tags = ["terraform", "ubuntu", "k3s", "k3s-worker",]
   disk = {
-    size = 10
+    size = 400
+    datastore_id = "k3s"
   }
   memory = {
     dedicated = 16384
@@ -138,7 +143,8 @@ module "k3s-worker-3" {
   description = "k3s-worker-3 services"
   tags = ["terraform", "ubuntu", "k3s", "k3s-worker",]
   disk = {
-    size = 10
+    size = 400
+    datastore_id = "k3s"
   }
   memory = {
     dedicated = 16384
@@ -164,7 +170,8 @@ module "k3s-worker-4" {
   description = "k3s-worker-4 services"
   tags = ["terraform", "ubuntu", "k3s", "k3s-worker",]
   disk = {
-    size = 10
+    size = 400
+    datastore_id = "k3s"
   }
   memory = {
     dedicated = 16384
