@@ -1,4 +1,5 @@
-# Define variables for VIP Module
+# modules/fortigate/port_forward/variable.tf
+
 variable "mappedport" {
   description = "Port number on the internal network that the service is running on"
   type        = number

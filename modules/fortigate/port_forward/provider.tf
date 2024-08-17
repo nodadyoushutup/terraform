@@ -1,4 +1,4 @@
-# config/fortigate/provider.tf
+# modules/fortigate/port_forward/provider.tf
 
 terraform {
   required_providers {

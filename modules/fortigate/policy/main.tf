@@ -1,3 +1,5 @@
+# modules/fortigate/policy/main.tf
+
 resource "fortios_firewall_policy" "policy" {
     action             = var.action
     logtraffic         = var.logtraffic

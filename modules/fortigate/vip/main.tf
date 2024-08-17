@@ -1,3 +1,5 @@
+# modules/fortigate/vip/main.tf
+
 resource "fortios_firewall_vip" "vip" {
   arp_reply                        = var.arp_reply
   color                            = var.color

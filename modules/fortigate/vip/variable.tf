@@ -1,3 +1,5 @@
+# modules/fortigate/vip/variable.tf
+
 variable "arp_reply" {
   type    = string
   default = "enable"

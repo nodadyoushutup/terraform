@@ -1,3 +1,5 @@
+# modules/fortigate/policy/variable.tf
+
 variable "action" {
   type    = string
   default = "accept"

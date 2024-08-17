@@ -1,4 +1,4 @@
-# config/firtugate/main.tf
+# config/fortigate/main.tf
 
 module "port_forward_truenas" {
   source  = "spacelift.io/nodadyoushutup/port_forward/fortigate"
