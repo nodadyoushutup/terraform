@@ -62,10 +62,10 @@ resource "fortios_firewall_vip" "vip" {
 
 resource "fortios_firewall_policy" "policy" {
   action             = "accept"
-#   logtraffic         = "utm"
+  logtraffic         = "utm"
   name               = "policys1"
   policyid           = 100
-#   schedule           = "always"
+  schedule           = "always"
 #   wanopt             = "disable"
 #   wanopt_detection   = "active"
 #   wanopt_passive_opt = "default"
