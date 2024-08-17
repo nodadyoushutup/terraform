@@ -62,17 +62,17 @@ resource "fortios_firewall_vip" "vip" {
 
 resource "fortios_firewall_policy" "policy" {
   action             = "accept"
-  logtraffic         = "utm"
+#   logtraffic         = "utm"
   name               = "policys1"
-  policyid           = 1
-  schedule           = "always"
-  wanopt             = "disable"
-  wanopt_detection   = "active"
-  wanopt_passive_opt = "default"
-  wccp               = "disable"
-  webcache           = "disable"
-  webcache_https     = "disable"
-  wsso               = "enable"
+  policyid           = 100
+#   schedule           = "always"
+#   wanopt             = "disable"
+#   wanopt_detection   = "active"
+#   wanopt_passive_opt = "default"
+#   wccp               = "disable"
+#   webcache           = "disable"
+#   webcache_https     = "disable"
+#   wsso               = "enable"
 
 #   dstaddr {
 #     name = "all"
