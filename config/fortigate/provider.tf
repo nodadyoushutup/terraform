@@ -9,9 +9,9 @@ terraform {
 }
 
 provider "fortios" {
-    hostname = "http://nodadyoushutup.app.spacelift.io/"
-    insecure = "true"
+    hostname = "https://146.115.179.178:7014"
+    insecure = "false"
     username = local.provider.fortigate.username
     password = local.provider.fortigate.password
-    # cabundlefile  = "/mnt/workspace/Fortinet_CA_SSL.crt"
+    cabundlefile  = "/mnt/workspace/Fortinet_CA_SSL.crt"
 }
