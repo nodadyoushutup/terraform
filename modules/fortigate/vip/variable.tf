@@ -195,7 +195,7 @@ variable "ssl_http_match_host" {
 
 variable "ssl_max_version" {
   type    = string
-  default = "tls-1.2"
+  default = "tls-1.3"
 }
 
 variable "ssl_min_version" {
