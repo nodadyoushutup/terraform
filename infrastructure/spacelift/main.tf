@@ -40,6 +40,17 @@ resource "spacelift_module" "fortigate_vip" {
   labels             = ["config", "fortigate"]
 }
 
+resource "spacelift_module" "fortigate_policy" {
+  name               = "policy"
+  terraform_provider = "fortigate"
+  administrative     = false
+  branch             = "main"
+  description        = "Fortigate Firewall Policy"
+  repository         = "terraform"
+  project_root       = "modules/fortigate/policy"
+  labels             = ["config", "fortigate"]
+}
+
 resource "spacelift_stack" "proxmox" {
   administrative    = false
   autodeploy        = true
