@@ -86,7 +86,7 @@ variable "initialization" {
   type = object({
     ip_config = optional(object({
       ipv4 = object({
-        address = optional(string, "dhcp")
+        address = optional(string, "192.168.1.102/24")
         gateway = optional(string, "192.168.1.1") 
       })
     }), {ipv4 = {
