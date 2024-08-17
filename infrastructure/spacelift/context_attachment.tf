@@ -33,3 +33,15 @@ resource "spacelift_context_attachment" "virtual_machine_vault" {
   stack_id   = "vault"
   priority   = 0
 }
+
+resource "spacelift_context_attachment" "provider_database" {
+  context_id = "provider"
+  stack_id   = "database"
+  priority   = 0
+}
+
+resource "spacelift_context_attachment" "virtual_machine_database" {
+  context_id = "virtual_machine"
+  stack_id   = "database"
+  priority   = 0
+}

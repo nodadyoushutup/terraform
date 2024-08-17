@@ -24,7 +24,19 @@ resource "spacelift_stack" "vault" {
   labels            = ["infrastructure", "virtual_machine", "vault"]
 }
 
-# resource "spacelift_stack" "k8s-cluster" {
+resource "spacelift_stack" "database" {
+  administrative    = false
+  autodeploy        = true
+  branch            = "main"
+  description       = "Database infrastructure."
+  name              = "database"
+  project_root      = "/infrastructure/database"
+  repository        = "terraform"
+  terraform_version = "1.5.7"
+  labels            = ["infrastructure", "virtual_machine", "database"]
+}
+
+# resource "spacelift_stack" "k8s" {
 #   administrative    = true
 #   autodeploy        = true
 #   branch            = "main"
