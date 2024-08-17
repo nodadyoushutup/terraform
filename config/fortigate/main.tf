@@ -27,3 +27,17 @@ module "port_forward_vault" {
     name = "vault"
   }  
 }
+
+module "port_forward_postgresql" {
+  source  = "spacelift.io/nodadyoushutup/port_forward/fortigate"
+  # version = "1.0.0"
+  mappedport = 5432
+  extport = 5432
+  name = "postgresql"
+  mappedip = {
+    range = "192.168.1.103"
+  }
+  dstaddr = {
+    name = "postgresql"
+  }  
+}
