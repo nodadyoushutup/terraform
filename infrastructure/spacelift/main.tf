@@ -166,7 +166,6 @@ resource "spacelift_stack" "all_init" {
   name              = "all_init"
   project_root      = "/init/all"
   repository        = "ansible"
-  terraform_version = "1.5.7"
   labels            = ["init", "all"]
   ansible {
     playbook = "main.yml"
