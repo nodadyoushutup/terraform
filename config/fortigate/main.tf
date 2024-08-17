@@ -91,6 +91,6 @@ resource "fortios_firewall_policy" "trname" {
   }
 
   srcintf {
-    name = "port3"
+    name = "wan"
   }
 }
