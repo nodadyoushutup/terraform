@@ -6,7 +6,7 @@ resource "fortios_firewall_vip" "trname" {
   dns_mapping_ttl                  = 0
   extintf                          = "wan"
   extip                            = "0.0.0.0"
-  extport                          = "0-65535"
+  extport                          = "9055"
   fosid                            = 0
   http_cookie_age                  = 60
   http_cookie_domain_from_host     = "disable"
@@ -16,7 +16,7 @@ resource "fortios_firewall_vip" "trname" {
   http_multiplex                   = "disable"
   https_cookie_secure              = "disable"
   ldb_method                       = "static"
-  mappedport                       = "0-65535"
+  mappedport                       = "9055"
   max_embryonic_connections        = 1000
   name                             = "vips1"
   nat_source_vip                   = "disable"
@@ -56,6 +56,6 @@ resource "fortios_firewall_vip" "trname" {
   websphere_server                 = "disable"
 
   mappedip {
-    range = "192.168.1.100:9055"
+    range = "192.168.1.100"
   }
 }
