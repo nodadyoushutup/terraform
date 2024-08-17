@@ -34,8 +34,8 @@ resource "proxmox_virtual_environment_vm" "vault" {
   initialization {
     ip_config {
       ipv4 {
-        address = try(var.initialization.ip_config.ipv4.address, "dhcp")
-        gateway = try(var.initialization.ip_config.ipv4.gateway, "192.168.1.1")
+        address = var.initialization.ip_config.ipv4.address
+        gateway = var.initialization.ip_config.ipv4.gateway
       }
     }
     user_account {
