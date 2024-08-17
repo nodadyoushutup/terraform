@@ -79,12 +79,12 @@ resource "fortios_firewall_policy" "trname" {
 #   }
 
   dstintf {
-    name = "vips1"
+    name = "Proxmox"
   }
 
-  service {
-    name = "ALL"
-  }
+#   service {
+#     name = "ALL"
+#   }
 
 #   srcaddr {
 #     name = "ALL"
