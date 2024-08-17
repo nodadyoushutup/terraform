@@ -91,4 +91,5 @@ variable "initialization" {
       })
     })
   })
+  default = {}
 }
