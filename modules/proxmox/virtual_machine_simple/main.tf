@@ -35,11 +35,11 @@ resource "proxmox_virtual_environment_vm" "vault" {
     ip_config {
       ipv4 {
         address = try(var.initialization.ip_config.ipv4.address, "dhcp")
-        gateway = try(var.initialization.ip_config.ipv4.gateway, "192.168.1.1")
+        gateway = try(var.initialization.ip_config.ipv4.gateway, null)
       }
       ipv6 {
         address = try(var.initialization.ip_config.ipv6.address, "dhcp")
-        gateway = try(var.initialization.ip_config.ipv6.gateway, "192.168.1.1")
+        gateway = try(var.initialization.ip_config.ipv6.gateway, null)
       }
     }
     user_account {
