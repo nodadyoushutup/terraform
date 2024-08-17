@@ -29,12 +29,12 @@ resource "proxmox_virtual_environment_vm" "vault" {
   initialization {
     ip_config {
       ipv4 {
-        address = try(var.initialization.ip_config.ipv4.address, "dhcp")
-        gateway = try(var.initialization.ip_config.ipv4.gateway, null)
+        address = lookup(var.initialization.ip_config.ipv4, "address", "dhcp")
+        gateway = lookup(var.initialization.ip_config.ipv4, "gateway", null)
       }
       ipv6 {
-        address = try(var.initialization.ip_config.ipv6.address, "dhcp")
-        gateway = try(var.initialization.ip_config.ipv6.gateway, null)
+        address = lookup(var.initialization.ip_config.ipv6, "address", "dhcp")
+        gateway = lookup(var.initialization.ip_config.ipv6, "gateway", null)
       }
     }
     user_account {
