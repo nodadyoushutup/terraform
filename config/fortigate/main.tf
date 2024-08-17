@@ -67,7 +67,7 @@ resource "fortios_firewall_policy" "policy" {
   policyid           = 100
   schedule           = "always"
   wanopt             = "disable"
-#   wanopt_detection   = "active"
+  wanopt_detection   = "active"
 #   wanopt_passive_opt = "default"
 #   wccp               = "disable"
 #   webcache           = "disable"
