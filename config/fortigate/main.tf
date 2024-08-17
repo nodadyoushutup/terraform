@@ -1,30 +1,72 @@
 # config/fortigate/main.tf
 
-module "port_forward_truenas" {
+module "port_forward_truenas_gui" {
   source  = "spacelift.io/nodadyoushutup/port_forward/fortigate"
   # version = "1.0.0"
   mappedport = 80
-  extport = 100
-  name = "truenas"
+  extport = 10080
+  name = "truenas_gui"
   mappedip = {
     range = "192.168.1.100"
   }
   dstaddr = {
-    name = "truenas"
+    name = "truenas_gui"
   }  
 }
 
-module "port_forward_vault" {
+module "port_forward_truenas_ssh" {
+  source  = "spacelift.io/nodadyoushutup/port_forward/fortigate"
+  # version = "1.0.0"
+  mappedport = 22
+  extport = 10022
+  name = "truenas_ssh"
+  mappedip = {
+    range = "192.168.1.100"
+  }
+  dstaddr = {
+    name = "truenas_ssh"
+  }  
+}
+
+module "port_forward_vault_gui" {
   source  = "spacelift.io/nodadyoushutup/port_forward/fortigate"
   # version = "1.0.0"
   mappedport = 80
-  extport = 101
-  name = "vault"
+  extport = 10180
+  name = "vault_gui"
   mappedip = {
     range = "192.168.1.101"
   }
   dstaddr = {
-    name = "vault"
+    name = "vault_gui"
+  }  
+}
+
+module "port_forward_vault_ssh" {
+  source  = "spacelift.io/nodadyoushutup/port_forward/fortigate"
+  # version = "1.0.0"
+  mappedport = 80
+  extport = 10122
+  name = "vault_ssh"
+  mappedip = {
+    range = "192.168.1.101"
+  }
+  dstaddr = {
+    name = "vault_ssh"
+  }  
+}
+
+module "port_forward_database_ssh" {
+  source  = "spacelift.io/nodadyoushutup/port_forward/fortigate"
+  # version = "1.0.0"
+  mappedport = 22
+  extport = 10322
+  name = "database_ssh"
+  mappedip = {
+    range = "192.168.1.103"
+  }
+  dstaddr = {
+    name = "database_ssh"
   }  
 }
 
