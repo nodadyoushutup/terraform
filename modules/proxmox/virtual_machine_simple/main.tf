@@ -44,4 +44,8 @@ resource "proxmox_virtual_environment_vm" "vault" {
       keys = lookup(local.virtual_machine, "keys", try(var.initialization.user_account.keys, []))
     }
   }
+  network_device {
+    bridge = "vmbr0"
+    model = "e1000e"
+  }
 }
