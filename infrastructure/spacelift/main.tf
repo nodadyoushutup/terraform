@@ -146,12 +146,12 @@ resource "spacelift_stack" "development" {
   labels            = ["infrastructure", "virtual_machine", "development"]
 }
 
-resource "spacelift_stack" "fortigate2" {
+resource "spacelift_stack" "fortigate" {
   administrative    = false
   autodeploy        = true
   branch            = "main"
   description       = "Fortigate config."
-  name              = "fortigate2"
+  name              = "fortigate"
   project_root      = "/config/fortigate"
   repository        = "terraform"
   terraform_version = "1.5.7"
