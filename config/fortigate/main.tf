@@ -91,6 +91,6 @@ resource "fortios_firewall_policy" "policy" {
 #   }
 
   srcintf {
-    name = "all"
+    name = "wan"
   }
 }
