@@ -89,6 +89,10 @@ variable "initialization" {
         address = optional(string, null)
         gateway = optional(string, null) 
       })
+      ipv6 = object({
+        address = optional(string, null)
+        gateway = optional(string, null) 
+      })
     }), null)
   })
   default = {}

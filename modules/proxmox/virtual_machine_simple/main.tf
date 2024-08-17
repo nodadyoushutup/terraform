@@ -37,6 +37,10 @@ resource "proxmox_virtual_environment_vm" "vault" {
         address = try(var.initialization.ip_config.ipv4.address, "dhcp")
         gateway = try(var.initialization.ip_config.ipv4.address, "192.168.1.1")
       }
+      ipv6 {
+        address = try(var.initialization.ip_config.ipv6.address, "dhcp")
+        gateway = try(var.initialization.ip_config.ipv6.address, "192.168.1.1")
+      }
     }
     user_account {
       username = lookup(local.virtual_machine, "username", try(var.initialization.user_account.username, "ubuntu"))
