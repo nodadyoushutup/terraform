@@ -1,5 +1,17 @@
 # spacelift/stack.tf
 
+resource "spacelift_stack" "spacelift_attachment" {
+  administrative    = false
+  autodeploy        = true
+  branch            = "main"
+  description       = "Spacelift attachments"
+  name              = "spacelift_attachment"
+  project_root      = "/infrastructure/spacelift/attachment"
+  repository        = "terraform"
+  terraform_version = "1.5.7"
+  labels            = ["infrastructure", "spacelift_attachment"]
+}
+
 resource "spacelift_stack" "proxmox" {
   administrative    = false
   autodeploy        = true
