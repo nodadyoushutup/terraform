@@ -9,8 +9,9 @@ terraform {
 }
 
 provider "fortios" {
-    hostname = "http://146.115.179.178:7013"
-    insecure = "true"
+    hostname = "http://146.115.179.178:7014"
+    insecure = "false"
     username = local.provider.fortigate.username
     password = local.provider.fortigate.password
+    cabundlefile  = yamldecode(file("/mnt/workspace/Fortinet_CA_SSL.crt"))
 }
