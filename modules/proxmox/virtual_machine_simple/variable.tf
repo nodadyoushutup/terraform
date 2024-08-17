@@ -86,3 +86,12 @@ variable "initialization" {
   type = object({})
   default = {}
 }
+
+variable "network_device" {
+  description = "CPU configuration for the VM."
+  type = object({
+    bridge = optional(string, "vmbr0")
+    model   = optional(string, "e1000e")
+  })
+  default = {}
+}

@@ -49,7 +49,7 @@ resource "proxmox_virtual_environment_vm" "vault" {
     }
   }
   network_device {
-    bridge = "vmbr0"
-    model = "e1000e"
+    bridge = var.network_device.bridge
+    model = var.network_device.model
   }
 }
