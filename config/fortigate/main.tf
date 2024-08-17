@@ -2,7 +2,7 @@
 
 resource "fortios_firewall_address" "trname" {
   allow_routing        = "disable"
-  associated_interface = "port2"
+  associated_interface = "wan"
   color                = 3
   end_ip               = "255.255.255.0"
   name                 = "testaddress"
