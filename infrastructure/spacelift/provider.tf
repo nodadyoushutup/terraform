@@ -1,4 +1,4 @@
-# spacelift/provider.tf
+# infrastructure/spacelift/provider.tf
 
 terraform {
   required_providers {
