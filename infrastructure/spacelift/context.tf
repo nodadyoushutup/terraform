@@ -74,19 +74,19 @@ resource "spacelift_context_attachment" "provider_monitoring" {
 
 resource "spacelift_context_attachment" "virtual_machine_monitoring" {
   context_id = "virtual_machine"
-  stack_id   = "docker"
+  stack_id   = "npm"
   priority   = 0
 }
 
 
-resource "spacelift_context_attachment" "provider_docker" {
+resource "spacelift_context_attachment" "provider_npm" {
   context_id = "provider"
-  stack_id   = "docker"
+  stack_id   = "npm"
   priority   = 0
 }
 
-resource "spacelift_context_attachment" "virtual_machine_docker" {
+resource "spacelift_context_attachment" "virtual_machine_npm" {
   context_id = "virtual_machine"
-  stack_id   = "docker"
+  stack_id   = "npm"
   priority   = 0
 }

@@ -1,12 +1,12 @@
 # infrastructure/database/main.tf
 
-module "docker" {
+module "npm" {
   source  = "spacelift.io/nodadyoushutup/virtual_machine_simple/proxmox"
   # version = "1.0.0"
   vm_id = 104
-  name = "docker"
-  description = "Docker services"
-  tags = ["terraform", "ubuntu", "docker"]
+  name = "npm"
+  description = "npm services"
+  tags = ["terraform", "ubuntu", "npm"]
   disk = {
     size = 50
   }
