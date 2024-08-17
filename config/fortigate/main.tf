@@ -1,5 +1,33 @@
 # config/fortigate/main.tf
 
+module "port_forward_proxmox_gui" {
+  source  = "spacelift.io/nodadyoushutup/port_forward/fortigate"
+  # version = "1.0.0"
+  mappedport = 8006
+  extport = 1080
+  name = "proxmox_gui"
+  mappedip = {
+    range = "192.168.1.10"
+  }
+  dstaddr = {
+    name = "proxmox_gui"
+  }  
+}
+
+module "port_forward_proxmox_ssh" {
+  source  = "spacelift.io/nodadyoushutup/port_forward/fortigate"
+  # version = "1.0.0"
+  mappedport = 22
+  extport = 1022
+  name = "proxmox_ssh"
+  mappedip = {
+    range = "192.168.1.10"
+  }
+  dstaddr = {
+    name = "proxmox_ssh"
+  }  
+}
+
 module "port_forward_truenas_gui" {
   source  = "spacelift.io/nodadyoushutup/port_forward/fortigate"
   # version = "1.0.0"
