@@ -18,7 +18,7 @@ module "port_forward_proxmox_ssh" {
   source  = "spacelift.io/nodadyoushutup/port_forward/fortigate"
   # version = "1.0.0"
   mappedport = 22
-  extport = 1022
+  extport = 22
   name = "proxmox_ssh"
   mappedip = {
     range = "192.168.1.10"
