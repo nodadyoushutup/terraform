@@ -1,4 +1,4 @@
-# infrastructure/database/main.tf
+# infrastructure/npm/main.tf
 
 module "npm" {
   source  = "spacelift.io/nodadyoushutup/virtual_machine_simple/proxmox"

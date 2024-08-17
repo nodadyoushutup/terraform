@@ -1,25 +1,25 @@
-# infrastructure/monitoring/main.tf
+# infrastructure/development/main.tf
 
-module "monitoring" {
+module "development" {
   source  = "spacelift.io/nodadyoushutup/virtual_machine_simple/proxmox"
   # version = "1.0.0"
-  vm_id = 102
-  name = "monitoring"
-  description = "Monitoring services"
-  tags = ["terraform", "ubuntu", "monitoring"]
+  vm_id = 105
+  name = "development"
+  description = "Code development"
+  tags = ["terraform", "ubuntu", "development"]
   disk = {
-    size = 20
+    size = 50
   }
   memory = {
     dedicated = 4096
   }
   cpu = {
-    cores = 2
+    cores = 1
   }
   initialization = {
     ip_config = {
       ipv4 = {
-        address = "192.168.1.102/24"
+        address = "192.168.1.105/24"
         gateway = "192.168.1.1"
       }
     }

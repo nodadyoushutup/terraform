@@ -60,6 +60,18 @@ resource "spacelift_stack" "npm" {
   labels            = ["infrastructure", "virtual_machine", "npm"]
 }
 
+resource "spacelift_stack" "development" {
+  administrative    = false
+  autodeploy        = true
+  branch            = "main"
+  description       = "Development infrastructure."
+  name              = "development"
+  project_root      = "/infrastructure/development"
+  repository        = "terraform"
+  terraform_version = "1.5.7"
+  labels            = ["infrastructure", "virtual_machine", "development"]
+}
+
 # resource "spacelift_stack" "k8s" {
 #   administrative    = true
 #   autodeploy        = true

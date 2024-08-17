@@ -90,3 +90,15 @@ resource "spacelift_context_attachment" "virtual_machine_npm" {
   stack_id   = "npm"
   priority   = 0
 }
+
+resource "spacelift_context_attachment" "provider_development" {
+  context_id = "provider"
+  stack_id   = "development"
+  priority   = 0
+}
+
+resource "spacelift_context_attachment" "virtual_machine_development" {
+  context_id = "virtual_machine"
+  stack_id   = "development"
+  priority   = 0
+}
