@@ -51,6 +51,17 @@ resource "spacelift_module" "fortigate_policy" {
   labels             = ["config", "fortigate"]
 }
 
+resource "spacelift_module" "fortigate_port_forward" {
+  name               = "port_forward"
+  terraform_provider = "fortigate"
+  administrative     = false
+  branch             = "main"
+  description        = "Fortigate Port Forward"
+  repository         = "terraform"
+  project_root       = "modules/fortigate/port_forward"
+  labels             = ["config", "fortigate"]
+}
+
 resource "spacelift_stack" "proxmox" {
   administrative    = false
   autodeploy        = true
