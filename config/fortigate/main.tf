@@ -16,7 +16,7 @@ resource "fortios_firewall_vip" "vip_truenas" {
   http_multiplex                   = "disable"
   https_cookie_secure              = "disable"
   ldb_method                       = "static"
-  mappedport                       = "9055"
+  mappedport                       = "100"
   max_embryonic_connections        = 1000
   name                             = "truenas"
   nat_source_vip                   = "disable"
