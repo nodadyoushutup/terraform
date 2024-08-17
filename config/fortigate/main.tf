@@ -70,30 +70,30 @@ module "port_forward_database_ssh" {
   }  
 }
 
-module "port_forward_postgresql" {
+module "port_forward_database_postgresql" {
   source  = "spacelift.io/nodadyoushutup/port_forward/fortigate"
   # version = "1.0.0"
   mappedport = 5432
   extport = 5432
-  name = "postgresql"
+  name = "database_postgresql"
   mappedip = {
     range = "192.168.1.103"
   }
   dstaddr = {
-    name = "postgresql"
+    name = "database_postgresql"
   }  
 }
 
-module "port_forward_mysql" {
+module "port_forward_database_mysql" {
   source  = "spacelift.io/nodadyoushutup/port_forward/fortigate"
   # version = "1.0.0"
   mappedport = 3306
   extport = 3306
-  name = "mysql"
+  name = "database_mysql"
   mappedip = {
     range = "192.168.1.103"
   }
   dstaddr = {
-    name = "mysql"
+    name = "database_mysql"
   }  
 }
