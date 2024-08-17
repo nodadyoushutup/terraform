@@ -35,6 +35,7 @@ resource "spacelift_module" "fortigate_vip" {
   description        = "Fortigate Firewall Virtual IP"
   repository         = "terraform"
   project_root       = "modules/fortigate/vip"
+  labels             = ["fortigate"]
 }
 
 resource "spacelift_stack" "proxmox" {
