@@ -10,7 +10,7 @@ terraform {
 
 provider "fortios" {
     hostname = "https://146.115.179.178:7014"
-    insecure = "false"
+    insecure = "true"
     username = local.provider.fortigate.username
     password = local.provider.fortigate.password
     cabundlefile  = "/mnt/workspace/Fortinet_CA_SSL.crt"
