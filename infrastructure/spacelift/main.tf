@@ -87,6 +87,19 @@ resource "spacelift_stack" "npm" {
   labels            = ["infrastructure", "virtual_machine", "npm"]
 }
 
+resource "spacelift_stack" "k3s" {
+  administrative    = false
+  autodeploy        = true
+  branch            = "main"
+  description       = "k3s infrastructure."
+  name              = "k3s"
+  project_root      = "/infrastructure/k3s"
+  repository        = "terraform"
+  terraform_version = "1.5.7"
+  labels            = ["infrastructure", "virtual_machine", "k3s"]
+}
+
+
 resource "spacelift_stack" "development" {
   administrative    = false
   autodeploy        = true
@@ -114,11 +127,6 @@ resource "spacelift_context" "virtual_machine" {
   name        = "virtual_machine"
 }
 
-resource "spacelift_context" "ssh" {
-  description = "SSH Keys"
-  name        = "ssh"
-}
-
 resource "spacelift_context_attachment" "debug_vault" {
   context_id = "debug"
   stack_id   = "vault"
@@ -134,6 +142,30 @@ resource "spacelift_context_attachment" "debug_spacelift" {
 resource "spacelift_context_attachment" "debug_proxmox" {
   context_id = "debug"
   stack_id   = "proxmox"
+  priority   = 0
+}
+
+resource "spacelift_context_attachment" "debug_database" {
+  context_id = "debug"
+  stack_id   = "database"
+  priority   = 0
+}
+
+resource "spacelift_context_attachment" "debug_monitoring" {
+  context_id = "debug"
+  stack_id   = "monitoring"
+  priority   = 0
+}
+
+resource "spacelift_context_attachment" "debug_npm" {
+  context_id = "debug"
+  stack_id   = "npm"
+  priority   = 0
+}
+
+resource "spacelift_context_attachment" "debug_development" {
+  context_id = "debug"
+  stack_id   = "development"
   priority   = 0
 }
 
@@ -202,6 +234,19 @@ resource "spacelift_context_attachment" "virtual_machine_development" {
   stack_id   = "development"
   priority   = 0
 }
+
+resource "spacelift_context_attachment" "provider_k3s" {
+  context_id = "provider"
+  stack_id   = "k3s"
+  priority   = 0
+}
+
+resource "spacelift_context_attachment" "virtual_machine_k3s" {
+  context_id = "virtual_machine"
+  stack_id   = "k3s"
+  priority   = 0
+}
+
 
 # resource "spacelift_stack_dependency" "vault_depends_on_proxmox" {
 #   stack_id            = spacelift_stack.vault.id
