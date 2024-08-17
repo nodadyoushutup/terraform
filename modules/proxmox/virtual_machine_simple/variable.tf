@@ -84,12 +84,12 @@ variable "cpu" {
 variable "initialization" {
   description = "Initialization configuration for the VM."
   type = object({
-    ip_config = object({
+    ip_config = optional(object({
       ipv4 = object({
         address = string
         gateway = string 
       })
-    })
+    }))
   })
   default = {}
 }
