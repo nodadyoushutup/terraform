@@ -146,7 +146,7 @@ resource "spacelift_stack" "development" {
   labels            = ["infrastructure", "virtual_machine", "development"]
 }
 
-resource "spacelift_stack" "fortigate4" {
+resource "spacelift_stack" "fortigate" {
   administrative    = false
   autodeploy        = true
   branch            = "main"
