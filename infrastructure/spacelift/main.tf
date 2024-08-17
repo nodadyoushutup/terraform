@@ -15,6 +15,7 @@ resource "spacelift_module" "virtual_machine" {
   description        = "Virtual Machine"
   repository         = "terraform"
   project_root       = "modules/proxmox/virtual_machine"
+  labels             = ["infrastructure", "proxmox"]
 }
 
 resource "spacelift_module" "virtual_machine_simple" {
@@ -25,6 +26,7 @@ resource "spacelift_module" "virtual_machine_simple" {
   description        = "Virtual Machine (Simple)"
   repository         = "terraform"
   project_root       = "modules/proxmox/virtual_machine_simple"
+  labels             = ["infrastructure", "proxmox"]
 }
 
 resource "spacelift_module" "fortigate_vip" {
@@ -35,7 +37,7 @@ resource "spacelift_module" "fortigate_vip" {
   description        = "Fortigate Firewall Virtual IP"
   repository         = "terraform"
   project_root       = "modules/fortigate/vip"
-  labels             = ["fortigate"]
+  labels             = ["config", "fortigate"]
 }
 
 resource "spacelift_stack" "proxmox" {
