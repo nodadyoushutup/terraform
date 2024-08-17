@@ -84,30 +84,11 @@ variable "cpu" {
 variable "initialization" {
   description = "Initialization configuration for the VM."
   type = object({
-    ip_config = optional(object({
-      ipv4 = optional(object({
-        address = optional(string, "dhcp")
-        gateway = optional(string, null)
-      }), {
-        address = "192.168.1.101/24"
-        gateway = "192.168.1.1"
+    ip_config = object({
+      ipv4 = object({
+        address = string
+        gateway = string 
       })
-    }), {ipv4 = {
-      address = "192.168.1.101/24"
-      gateway = "192.168.1.1"
-    }})
-    user_account = optional(object({
-      username = optional(string, "ubuntu")
-      password = optional(string, "ubuntu")
-      keys     = optional(list(string), [])
-    }), {})
+    })
   })
-  default = {
-    ip_config = {
-      ipv4 = {
-        address = "192.168.1.101/24"
-        gateway = "192.168.1.1"
-      }
-    }
-  }
 }
