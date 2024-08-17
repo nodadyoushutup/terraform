@@ -265,7 +265,7 @@ resource "spacelift_context_attachment" "provider_monitoring" {
 
 resource "spacelift_context_attachment" "virtual_machine_monitoring" {
   context_id = "virtual_machine"
-  stack_id   = "npm"
+  stack_id   = "monitoring"
   priority   = 0
 }
 
