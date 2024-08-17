@@ -22,7 +22,7 @@ resource "fortios_firewall_vip" "trname" {
   nat_source_vip                   = "disable"
   outlook_web_access               = "disable"
   persistence                      = "none"
-  portforward                      = "disable"
+  portforward                      = "enable"
   portmapping_type                 = "1-to-1"
   protocol                         = "tcp"
   ssl_algorithm                    = "high"
