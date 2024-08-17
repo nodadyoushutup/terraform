@@ -260,5 +260,7 @@ variable "websphere_server" {
 }
 
 variable "mappedip_range" {
-  type    = string
+  type    = object({
+    range = string
+  })
 }

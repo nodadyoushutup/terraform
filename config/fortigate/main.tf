@@ -6,8 +6,10 @@ module "vip_truenas" {
   mappedport = 80
   fosid = 100
   name = "truenas"
-  mappedip_range = "192.168.1.100" 
   extport = 100
+  mappedip = {
+    range = "192.168.1.100"
+  } 
 }
 
 resource "fortios_firewall_policy" "policy_truenas" {

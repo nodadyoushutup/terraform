@@ -53,6 +53,6 @@ resource "fortios_firewall_vip" "vip" {
   weblogic_server                  = var.weblogic_server
   websphere_server                 = var.websphere_server
   mappedip {
-    range = var.mappedip_range
+    range = var.mappedip.range
   }
 }
