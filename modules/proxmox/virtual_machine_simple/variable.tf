@@ -89,7 +89,11 @@ variable "initialization" {
         address = string
         gateway = string 
       })
-    }))
+    }), 
+    {ipv4 = {
+      address = "192.168.1.101" 
+      gateway = "192.168.1.1"
+    }})
   })
   default = {}
 }
