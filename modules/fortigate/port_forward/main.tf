@@ -1,19 +1,21 @@
 module "vip_truenas" {
   source  = "spacelift.io/nodadyoushutup/vip/fortigate"
   # version = "1.0.0"
-  mappedport = 80
-  fosid = 100
-  name = "truenas"
-  extport = 100
+  mappedport = var.mappedport
+  fosid = var.extport
+  name = var.name
+  extport = var.extport
   mappedip = {
-    range = "192.168.1.100"
-  } 
+    range = var.mappedip.range
+  }
 }
 
 module "firewall_policy_truenas" {
   source  = "spacelift.io/nodadyoushutup/policy/fortigate"
   # version = "1.0.0"
-  name               = "truenas"
-  policyid           = 100
-  dstaddr_name       = "truenas"
+  name               = var.name
+  policyid           = var.extport
+  dstaddr = {
+    name = var.dstaddr.name
+  }
 }
