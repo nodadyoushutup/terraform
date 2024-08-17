@@ -29,7 +29,6 @@ variable "extport" {
 
 variable "fosid" {
   type    = number
-  default = 0
 }
 
 variable "http_cookie_age" {
