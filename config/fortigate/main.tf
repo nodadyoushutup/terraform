@@ -41,3 +41,17 @@ module "port_forward_postgresql" {
     name = "postgresql"
   }  
 }
+
+module "port_forward_mysql" {
+  source  = "spacelift.io/nodadyoushutup/port_forward/fortigate"
+  # version = "1.0.0"
+  mappedport = 3306
+  extport = 3306
+  name = "mysql"
+  mappedip = {
+    range = "192.168.1.103"
+  }
+  dstaddr = {
+    name = "mysql"
+  }  
+}
