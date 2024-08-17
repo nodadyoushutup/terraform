@@ -56,6 +56,21 @@ module "port_forward_vault_ssh" {
   }  
 }
 
+module "port_forward_monitoring_ssh" {
+  source  = "spacelift.io/nodadyoushutup/port_forward/fortigate"
+  # version = "1.0.0"
+  mappedport = 22
+  extport = 10222
+  name = "monitoring_ssh"
+  mappedip = {
+    range = "192.168.1.102"
+  }
+  dstaddr = {
+    name = "monitoring_ssh"
+  }  
+}
+
+
 module "port_forward_database_ssh" {
   source  = "spacelift.io/nodadyoushutup/port_forward/fortigate"
   # version = "1.0.0"
