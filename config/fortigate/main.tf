@@ -32,7 +32,7 @@ module "port_forward_truenas_gui" {
   source  = "spacelift.io/nodadyoushutup/port_forward/fortigate"
   # version = "1.0.0"
   mappedport = 80
-  extport = 10080
+  extport = 10081
   name = "truenas_gui"
   mappedip = {
     range = "192.168.1.100"
