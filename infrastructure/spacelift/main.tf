@@ -167,9 +167,11 @@ resource "spacelift_stack" "all_init" {
   project_root      = "/init/all"
   repository        = "ansible"
   labels            = ["init", "all"]
+  before_init = ["chmod 600 /mnt/workspace/proxmox.pem"]
   ansible {
     playbook = "main.yaml"
   }
+  
 }
 
 resource "spacelift_context" "debug" {
