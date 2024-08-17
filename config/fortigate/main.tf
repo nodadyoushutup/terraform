@@ -1,12 +1,12 @@
 # config/firtugate/main.tf
 
-resource "fortios_firewall_vip" "vip" {
+resource "fortios_firewall_vip" "vip_truenas" {
   arp_reply                        = "enable"
   color                            = 0
   dns_mapping_ttl                  = 0
   extintf                          = "wan"
   extip                            = "0.0.0.0"
-  extport                          = "9055"
+  extport                          = "100"
   fosid                            = 0
   http_cookie_age                  = 60
   http_cookie_domain_from_host     = "disable"
@@ -18,7 +18,7 @@ resource "fortios_firewall_vip" "vip" {
   ldb_method                       = "static"
   mappedport                       = "9055"
   max_embryonic_connections        = 1000
-  name                             = "vips1"
+  name                             = "truenas"
   nat_source_vip                   = "disable"
   outlook_web_access               = "disable"
   persistence                      = "none"
@@ -54,16 +54,15 @@ resource "fortios_firewall_vip" "vip" {
   type                             = "static-nat"
   weblogic_server                  = "disable"
   websphere_server                 = "disable"
-
   mappedip {
     range = "192.168.1.100"
   }
 }
 
-resource "fortios_firewall_policy" "policy" {
+resource "fortios_firewall_policy" "policy_truenas" {
   action             = "accept"
   logtraffic         = "all"
-  name               = "policys1"
+  name               = "truenas"
   policyid           = 100
   schedule           = "always"
   wanopt             = "disable"
@@ -73,23 +72,18 @@ resource "fortios_firewall_policy" "policy" {
   webcache           = "disable"
   webcache_https     = "disable"
   wsso               = "disable"
-
   dstaddr {
-    name = "vips1"
+    name = "truenas"
   }
-
   dstintf {
     name = "lan"
   }
-
   service {
     name = "ALL"
   }
-
   srcaddr {
     name = "all"
   }
-
   srcintf {
     name = "wan"
   }
