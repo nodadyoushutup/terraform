@@ -82,9 +82,9 @@ resource "fortios_firewall_policy" "policy" {
     name = "lan"
   }
 
-#   service {
-#     name = "ALL"
-#   }
+  service {
+    name = "vips1"
+  }
 
 #   srcaddr {
 #     name = "ALL"
