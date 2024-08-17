@@ -241,6 +241,12 @@ resource "spacelift_context_attachment" "debug_fortigate" {
   priority   = 0
 }
 
+resource "spacelift_context_attachment" "debug_all_init" {
+  context_id = "debug"
+  stack_id   = "all_init"
+  priority   = 0
+}
+
 resource "spacelift_context_attachment" "provider_proxmox" {
   context_id = "provider"
   stack_id   = "proxmox"
@@ -324,6 +330,13 @@ resource "spacelift_context_attachment" "provider_fortigate" {
   stack_id   = "fortigate"
   priority   = 0
 }
+
+resource "spacelift_context_attachment" "ansible_all_init" {
+  context_id = "ansible"
+  stack_id   = "all_init"
+  priority   = 0
+}
+
 
 
 # resource "spacelift_stack_dependency" "vault_depends_on_proxmox" {
