@@ -9,7 +9,7 @@ terraform {
 }
 
 provider "fortios" {
-    hostname = "https://146.115.179.178"
+    hostname = "http://146.115.179.178"
     insecure = "true"
     username = local.provider.fortigate.username
     password = local.provider.fortigate.password
