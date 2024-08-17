@@ -16,12 +16,12 @@ module "vault" {
   cpu = {
     cores = 1
   }
-  initialization = {
-    ip_config = {
-      ipv4 = {
-        address = "192.168.1.101/24"
-        gateway = "192.168.1.1"
-      }
-    }
-  }
+  # initialization = {
+  #   ip_config = {
+  #     ipv4 = {
+  #       address = "192.168.1.101/24"
+  #       gateway = "192.168.1.1"
+  #     }
+  #   }
+  # }
 }
