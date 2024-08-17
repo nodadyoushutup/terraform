@@ -99,7 +99,6 @@ resource "spacelift_stack" "k3s" {
   labels            = ["infrastructure", "virtual_machine", "k3s"]
 }
 
-
 resource "spacelift_stack" "development" {
   administrative    = false
   autodeploy        = true
@@ -166,6 +165,12 @@ resource "spacelift_context_attachment" "debug_npm" {
 resource "spacelift_context_attachment" "debug_development" {
   context_id = "debug"
   stack_id   = "development"
+  priority   = 0
+}
+
+resource "spacelift_context_attachment" "debug_k3s" {
+  context_id = "debug"
+  stack_id   = "k3s"
   priority   = 0
 }
 
