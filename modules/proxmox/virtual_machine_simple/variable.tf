@@ -93,12 +93,12 @@ variable "initialization" {
         address = optional(string, "dhcp")
         gateway = optional(string, null)
       }))
-    }))
+    }), {})
     user_account = optional(object({
       username = optional(string, "ubuntu")
       password = optional(string, "ubuntu")
       keys = optional(list(string), [])
-    }))
+    }), {})
   })
   default = {}
 }
