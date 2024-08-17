@@ -158,6 +158,18 @@ resource "spacelift_stack" "fortigate" {
   labels            = ["config", "networking", "fortigate"]
 }
 
+resource "spacelift_stack" "all_init" {
+  administrative    = false
+  autodeploy        = true
+  branch            = "main"
+  description       = "All initialization."
+  name              = "all_init"
+  project_root      = "/init/all"
+  repository        = "terraform"
+  terraform_version = "1.5.7"
+  labels            = ["init", "all"]
+}
+
 resource "spacelift_context" "debug" {
   description = "DEBUG level logs"
   name        = "debug"
