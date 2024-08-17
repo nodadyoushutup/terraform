@@ -74,23 +74,23 @@ resource "fortios_firewall_policy" "trname" {
   webcache_https     = "disable"
   wsso               = "enable"
 
-  dstaddr {
-    name = "all"
-  }
+#   dstaddr {
+#     name = "all"
+#   }
 
   dstintf {
-    name = "wan"
-  }
-
-  service {
     name = "vips1"
   }
 
-  srcaddr {
-    name = "all"
+  service {
+    name = "ALL"
   }
 
+#   srcaddr {
+#     name = "ALL"
+#   }
+
   srcintf {
-    name = "wan"
+    name = "all"
   }
 }
