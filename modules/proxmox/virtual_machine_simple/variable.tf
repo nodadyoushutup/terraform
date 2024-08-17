@@ -100,7 +100,14 @@ variable "initialization" {
       keys = optional(list(string), [])
     })
   })
-  default = {}
+  default = {
+    ip_config = {
+      ipv4 = {
+      }
+      ipv6 = {
+      }
+    }
+  }
 }
 
 variable "network_device" {
