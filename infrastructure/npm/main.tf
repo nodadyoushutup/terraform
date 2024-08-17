@@ -5,7 +5,7 @@ module "npm" {
   # version = "1.0.0"
   vm_id = 104
   name = "npm"
-  description = "npm services"
+  description = "Nginx Proxy Manager infrastructure"
   tags = ["terraform", "ubuntu", "npm"]
   disk = {
     size = 50
