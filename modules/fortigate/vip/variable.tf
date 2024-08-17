@@ -25,7 +25,6 @@ variable "extip" {
 
 variable "extport" {
   type    = string
-  default = "100"
 }
 
 variable "fosid" {
@@ -75,7 +74,6 @@ variable "ldb_method" {
 
 variable "mappedport" {
   type    = string
-  default = "80"
 }
 
 variable "max_embryonic_connections" {
@@ -85,7 +83,6 @@ variable "max_embryonic_connections" {
 
 variable "name" {
   type    = string
-  default = "truenas"
 }
 
 variable "nat_source_vip" {
@@ -265,5 +262,4 @@ variable "websphere_server" {
 
 variable "mappedip_range" {
   type    = string
-  default = "192.168.1.100"
 }
