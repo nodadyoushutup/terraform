@@ -26,15 +26,15 @@ module "port_forward" {
 
 ## Inputs
 
-| Name        | Description                                                  | Type   | Default                          | Required |
-|-------------|--------------------------------------------------------------|--------|----------------------------------|----------|
-| `mappedport`| Port number on the internal network that the service is running on | `number`| `80`                             | No       |
-| `fosid`     | Unique identifier for the FortiOS object                      | `number`| `100`                            | No       |
-| `name`      | Name of the VIP and the Firewall policy                       | `string`| `"truenas"`                      | No       |
-| `extport`   | External port number to be used for accessing the service     | `number`| `100`                            | No       |
-| `mappedip`  | Mapped IP address range for the VIP                           | `object`| `{ range = "192.168.1.10-192.168.1.20" }` | Yes  |
-| `policyid`  | Policy ID for the firewall policy                             | `number`| `100`                            | No       |
-| `dstaddr`   | Destination address name for the firewall policy              | `object`| `{ name = "internal-server" }`   | Yes      |
+| Name        | Description                                                  | Type   | Required |
+|-------------|--------------------------------------------------------------|--------|----------|
+| `mappedport`| Port number on the internal network that the service is running on | `number`| Yes      |
+| `fosid`     | Unique identifier for the FortiOS object                      | `number`| Yes      |
+| `name`      | Name of the VIP and the Firewall policy                       | `string`| Yes      |
+| `extport`   | External port number to be used for accessing the service     | `number`| Yes      |
+| `mappedip`  | Mapped IP address range for the VIP                           | `object`| Yes      |
+| `policyid`  | Policy ID for the firewall policy                             | `number`| Yes      |
+| `dstaddr`   | Destination address name for the firewall policy              | `object`| Yes      |
 
 ## Outputs
 
