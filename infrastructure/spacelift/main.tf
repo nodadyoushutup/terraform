@@ -168,7 +168,7 @@ resource "spacelift_stack" "all_init" {
   repository        = "ansible"
   labels            = ["init", "all"]
   ansible {
-    playbook = "main.yml"
+    playbook = "main.yaml"
   }
 }
 
