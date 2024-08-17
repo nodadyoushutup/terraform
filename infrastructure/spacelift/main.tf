@@ -111,6 +111,18 @@ resource "spacelift_stack" "development" {
   labels            = ["infrastructure", "virtual_machine", "development"]
 }
 
+resource "spacelift_stack" "fortigate" {
+  administrative    = false
+  autodeploy        = true
+  branch            = "main"
+  description       = "Fortigate config."
+  name              = "fortigate"
+  project_root      = "/config/fortigate"
+  repository        = "terraform"
+  terraform_version = "1.5.7"
+  labels            = ["config", "networking", "fortigate"]
+}
+
 resource "spacelift_context" "debug" {
   description = "DEBUG level logs"
   name        = "debug"
@@ -171,6 +183,12 @@ resource "spacelift_context_attachment" "debug_development" {
 resource "spacelift_context_attachment" "debug_k3s" {
   context_id = "debug"
   stack_id   = "k3s"
+  priority   = 0
+}
+
+resource "spacelift_context_attachment" "debug_fortigate" {
+  context_id = "debug"
+  stack_id   = "fortigate"
   priority   = 0
 }
 
@@ -249,6 +267,12 @@ resource "spacelift_context_attachment" "provider_k3s" {
 resource "spacelift_context_attachment" "virtual_machine_k3s" {
   context_id = "virtual_machine"
   stack_id   = "k3s"
+  priority   = 0
+}
+
+resource "spacelift_context_attachment" "provider_fortigate" {
+  context_id = "provider"
+  stack_id   = "fortigate"
   priority   = 0
 }
 
