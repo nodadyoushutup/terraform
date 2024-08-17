@@ -13,5 +13,5 @@ provider "fortios" {
     insecure = "false"
     username = local.provider.fortigate.username
     password = local.provider.fortigate.password
-    cabundlefile  = yamldecode(file("/mnt/workspace/Fortinet_CA_SSL.crt"))
+    cabundlefile  = "/mnt/workspace/Fortinet_CA_SSL.crt"
 }
