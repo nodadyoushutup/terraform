@@ -28,7 +28,7 @@ resource "spacelift_module" "virtual_machine_simple" {
 }
 
 resource "spacelift_module" "fortigate_vip" {
-  name               = "virtual_machine_simple"
+  name               = "vip"
   terraform_provider = "fortigate"
   administrative     = false
   branch             = "main"
