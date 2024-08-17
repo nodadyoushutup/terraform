@@ -265,3 +265,45 @@ module "port_forward_k3s_worker_4_ssh" {
     name = "k3s_worker_4_ssh"
   }  
 }
+
+module "port_forward_qbittorrent_movie" {
+  source  = "spacelift.io/nodadyoushutup/port_forward/fortigate"
+  # version = "1.0.0"
+  mappedport = 10096
+  extport = 10096
+  name = "qbittorrent_movie"
+  mappedip = {
+    range = "192.168.1.100"
+  }
+  dstaddr = {
+    name = "qbittorrent_movie"
+  }  
+}
+
+module "port_forward_qbittorrent_television" {
+  source  = "spacelift.io/nodadyoushutup/port_forward/fortigate"
+  # version = "1.0.0"
+  mappedport = 10098
+  extport = 10098
+  name = "qbittorrent_television"
+  mappedip = {
+    range = "192.168.1.100"
+  }
+  dstaddr = {
+    name = "qbittorrent_television"
+  }  
+}
+
+module "port_forward_qbittorrent_cross_seed" {
+  source  = "spacelift.io/nodadyoushutup/port_forward/fortigate"
+  # version = "1.0.0"
+  mappedport = 10112
+  extport = 10112
+  name = "qbittorrent_cross_seed"
+  mappedip = {
+    range = "192.168.1.100"
+  }
+  dstaddr = {
+    name = "qbittorrent_cross_seed"
+  }  
+}
