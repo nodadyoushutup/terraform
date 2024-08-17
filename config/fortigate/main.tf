@@ -79,7 +79,7 @@ resource "fortios_firewall_policy" "policy" {
 #   }
 
   dstintf {
-    name = "Proxmox"
+    name = "lan"
   }
 
 #   service {
