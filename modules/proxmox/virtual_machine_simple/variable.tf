@@ -106,6 +106,8 @@ variable "initialization" {
       }
       ipv6 = {
       }
+      user_account = {
+      }
     }
   }
 }
