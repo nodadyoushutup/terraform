@@ -1,4 +1,4 @@
-module "vip_truenas" {
+module "vip" {
   source  = "spacelift.io/nodadyoushutup/vip/fortigate"
   # version = "1.0.0"
   mappedport = var.mappedport
@@ -10,7 +10,7 @@ module "vip_truenas" {
   }
 }
 
-module "firewall_policy_truenas" {
+module "policy" {
   source  = "spacelift.io/nodadyoushutup/policy/fortigate"
   # version = "1.0.0"
   name               = var.name
