@@ -89,7 +89,7 @@ variable "initialization" {
         address = optional(string, "dhcp")
         gateway = optional(string, "192.168.1.1") 
       })
-    }))
+    }), {})
   })
   default = {}
 }
