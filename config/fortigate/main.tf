@@ -4,8 +4,8 @@ resource "fortios_firewall_vip" "trname" {
   arp_reply                        = "enable"
   color                            = 0
   dns_mapping_ttl                  = 0
-  extintf                          = "any"
-  extip                            = "1.0.0.1-1.0.0.2"
+  extintf                          = "wan"
+  extip                            = "0.0.0.0"
   extport                          = "0-65535"
   fosid                            = 0
   http_cookie_age                  = 60
@@ -56,6 +56,6 @@ resource "fortios_firewall_vip" "trname" {
   websphere_server                 = "disable"
 
   mappedip {
-    range = "3.0.0.0-3.0.0.1"
+    range = "192.168.1.100:9055"
   }
 }
