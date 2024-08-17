@@ -86,9 +86,9 @@ resource "fortios_firewall_policy" "policy" {
     name = "ALL"
   }
 
-#   srcaddr {
-#     name = "ALL"
-#   }
+  srcaddr {
+    name = "all"
+  }
 
   srcintf {
     name = "wan"
