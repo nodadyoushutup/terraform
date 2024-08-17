@@ -91,7 +91,7 @@ variable "initialization" {
       })
     }), 
     {ipv4 = {
-      address = "192.168.1.101" 
+      address = "192.168.1.101/24" 
       gateway = "192.168.1.1"
     }})
   })
