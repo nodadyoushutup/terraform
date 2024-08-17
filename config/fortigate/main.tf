@@ -1,6 +1,6 @@
 # config/firtugate/main.tf
 
-resource "fortios_firewall_vip" "trname" {
+resource "fortios_firewall_vip" "vip" {
   arp_reply                        = "enable"
   color                            = 0
   dns_mapping_ttl                  = 0
@@ -60,7 +60,7 @@ resource "fortios_firewall_vip" "trname" {
   }
 }
 
-resource "fortios_firewall_policy" "trname" {
+resource "fortios_firewall_policy" "policy" {
 #   action             = "accept"
 #   logtraffic         = "utm"
 #   name               = "policys1"
