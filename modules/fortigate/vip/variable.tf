@@ -259,7 +259,7 @@ variable "websphere_server" {
   default = "disable"
 }
 
-variable "mappedip_range" {
+variable "mappedip" {
   type    = object({
     range = string
   })
