@@ -3,6 +3,11 @@
 module "vip_truenas" {
   source  = "spacelift.io/nodadyoushutup/vip/fortigate"
   # version = "1.0.0"
+  mappedport = 80
+  fosid = 100
+  name = "truenas"
+  mappedip_range = "192.168.1.100" 
+  extport = 100
 }
 
 resource "fortios_firewall_policy" "policy_truenas" {
