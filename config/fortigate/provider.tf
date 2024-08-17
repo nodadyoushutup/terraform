@@ -10,7 +10,7 @@ terraform {
 
 provider "fortios" {
     hostname = local.provider.fortigate.hostname
-    insecure = local.provider.fortigate.insecure
+    insecure = "true"
     username = local.provider.fortigate.username
     password = local.provider.fortigate.password
 }
