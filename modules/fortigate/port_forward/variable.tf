@@ -31,7 +31,6 @@ variable "mappedip" {
   })
 }
 
-# Define variables for Firewall Policy Module
 variable "policyid" {
   description = "Policy ID for the firewall policy"
   type        = number
