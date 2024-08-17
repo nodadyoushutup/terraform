@@ -73,7 +73,7 @@ module "port_forward_vault_gui" {
 module "port_forward_vault_ssh" {
   source  = "spacelift.io/nodadyoushutup/port_forward/fortigate"
   # version = "1.0.0"
-  mappedport = 80
+  mappedport = 22
   extport = 10122
   name = "vault_ssh"
   mappedip = {
