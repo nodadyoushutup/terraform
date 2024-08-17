@@ -56,26 +56,44 @@ variable "wsso" {
   default = "disable"
 }
 
-variable "dstaddr_name" {
-  type    = string
+variable "dstaddr" {
+  type    = object({
+    name = string
+  })
 }
 
-variable "dstintf_name" {
-  type    = string
-  default = "lan"
+variable "dstintf" {
+  type    = object({
+    name = string
+  })
+  default = {
+    name = "lan"
+  }
 }
 
-variable "service_name" {
-  type    = string
-  default = "ALL"
+variable "service" {
+  type    = object({
+    name = string
+  })
+  default = {
+    name = "ALL"
+  }
 }
 
-variable "srcaddr_name" {
-  type    = string
-  default = "all"
+variable "srcaddr" {
+  type    = object({
+    name = string
+  })
+  default = {
+    name = "all"
+  }
 }
 
-variable "srcintf_name" {
-  type    = string
-  default = "wan"
+variable "srcintf" {
+  type    = object({
+    name = string
+  })
+  default = {
+    name = "wan"
+  }
 }

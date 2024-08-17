@@ -12,18 +12,18 @@ resource "fortios_firewall_policy" "policy_truenas" {
     webcache_https     = var.webcache_https
     wsso               = var.wsso
     dstaddr {
-        name = var.dstaddr_name
+        name = var.dstaddr.name
     }
     dstintf {
-        name = var.dstintf_name
+        name = var.dstintf.name
     }
     service {
-        name = var.service_name
+        name = var.service.name
     }
     srcaddr {
-        name = var.srcaddr_name
+        name = var.srcaddr.name
     }
     srcintf {
-        name = var.srcintf_name
+        name = var.srcintf.name
     }
 }
