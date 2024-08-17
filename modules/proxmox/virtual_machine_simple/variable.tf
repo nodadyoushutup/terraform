@@ -32,13 +32,13 @@ variable "node_name" {
 variable "on_boot" {
   description = "Whether the VM should start on boot."
   type        = bool
-  default     = false
+  default     = true
 }
 
 variable "started" {
   description = "Whether the VM should be started after creation."
   type        = bool
-  default     = false
+  default     = true
 }
 
 variable "stop_on_destroy" {
