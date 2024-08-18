@@ -3,7 +3,7 @@
 module "npm" {
   source  = "spacelift.io/nodadyoushutup/virtual_machine_simple/proxmox"
   # version = "1.0.0"
-  vm_id = 104
+  vm_id = 103
   name = "npm"
   description = "Nginx Proxy Manager infrastructure"
   tags = ["terraform", "ubuntu", "npm"]
@@ -19,7 +19,7 @@ module "npm" {
   initialization = {
     ip_config = {
       ipv4 = {
-        address = "192.168.1.104/24"
+        address = "192.168.1.103/24"
         gateway = "192.168.1.1"
       }
     }

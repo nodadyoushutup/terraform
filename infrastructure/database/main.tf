@@ -3,7 +3,7 @@
 module "database" {
   source  = "spacelift.io/nodadyoushutup/virtual_machine_simple/proxmox"
   # version = "1.0.0"
-  vm_id = 103
+  vm_id = 102
   name = "database"
   description = "Database services"
   tags = ["terraform", "ubuntu", "database"]
@@ -19,7 +19,7 @@ module "database" {
   initialization = {
     ip_config = {
       ipv4 = {
-        address = "192.168.1.103/24"
+        address = "192.168.1.102/24"
         gateway = "192.168.1.1"
       }
     }

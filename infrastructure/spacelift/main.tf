@@ -210,7 +210,6 @@ resource "spacelift_context" "database" {
   name        = "database"
 }
 
-
 resource "spacelift_context_attachment" "debug_vault" {
   context_id = "debug"
   stack_id   = "vault"

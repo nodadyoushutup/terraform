@@ -88,10 +88,10 @@ module "port_forward_monitoring_ssh" {
   source  = "spacelift.io/nodadyoushutup/port_forward/fortigate"
   # version = "1.0.0"
   mappedport = 22
-  extport = 10222
+  extport = 10422
   name = "monitoring_ssh"
   mappedip = {
-    range = "192.168.1.102"
+    range = "192.168.1.104"
   }
   dstaddr = {
     name = "monitoring_ssh"
@@ -102,10 +102,10 @@ module "port_forward_database_ssh" {
   source  = "spacelift.io/nodadyoushutup/port_forward/fortigate"
   # version = "1.0.0"
   mappedport = 22
-  extport = 10322
+  extport = 10222
   name = "database_ssh"
   mappedip = {
-    range = "192.168.1.103"
+    range = "192.168.1.102"
   }
   dstaddr = {
     name = "database_ssh"
@@ -119,7 +119,7 @@ module "port_forward_database_postgresql" {
   extport = 5432
   name = "database_postgresql"
   mappedip = {
-    range = "192.168.1.103"
+    range = "192.168.1.102"
   }
   dstaddr = {
     name = "database_postgresql"
@@ -133,7 +133,7 @@ module "port_forward_database_mysql" {
   extport = 3306
   name = "database_mysql"
   mappedip = {
-    range = "192.168.1.103"
+    range = "192.168.1.102"
   }
   dstaddr = {
     name = "database_mysql"
@@ -144,10 +144,10 @@ module "port_forward_npm_ssh" {
   source  = "spacelift.io/nodadyoushutup/port_forward/fortigate"
   # version = "1.0.0"
   mappedport = 22
-  extport = 10422
+  extport = 10322
   name = "npm_ssh"
   mappedip = {
-    range = "192.168.1.104"
+    range = "192.168.1.103"
   }
   dstaddr = {
     name = "npm_ssh"
