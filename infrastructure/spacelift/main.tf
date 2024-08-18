@@ -74,6 +74,33 @@ resource "spacelift_stack" "proxmox" {
   labels            = ["infrastructure", "proxmox", "pve"]
 }
 
+resource "spacelift_stack" "database_infra" {
+  administrative    = false
+  autodeploy        = true
+  branch            = "main"
+  description       = "Database infrastructure."
+  name              = "database_infra"
+  project_root      = "/infrastructure/database"
+  repository        = "terraform"
+  terraform_version = "1.5.7"
+  labels            = ["infra", "provider", "virtual_machine", "database"]
+}
+
+resource "spacelift_stack" "database_init" {
+  administrative    = false
+  autodeploy        = true
+  branch            = "main"
+  description       = "Database initialization."
+  name              = "database_init"
+  project_root      = "/init/database"
+  repository        = "ansible"
+  labels            = ["init", "database"]
+  before_init = ["chmod 600 /mnt/workspace/proxmox.pem"]
+  ansible {
+    playbook = "main.yaml"
+  }
+  
+}
 resource "spacelift_stack" "vault" {
   administrative    = false
   autodeploy        = true
@@ -84,18 +111,6 @@ resource "spacelift_stack" "vault" {
   repository        = "terraform"
   terraform_version = "1.5.7"
   labels            = ["infrastructure", "virtual_machine", "vault"]
-}
-
-resource "spacelift_stack" "database" {
-  administrative    = false
-  autodeploy        = true
-  branch            = "main"
-  description       = "Database infrastructure."
-  name              = "database"
-  project_root      = "/infrastructure/database"
-  repository        = "terraform"
-  terraform_version = "1.5.7"
-  labels            = ["infrastructure", "virtual_machine", "database"]
 }
 
 resource "spacelift_stack" "monitoring" {
@@ -174,22 +189,6 @@ resource "spacelift_stack" "all_init" {
   
 }
 
-resource "spacelift_stack" "database_init" {
-  administrative    = false
-  autodeploy        = true
-  branch            = "main"
-  description       = "Database initialization."
-  name              = "database_init"
-  project_root      = "/init/database"
-  repository        = "ansible"
-  labels            = ["init", "database"]
-  before_init = ["chmod 600 /mnt/workspace/proxmox.pem"]
-  ansible {
-    playbook = "main.yaml"
-  }
-  
-}
-
 resource "spacelift_context" "debug" {
   description = "DEBUG level logs"
   name        = "debug"
@@ -228,9 +227,15 @@ resource "spacelift_context_attachment" "debug_proxmox" {
   priority   = 0
 }
 
-resource "spacelift_context_attachment" "debug_database" {
+resource "spacelift_context_attachment" "debug_database_infra" {
   context_id = "debug"
-  stack_id   = "database"
+  stack_id   = "database_infra"
+  priority   = 0
+}
+
+resource "spacelift_context_attachment" "debug_database_init" {
+  context_id = "debug"
+  stack_id   = "database_init"
   priority   = 0
 }
 
@@ -270,12 +275,6 @@ resource "spacelift_context_attachment" "debug_all_init" {
   priority   = 0
 }
 
-resource "spacelift_context_attachment" "debug_database_init" {
-  context_id = "debug"
-  stack_id   = "database_init"
-  priority   = 0
-}
-
 resource "spacelift_context_attachment" "provider_proxmox" {
   context_id = "provider"
   stack_id   = "proxmox"
@@ -288,21 +287,9 @@ resource "spacelift_context_attachment" "provider_vault" {
   priority   = 0
 }
 
-resource "spacelift_context_attachment" "virtual_machine_vault" {
-  context_id = "virtual_machine"
-  stack_id   = "vault"
-  priority   = 0
-}
-
-resource "spacelift_context_attachment" "provider_database" {
+resource "spacelift_context_attachment" "provider_npm" {
   context_id = "provider"
-  stack_id   = "database"
-  priority   = 0
-}
-
-resource "spacelift_context_attachment" "virtual_machine_database" {
-  context_id = "virtual_machine"
-  stack_id   = "database"
+  stack_id   = "npm"
   priority   = 0
 }
 
@@ -312,32 +299,14 @@ resource "spacelift_context_attachment" "provider_monitoring" {
   priority   = 0
 }
 
-resource "spacelift_context_attachment" "virtual_machine_monitoring" {
-  context_id = "virtual_machine"
-  stack_id   = "monitoring"
-  priority   = 0
-}
-
-resource "spacelift_context_attachment" "provider_npm" {
+resource "spacelift_context_attachment" "provider_database_infra" {
   context_id = "provider"
-  stack_id   = "npm"
-  priority   = 0
-}
-
-resource "spacelift_context_attachment" "virtual_machine_npm" {
-  context_id = "virtual_machine"
-  stack_id   = "npm"
+  stack_id   = "database_infra"
   priority   = 0
 }
 
 resource "spacelift_context_attachment" "provider_development" {
   context_id = "provider"
-  stack_id   = "development"
-  priority   = 0
-}
-
-resource "spacelift_context_attachment" "virtual_machine_development" {
-  context_id = "virtual_machine"
   stack_id   = "development"
   priority   = 0
 }
@@ -348,15 +317,45 @@ resource "spacelift_context_attachment" "provider_k3s" {
   priority   = 0
 }
 
-resource "spacelift_context_attachment" "virtual_machine_k3s" {
-  context_id = "virtual_machine"
-  stack_id   = "k3s"
-  priority   = 0
-}
-
 resource "spacelift_context_attachment" "provider_fortigate" {
   context_id = "provider"
   stack_id   = "fortigate"
+  priority   = 0
+}
+
+resource "spacelift_context_attachment" "virtual_machine_vault" {
+  context_id = "virtual_machine"
+  stack_id   = "vault"
+  priority   = 0
+}
+
+resource "spacelift_context_attachment" "virtual_machine_database_infra" {
+  context_id = "virtual_machine"
+  stack_id   = "database_infra"
+  priority   = 0
+}
+
+resource "spacelift_context_attachment" "virtual_machine_monitoring" {
+  context_id = "virtual_machine"
+  stack_id   = "monitoring"
+  priority   = 0
+}
+
+resource "spacelift_context_attachment" "virtual_machine_npm" {
+  context_id = "virtual_machine"
+  stack_id   = "npm"
+  priority   = 0
+}
+
+resource "spacelift_context_attachment" "virtual_machine_development" {
+  context_id = "virtual_machine"
+  stack_id   = "development"
+  priority   = 0
+}
+
+resource "spacelift_context_attachment" "virtual_machine_k3s" {
+  context_id = "virtual_machine"
+  stack_id   = "k3s"
   priority   = 0
 }
 
