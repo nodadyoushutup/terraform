@@ -174,6 +174,22 @@ resource "spacelift_stack" "all_init" {
   
 }
 
+resource "spacelift_stack" "database_init" {
+  administrative    = false
+  autodeploy        = true
+  branch            = "main"
+  description       = "Database initialization."
+  name              = "database_init"
+  project_root      = "/init/database"
+  repository        = "ansible"
+  labels            = ["init", "database"]
+  before_init = ["chmod 600 /mnt/workspace/proxmox.pem"]
+  ansible {
+    playbook = "main.yaml"
+  }
+  
+}
+
 resource "spacelift_context" "debug" {
   description = "DEBUG level logs"
   name        = "debug"
@@ -246,6 +262,12 @@ resource "spacelift_context_attachment" "debug_fortigate" {
 resource "spacelift_context_attachment" "debug_all_init" {
   context_id = "debug"
   stack_id   = "all_init"
+  priority   = 0
+}
+
+resource "spacelift_context_attachment" "debug_database_init" {
+  context_id = "debug"
+  stack_id   = "database_init"
   priority   = 0
 }
 
@@ -339,6 +361,11 @@ resource "spacelift_context_attachment" "ansible_all_init" {
   priority   = 0
 }
 
+resource "spacelift_context_attachment" "ansible_database_init" {
+  context_id = "ansible"
+  stack_id   = "database_init"
+  priority   = 0
+}
 
 
 # resource "spacelift_stack_dependency" "vault_depends_on_proxmox" {
