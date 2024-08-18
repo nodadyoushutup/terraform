@@ -5,11 +5,6 @@ variable "mappedport" {
   type        = number
 }
 
-variable "fosid" {
-  description = "Unique identifier for the FortiOS object"
-  type        = number
-}
-
 variable "name" {
   description = "Name of the VIP and the Firewall policy"
   type        = string
@@ -25,11 +20,6 @@ variable "mappedip" {
   type        = object({
     range = string
   })
-}
-
-variable "policyid" {
-  description = "Policy ID for the firewall policy"
-  type        = number
 }
 
 variable "dstaddr" {
