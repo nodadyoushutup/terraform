@@ -1,5 +1,26 @@
 # infrastructure/spacelift/main.tf
 
+resource "spacelift_space" "infra" {
+  name = "infra"
+  parent_space_id = "root"
+  inherit_entities = true
+  description = "Infrastructure related objects"
+}
+
+resource "spacelift_space" "init" {
+  name = "init"
+  parent_space_id = "root"
+  inherit_entities = true
+  description = "Initialization related objects"
+}
+
+resource "spacelift_space" "config" {
+  name = "config"
+  parent_space_id = "root"
+  inherit_entities = true
+  description = "Configuration related objects"
+}
+
 resource "spacelift_environment_variable" "debug" {
   context_id = "debug"
   name       = "TF_LOG"
