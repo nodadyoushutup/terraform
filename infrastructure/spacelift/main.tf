@@ -205,6 +205,12 @@ resource "spacelift_context" "virtual_machine" {
   name        = "virtual_machine"
 }
 
+resource "spacelift_context" "database" {
+  description = "Database docker compose and credentials"
+  name        = "database"
+}
+
+
 resource "spacelift_context_attachment" "debug_vault" {
   context_id = "debug"
   stack_id   = "vault"
@@ -367,6 +373,11 @@ resource "spacelift_context_attachment" "ansible_database_init" {
   priority   = 0
 }
 
+resource "spacelift_context_attachment" "database_database_init" {
+  context_id = "database"
+  stack_id   = "database_init"
+  priority   = 0
+}
 
 # resource "spacelift_stack_dependency" "vault_depends_on_proxmox" {
 #   stack_id            = spacelift_stack.vault.id
