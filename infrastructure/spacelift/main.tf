@@ -122,6 +122,7 @@ resource "spacelift_stack" "database_init" {
   }
   
 }
+
 resource "spacelift_stack" "vault" {
   administrative    = false
   autodeploy        = true
