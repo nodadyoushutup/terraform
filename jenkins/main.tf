@@ -9,5 +9,8 @@ resource "jenkins_job" "proxmox" {
   name     = "proxmox"
   template = templatefile("${path.module}/job/terraform.xml", {
     description = "Proxmox assets"
+    project_url = "https://github.com/nodadyoushutup/terraform"
+    scm_repository_url = "https://github.com/nodadyoushutup/terraform"
+    script_path = "terraform.jenkins"
   })
 }
