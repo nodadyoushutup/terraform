@@ -1,0 +1,23 @@
+pipeline {
+  agent any
+
+  options {
+    ansiColor('xterm')
+  }
+
+  parameters {
+    string(name: 'subdir', defaultValue: '', description: 'Relative path under the workspace')
+  }
+
+  stages {
+    stage('Stage 1') {
+      steps {
+        // Use workspace + subdir; fall back to workspace if subdir is blank
+        dir("${env.WORKSPACE}/${params.subdir ?: ''}") {
+          echo "Working directory: ${pwd()}"
+          // your steps here
+        }
+      }
+    }
+  }
+}

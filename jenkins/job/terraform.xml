@@ -1,12 +1,21 @@
 <flow-definition plugin="workflow-job@1540.v295eccc9778f">
 	<actions/>
-	<description>An cloud_image job created from Terraform</description>
+	<description>${description}</description>
 	<keepDependencies>false</keepDependencies>
 	<properties>
 		<com.coravy.hudson.plugins.github.GithubProjectProperty plugin="github@1.43.0">
 			<projectUrl>https://github.com/nodadyoushutup/terraform/</projectUrl>
 			<displayName/>
 		</com.coravy.hudson.plugins.github.GithubProjectProperty>
+		<hudson.model.ParametersDefinitionProperty>
+			<parameterDefinitions>
+				<hudson.model.StringParameterDefinition>
+					<name>subdir</name>
+					<defaultValue>proxmox</defaultValue>
+					<trim>true</trim>
+				</hudson.model.StringParameterDefinition>
+			</parameterDefinitions>
+		</hudson.model.ParametersDefinitionProperty>
 	</properties>
 	<definition class="org.jenkinsci.plugins.workflow.cps.CpsScmFlowDefinition" plugin="workflow-cps@4150.ve20ca_b_a_a_2815">
 		<scm class="hudson.plugins.git.GitSCM" plugin="git@5.7.0">
@@ -25,7 +34,7 @@
 			<submoduleCfg class="empty-list"/>
 			<extensions/>
 		</scm>
-		<scriptPath>jenkins/cloud_image.jenkins</scriptPath>
+		<scriptPath>jenkins/pipeline/terraform.jenkins</scriptPath>
 		<lightweight>true</lightweight>
 	</definition>
 	<triggers/>
